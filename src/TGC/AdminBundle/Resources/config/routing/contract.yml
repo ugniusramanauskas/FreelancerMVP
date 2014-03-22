@@ -1,0 +1,30 @@
+contract:
+    pattern:  /
+    defaults: { _controller: "TGCAdminBundle:Contract:index" }
+
+contract_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "TGCAdminBundle:Contract:show" }
+
+contract_new:
+    pattern:  /new
+    defaults: { _controller: "TGCAdminBundle:Contract:new" }
+
+contract_create:
+    pattern:  /create
+    defaults: { _controller: "TGCAdminBundle:Contract:create" }
+    requirements: { _method: post }
+
+contract_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "TGCAdminBundle:Contract:edit" }
+
+contract_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "TGCAdminBundle:Contract:update" }
+    requirements: { _method: post|put }
+
+contract_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "TGCAdminBundle:Contract:delete" }
+    requirements: { _method: post|delete }

@@ -1,0 +1,31 @@
+TGC\AdminBundle\Entity\Contract:
+    type: entity
+    table: contract
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        startdate:
+            type: datetime
+        contracttext:
+            type: text
+            nullable: true
+        registrationtimestamp:
+            type: datetime
+            columnDefinition: TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        status:
+            type: integer
+    manyToOne:
+        userid:
+            targetEntity: User
+            inversedBy: contracts
+            joinColumn:
+                name: consultant_user_id
+                referencedColumnName: id
+        projectid:
+            targetEntity: Project
+            inversedBy: contracts
+            joinColumn:
+                name: project_id
+                referencedColumnName: id

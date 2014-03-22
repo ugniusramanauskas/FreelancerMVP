@@ -1,0 +1,15 @@
+TGC\AdminBundle\Entity\Address:
+    type:  entity
+    table: address
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    manyToOne:
+        userid:
+            targetEntity: User
+            inversedBy: addresses
+            joinColumn:
+                name: user_id
+                referencedColumnName: id

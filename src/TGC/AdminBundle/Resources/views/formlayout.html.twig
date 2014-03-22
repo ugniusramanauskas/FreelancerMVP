@@ -1,0 +1,7 @@
+{% extends "TGCAdminBundle::layout.html.twig" %}
+{% if edit_form is defined %}
+{% form_theme edit_form 'TGCAdminBundle:Form:fields.html.twig' %}
+{% endif %}
+{% if form is defined %}
+{% form_theme form 'TGCAdminBundle:Form:fields.html.twig' %}
+{% endif %}

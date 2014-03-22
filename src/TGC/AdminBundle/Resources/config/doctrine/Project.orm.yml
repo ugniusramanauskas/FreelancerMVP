@@ -1,0 +1,41 @@
+TGC\AdminBundle\Entity\Project:
+    type: entity
+    table: project
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        title:
+            type: string
+            length: 100
+        startdate:
+            type: date
+        budget:
+            type: integer
+            nullable: TRUE
+        duration:
+            type: integer
+            nullable: TRUE
+        description:
+            type: text
+        registrationtimestamp:
+            type: datetime
+            columnDefinition: TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        status:
+            type: integer
+            # columnDefinition: DEFAULT '1'
+    manyToOne:
+        userid:
+            targetEntity: User
+            inversedBy: projects
+            joinColumn:
+                name: business_user_id
+                referencedColumnName: id
+    oneToMany:
+        proposals:
+            targetEntity: Proposal
+            mappedBy: projectid
+        contracts:
+            targetEntity: Contract
+            mappedBy: projectid

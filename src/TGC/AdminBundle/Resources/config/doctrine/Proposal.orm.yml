@@ -1,0 +1,33 @@
+TGC\AdminBundle\Entity\Proposal:
+    type: entity
+    table: proposal
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        coverletter:
+            type: text
+        hourlyrate:
+            type: integer
+        duration:
+            type: integer
+        registrationtimestamp:
+            type: datetime
+            columnDefinition: TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        status:
+            type: integer
+    manyToOne:
+        userid:
+            targetEntity: User
+            inversedBy: proposals
+            joinColumn:
+                name: consultant_user_id
+                referencedColumnName: id
+        projectid:
+            targetEntity: Project
+            inversedBy: proposals
+            joinColumn:
+                name: project_id
+                referencedColumnName: id
+

@@ -1,0 +1,38 @@
+TGC\AdminBundle\Entity\User:
+    type:  entity
+    table: fos_user
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    # fields:
+    #     usernametest:
+    #         type: string
+    #         length: 100
+    #     emailtest:
+    #         type: string
+    #         length: 100
+    #     passwordtest:
+    #         type: string
+    #         length: 100
+    manyToOne:
+        roleid:
+            targetEntity: Role
+            inversedBy: users
+            joinColumn:
+                name: role_id
+                referencedColumnName: id
+    oneToMany:
+        addresses:
+            targetEntity: Address
+            mappedBy: userid
+        proposals:
+            targetEntity: Proposal
+            mappedBy: userid
+        contracts:
+            targetEntity: Contract
+            mappedBy: userid
+        projects:
+            targetEntity: Project
+            mappedBy: userid

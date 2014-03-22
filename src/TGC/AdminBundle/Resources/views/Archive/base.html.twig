@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!-- saved from url=(0056)jobify/resume/justin-zupnick/ -->
+<html lang="en-US"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+
+<title>Justin Zupnick | Jobify</title>
+
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="jobify/xmlrpc.php">
+<link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+{# <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, height=device-height, target-densitydpi=medium-dpi"> #}
+
+    <!--[if lt IE 9]>
+    <script src="jobify/wp-content/themes/jobify/js/html5.js" type="text/javascript"></script>
+    <![endif]-->
+
+
+
+    <link rel="alternate" type="application/rss+xml" title="Jobify » Feed" href="jobify/feed/">
+    <link rel="alternate" type="application/rss+xml" title="Jobify » Comments Feed" href="jobify/comments/feed/">
+
+    {% stylesheets 
+        '@TGCAdminBundle/Resources/public/css/woocommerce-layout.css'
+        '@TGCAdminBundle/Resources/public/css/woocommerce-smallscreen.css'
+        '@TGCAdminBundle/Resources/public/css/woocommerce.css'
+        '@TGCAdminBundle/Resources/public/css/chosen.css'
+        '@TGCAdminBundle/Resources/public/css/frontend.css'
+        '@TGCAdminBundle/Resources/public/css/jquery-ui.css'
+        '@TGCAdminBundle/Resources/public/css/frontend(1).css'
+        '@TGCAdminBundle/Resources/public/css/packages.css'
+        '@TGCAdminBundle/Resources/public/css/fontscss.css'
+        '@TGCAdminBundle/Resources/public/css/animate.css'
+        '@TGCAdminBundle/Resources/public/css/entypo.css'
+        '@TGCAdminBundle/Resources/public/css/magnific-popup.css'
+        '@TGCAdminBundle/Resources/public/css/style.css'
+        '@TGCAdminBundle/Resources/public/css/responsive.css'
+        '@TGCAdminBundle/Resources/public/css/shortcodes.css'
+        '@TGCAdminBundle/Resources/public/css/custom.css'
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}" screen="media" />
+    {% endstylesheets %}
+
+<style type="text/css">/* =Responsive Map fix
+    -------------------------------------------------------------- */
+    .pw_map_canvas img {
+        max-width: none;
+    }</style>
+
+    <!-- WooCommerce Version -->
+    <meta name="generator" content="WooCommerce 2.1.2">
+
+    <meta name="viewport" content="initial-scale=1">    
+    <style id="jobify-custom-css">
+ 
+    </style>
+    <style id="job_manager_colors">
+
+    </style>
+    <style type="text/css">
+
+    </style>
+    <style type="text/css" id="custom-background-css">
+        body.custom-background { background-color: #ffffff; }
+    </style>
+        {% block head %}{% endblock %}
+
+        <!-- Vendors -->
+        <!-- (...) -->
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+           <script type="text/javascript" src="js/html5shiv.js"></script>
+           <script type="text/javascript" src="js/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body class="single single-resume postid-3014 logged-in custom-background custom-font wp-job-manager-categories wp-resume-manager-categories wp-job-manager-tags" style="">
+
+        <div id="page" class="hfeed site">
+
+            <header id="masthead" class="site-header" role="banner">
+                <div class="container">
+
+                    <nav id="site-navigation" class="site-primary-navigation slide-left">
+                        <div class="menu-main-menu-container">
+                            <ul id="menu-main-menu" class="nav-menu-primary">
+
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+{#                                 <li id="menu-item-30" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-14 current_page_item menu-item-30"><a href="{{ path('project') }}">My Projects</a>
+                                </li>
+                                <li id="menu-item-29" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-14 current_page_item menu-item-29"><a href="{{ path('project_new') }}">Post a Project</a></li> #}
+                                <li id="menu-item-3021" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3021"><a href="{{ path('project_search') }}">Search Projects</a></li>
+                                <li id="menu-item-3021" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3021"><a href="{{ path('consultant_show', { 'id': 1 } ) }} ">My Profile</a></li>
+                            {% endif %}
+                                <li id="menu-item-3021" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3021">
+                                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                        {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                                        <a href="{{ path('fos_user_security_logout') }}">
+                                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                                        </a>
+                                    {% else %}
+                                        <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                                    {% endif %}
+
+                                    {# {% block loginarea %}{% endblock %} #}
+                                    
+                                </li>
+                            </ul>
+                        </div>              
+                    </nav>
+
+                    <a href="jobify/resume/justin-zupnick/#" class="primary-menu-toggle in-header"><i class="icon-menu"></i></a>
+
+                    <a href="{{ path('project_search') }}" title="Jobify" rel="home" class="site-branding">
+                        <h1 class="site-title">
+                            <img src="{{ asset('bundles/tgcadmin/img/logo.png') }}" width="" height="" alt="">
+
+                            <span></span>
+                        </h1>
+                        <h2 class="site-description">Job Searching Just Got Easy</h2>
+                    </a>
+                </div>
+            </header><!-- #masthead -->
+
+            <div id="main" class="site-main">
+
+
+                <div id="primary" class="content-area">
+
+
+
+            <!-- left, vertical navbar & content -->
+            {# <div class="row"> #}
+                <!-- left, vertical navbar -->
+{#                 <div class="col-md-2 bootstrap-admin-col-left">
+                    <ul class="nav navbar-collapse collapse bootstrap-admin-navbar-side">
+                        <li class="{% if app.request.attributes.get('_route') == 'business' %}active{% endif %}">
+                            <a href="{{ path('business') }}"><i class="glyphicon glyphicon-chevron-right"></i> Businesses</a>
+                        </li>
+                        <li class="{% if app.request.attributes.get('_route') == 'consultant' %}active{% endif %}">
+                            <a href="{{ path('consultant') }}"><i class="glyphicon glyphicon-chevron-right"></i> Consultants</a>
+                        </li>
+                        <li class="{% if app.request.attributes.get('_route') == 'project' %}active{% endif %}">
+                            <a href="{{ path('project') }}"><i class="glyphicon glyphicon-chevron-right"></i> Projects</a>
+                        </li>
+                        <li class="{% if app.request.attributes.get('_route') == 'proposal' %}active{% endif %}">
+                            <a href="{{ path('proposal') }}"><i class="glyphicon glyphicon-chevron-right"></i> Proposals</a>
+                        </li>
+                        <li class="{% if app.request.attributes.get('_route') == 'contract' %}active{% endif %}">
+                            <a href="{{ path('contract') }}"><i class="glyphicon glyphicon-chevron-right"></i> Contracts</a>
+                        </li>
+                    </ul>
+                </div> #}
+
+                {% block body %}{% endblock %}
+
+            {# </div> #}
+
+            </div>
+<div class="footer-cta">
+ <div class="container">
+  <!-- <h2>Got A Question? Get In Touch</h2> -->
+  <p>©2014 The Graduate Consultancy</p>
+</div>
+</div>
+        </div>
+
+<!--         // <script type="text/javascript" src="js/bootstrap.min.js"></script> -->
+    </body>
+</html>
+
+
+
+

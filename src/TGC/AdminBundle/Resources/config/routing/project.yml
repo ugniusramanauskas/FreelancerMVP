@@ -1,0 +1,38 @@
+project:
+    pattern:  /
+    defaults: { _controller: "TGCAdminBundle:Project:index" }
+
+project_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "TGCAdminBundle:Project:show" }
+
+project_new:
+    pattern:  /new
+    defaults: { _controller: "TGCAdminBundle:Project:new" }
+
+project_create:
+    pattern:  /create
+    defaults: { _controller: "TGCAdminBundle:Project:create" }
+    requirements: { _method: post }
+
+project_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "TGCAdminBundle:Project:edit" }
+
+project_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "TGCAdminBundle:Project:update" }
+    requirements: { _method: post|put }
+
+project_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "TGCAdminBundle:Project:delete" }
+    requirements: { _method: post|delete }
+
+project_search:
+    pattern:  /search
+    defaults: { _controller: "TGCAdminBundle:Project:searchProjects" }
+
+project_searchresults:
+    pattern:  /searchresults
+    defaults: { _controller: "TGCAdminBundle:Project:showSearchResults" }

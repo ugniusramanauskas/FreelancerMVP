@@ -1,0 +1,49 @@
+{% extends 'TGCAdminBundle::tablelayout.html.twig' %}
+
+{% block content -%}
+    <h1>Proposal list</h1>
+
+    <table class="table table-striped table-bordered dataTable" id="example" aria-describedby="example_info">
+        <thead>
+            <tr>
+                <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 238px;" aria-label="Browser: activate to sort column ascending">Id</th>
+                <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 238px;" aria-label="Browser: activate to sort column ascending">Coverletter</th>
+                <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 238px;" aria-label="Browser: activate to sort column ascending">Hourlyrate</th>
+                <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 238px;" aria-label="Browser: activate to sort column ascending">Duration</th>
+                <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 238px;" aria-label="Browser: activate to sort column ascending">Registrationtimestamp</th>
+                <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 238px;" aria-label="Browser: activate to sort column ascending">Status</th>
+                <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 238px;" aria-label="Browser: activate to sort column ascending">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('proposal_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.coverletter }}</td>
+                <td>{{ entity.hourlyrate }}</td>
+                <td>{{ entity.duration }}</td>
+                <td>{% if entity.registrationtimestamp %}{{ entity.registrationtimestamp|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.status }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('proposal_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('proposal_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('proposal_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

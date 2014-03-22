@@ -1,0 +1,15 @@
+TGC\AdminBundle\Entity\Role:
+    type: entity
+    table: role
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        name:
+            type: string
+            length: 100
+    oneToMany:
+        users:
+            targetEntity: User
+            mappedBy: roleid

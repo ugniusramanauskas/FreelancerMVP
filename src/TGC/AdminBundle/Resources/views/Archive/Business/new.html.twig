@@ -1,0 +1,15 @@
+{% extends 'TGCAdminBundle::formlayout.html.twig' %}
+
+{% block content -%}
+    <h1>Business creation</h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('business') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

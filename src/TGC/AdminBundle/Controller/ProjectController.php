@@ -5,8 +5,11 @@ namespace TGC\AdminBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+use TGC\AdminBundle\Entity\User;
+
 use TGC\AdminBundle\Entity\Project;
 use TGC\AdminBundle\Form\ProjectType;
+use TGC\AdminBundle\Form\ProjectsearchType;
 
 /**
  * Project controller.
@@ -120,8 +123,11 @@ class ProjectController extends Controller
     {
         $entity = new Project();
 
-        $business = new Business();
-        $entity->setBusinessid($business);
+        $user = new User();
+        $entity->setUserid($user);
+
+        // Dafault values:
+        $entity->setStatus(1);
 
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -170,14 +176,14 @@ class ProjectController extends Controller
      */
     public function newAction()
     {
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        // $currentUserId = $user->getId();
+        // $em = $this->getDoctrine()->getManager();
+        // $user = $em->getRepository('TGCAdminBundle:User')->find($currentUserId);
+
         $entity = new Project();
-
-        $em = $this->getDoctrine()->getManager();
-        $id = 3;
-        $user = $em->getRepository('TGCAdminBundle:User')->find($id);
-
         $entity->setUserid($user);
-
+        $entity->setStatus(1);
 
         $form   = $this->createCreateForm($entity);
 
@@ -244,6 +250,7 @@ class ProjectController extends Controller
         $form = $this->createForm(new ProjectType(), $entity, array(
             'action' => $this->generateUrl('project_update', array('id' => $entity->getId())),
             'method' => 'PUT',
+            'em' => $this->getDoctrine()->getManager()
         ));
 
         $form->add('submit', 'submit', array('label' => 'Update'));

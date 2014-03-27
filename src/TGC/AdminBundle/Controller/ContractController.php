@@ -8,6 +8,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use TGC\AdminBundle\Entity\Contract;
 use TGC\AdminBundle\Form\ContractType;
 
+use TGC\AdminBundle\Entity\User;
+use TGC\AdminBundle\Entity\Project;
+
 /**
  * Contract controller.
  *
@@ -36,6 +39,18 @@ class ContractController extends Controller
     public function createAction(Request $request)
     {
         $entity = new Contract();
+
+        $user = new User();
+        $entity->setUserid($user);
+
+        $project = new Project();
+        $entity->setProjectid($project);
+
+        // Deafault values:
+        $entity->setStatus(1);
+
+        $entity->setStartdate(new \DateTime());
+
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -44,7 +59,7 @@ class ContractController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('contract_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('project', array('id' => $entity->getId())));
         }
 
         return $this->render('TGCAdminBundle:Contract:new.html.twig', array(
@@ -65,9 +80,10 @@ class ContractController extends Controller
         $form = $this->createForm(new ContractType(), $entity, array(
             'action' => $this->generateUrl('contract_create'),
             'method' => 'POST',
+            'em' => $this->getDoctrine()->getManager()
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => 'Send to consultant (for approval)'));
 
         return $form;
     }
@@ -76,11 +92,35 @@ class ContractController extends Controller
      * Displays a form to create a new Contract entity.
      *
      */
-    public function newAction()
+    public function newAction($projectid, $consultant_userid)
     {
-        $entity = new Contract();
-        $form   = $this->createCreateForm($entity);
+        if (!$projectid) {
+            throw new InvalidArgumentException("No projectId provided. Please contact the website support.");
+        }
+        if (!$consultant_userid) {
+            throw new InvalidArgumentException("No consultantId provided. Please contact the website support.");
+        }
 
+        $em = $this->getDoctrine()->getManager();
+        $project = $em->getRepository('TGCAdminBundle:Project')->findById($projectid);
+        $user = $em->getRepository('TGCAdminBundle:User')->findById($consultant_userid);
+
+        $entity = new Contract();
+
+        if (isset($user[0])) {            
+            $entity->setUserid($user[0]);
+        }
+
+        if (isset($project[0])) {            
+            $entity->setProjectid($project[0]);
+        }
+
+        $entity->setContracttext("This a default contract text. \n" . 
+            "If you disagree with the terms, you can write your frustrations" .
+            "on a piece of paper, go home, and kill yourself.");
+
+
+        $form   = $this->createCreateForm($entity);
         return $this->render('TGCAdminBundle:Contract:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),

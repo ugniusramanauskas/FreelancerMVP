@@ -1,14 +1,13 @@
-{% extends '::base.html.twig' %}
+{% extends 'TGCAdminBundle::tablelayout.html.twig' %}
 
-{% block body -%}
-    <h1>Project creation</h1>
-
+{% block title -%}Post a job (a project){% endblock %}
+{% block content_half -%}
     {{ form(form) }}
 
         <ul class="record_actions">
     <li>
         <a href="{{ path('project') }}">
-            Back to the list
+            Cancel
         </a>
     </li>
 </ul>

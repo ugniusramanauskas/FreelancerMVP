@@ -45,16 +45,18 @@ button.mfp-close,
 .paginate-links .page-numbers:hover {
 }
 
+/*input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="number"]:focus,
+select:focus,
+*/
+
 .button:hover,
 a.button-secondary,
 .load_more_jobs,
 .load_more_resumes,
 .paginate-links .page-numbers:hover,
-input[type="email"]:focus,
-input[type="password"]:focus,
-input[type="search"]:focus,
-input[type="number"]:focus,
-select:focus,
 #wp-submit:hover,
 #submitcomment:hover,
 #searchsubmit:hover,

@@ -10,7 +10,7 @@ use TGC\AdminBundle\Entity\User;
 use TGC\AdminBundle\Entity\Project;
 use TGC\AdminBundle\Form\ProjectType;
 use TGC\AdminBundle\Form\ProjectsearchType;
-
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 /**
  * Project controller.
  *
@@ -24,6 +24,11 @@ class ProjectController extends Controller
      */
     public function indexAction()
     {
+        // var_dump($this->get('security.context')); die;
+
+        if (false === $this->get('security.context')->isGranted('ROLE_BUSINESS')) {
+            throw new AccessDeniedException("You must be registered on TGC system as a Business to access this functionality.");
+        }
         // $user = $this->container->get('fos_user.user_manager')->findUserByUsername('ugnius');
         $user = $this->container->get('security.context')->getToken()->getUser();
         $currentUserId = $user->getId();

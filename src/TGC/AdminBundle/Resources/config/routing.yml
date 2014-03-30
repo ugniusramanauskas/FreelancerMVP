@@ -24,6 +24,10 @@ TGCAdminBundle_proposal:
     resource: "@TGCAdminBundle/Resources/config/routing/proposal.yml"
     prefix:   /proposal
 
+tgc_dashboard:
+    pattern:  /dashboard
+    defaults: { _controller: "TGCAdminBundle:Dashboard:index" }
+
 # FOR_UserBundle routes:
 
 fos_user_security:

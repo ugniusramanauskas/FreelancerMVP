@@ -32,6 +32,7 @@ class ContractController extends Controller
             'entities' => $entities,
         ));
     }
+    
     /**
      * Creates a new Contract entity.
      *

@@ -1,5 +1,85 @@
-{% extends "FOSUserBundle::fos_user_layout.html.twig" %}
+{% extends 'TGCAdminBundle::base_profile.html.twig' %}
 
-{% block fos_user_content %}
-{% include "FOSUserBundle:Profile:show_content.html.twig" %}
-{% endblock fos_user_content %}
+{% block content -%}
+
+<div class="entry-content">
+	<div class="single-resume-content">
+
+		<div class="resume_description">
+			<h2 class="job-overview-title">Description</h2>
+
+			<h3>Objective</h3>
+			<p>A stimulating position demanding advanced research and analysis abilities.</p>
+			<h3>Summary Of Skills</h3>
+			<ul>
+				<li>Advanced graduate researcher in post-conflict institutional design, transitional justice, peace-building and democratization with substantial professional experience from Central Europe and the Western Balkans.</li>
+				<li>Focus on political transformation, transitional justice, risk assessment, democratization, and the rule of law.</li>
+				<li>Thorough presentation, problem solving and leadership skills improved through Research Assistant and Project Manager positions and project work.</li>
+				<li>As a junior researcher at the Department of Sociology of Politics, I have been working as a researcher on the European Project Reconstituting Democracy in Europe, especially focusing on issues of collective identities and European integration (http://www.reconproject.eu/). I further focus on the issue of Euroscepticism in Central and Eastern Europe.</li>
+			</ul>
+		</div>
+
+		<div class="resume-info">
+
+			<h2>Skills</h2>
+			<ul class="resume-manager-skills">
+				<li>European Politics</li><li>Transitional Justice</li><li>International Relations</li><li>Qualitative Research</li>				</ul>
+
+				<h2>Education</h2>
+				<dl class="resume-manager-education">
+
+					<dt>
+						<h3>University of Oxford MPhil </h3>
+					</dt>
+					<dd>
+						<small class="date">Dec 2009 - Sep 2011</small>
+						<strong class="qualification">Distinction, Russian and East European Studies</strong>
+					</dd>
+
+				</dl>
+
+			</div>
+
+			<div class="resume-aside">
+				<img src="{{ asset('bundles/tgcadmin/img/jessie.jpg') }}" alt="Photo">
+
+
+				<div class="resume_contact">
+					<input class="resume_contact_button" type="button" value="Contact">
+
+					<div class="resume_contact_details" style="display: none;">
+						<h2 class="modal-title">Contact</h2>
+
+						<div class="resume-contact-content">
+
+							<div class="gf_browser_chrome gform_wrapper" id="gform_wrapper_3">
+							</div>
+						</div>
+					</div>
+				</div>
+				<ul class="resume-links">
+					<li class="resume-link resume-link-twitter"><a rel="nofollow" href="http://twitter.com/">Twitter</a></li>
+					<li class="resume-link resume-link-facebook"><a rel="nofollow" href="http://facebook.com/">Facebook</a></li>
+					<li class="resume-link resume-link-linkedin"><a rel="nofollow" href="http://linkedin.com/">LinkedIn</a></li>
+					<li class="resume-link resume-link-website"><a rel="nofollow" href="http://website.com/">Website</a></li>
+				</ul>
+
+				<ul class="meta">
+
+					<li class="resume-category">
+						<a href="http://www.gradconsultancy.com"><i class="icon-tag"></i> Researcher</a>
+					</li>
+					<li class="resume-category">
+						<a href="http://www.gradconsultancy.com"><i class="icon-tag"></i> Politics specialist</a>
+					</li>
+					<li class="resume-category">
+						<a href="http://www.gradconsultancy.com"><i class="icon-tag"></i> Analyst</a>
+					</li>
+
+				</ul>
+
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

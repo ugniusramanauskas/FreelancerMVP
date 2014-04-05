@@ -9,7 +9,7 @@
                 <th>Id</th>
                 <th>Username</th>
                 <th>Email</th>
-                <th>Password</th>
+                <th>Status</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -19,9 +19,17 @@
                 <td><a href="{{ path('user_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.username }}</td>
                 <td>{{ entity.email }}</td>
-                <td>{{ entity.password }}</td>
+                <td>{{ entity.status }}</td>
                 <td>
                 <ul>
+                    {% if entity.status == 'pending' %}
+                        <li>
+                            <a href="{{ path('user_set_status', { 'id': entity.id, 'status': 'approved' }) }}">Approve</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('user_set_status', { 'id': entity.id, 'status': 'rejected' }) }}">Reject</a>
+                        </li>
+                    {% endif %}
                     <li>
                         <a href="{{ path('user_show', { 'id': entity.id }) }}">show</a>
                     </li>

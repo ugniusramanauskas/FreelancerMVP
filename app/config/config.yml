@@ -75,3 +75,21 @@ fos_user:
     registration:
         form:
             type: tgc_admin_registration
+# Linked in 
+hwi_oauth:
+    firewall_name: main
+    resource_owners:
+        linkedin:
+            type:               oauth1
+            client_id:          77r2rsay1jaw7e
+            client_secret:      dt3lnsiCfXXHdQA0
+            authorization_url:  https://api.linkedin.com/uas/oauth/authenticate
+            request_token_url:  https://api.linkedin.com/uas/oauth/requestToken
+            access_token_url:   https://api.linkedin.com/uas/oauth/accessToken
+            infos_url:          https://api.linkedin.com/v1/people/~:(id,formatted-name,email-address,picture-url)?format=json
+            paths:
+                identifier: id
+                nickname: formattedName
+                realname: formattedName
+                email: emailAddress
+                profilepicture: pictureUrl

@@ -2,6 +2,10 @@ project:
     pattern:  /
     defaults: { _controller: "TGCAdminBundle:Project:index" }
 
+project_proposals:
+    pattern:  /{projectid}/proposals
+    defaults: { _controller: "TGCAdminBundle:Proposal:index" }
+
 project_show:
     pattern:  /{id}/show
     defaults: { _controller: "TGCAdminBundle:Project:show" }
@@ -36,3 +40,12 @@ project_search:
 project_searchresults:
     pattern:  /searchresults
     defaults: { _controller: "TGCAdminBundle:Project:showSearchResults" }
+
+project_proposal_new:
+    pattern:  /{projectid}/newproposal
+    defaults: { _controller: "TGCAdminBundle:Proposal:new" }
+
+project_contract_new:
+    pattern:  /{projectid}/consultant/{consultant_userid}/newcontract
+    defaults: { _controller: "TGCAdminBundle:Contract:new" }
+

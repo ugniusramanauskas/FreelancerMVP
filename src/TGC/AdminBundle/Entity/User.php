@@ -10,6 +10,10 @@ use FOS\UserBundle\Model\User as BaseUser;
  */
 class User extends BaseUser
 {
+    const STATUS_PENDING = 'pending';
+    const STATUS_APPROVED = 'approved';
+    const STATUS_REJECTED = 'rejected';
+    
     /**
      * @var integer
      */
@@ -29,6 +33,11 @@ class User extends BaseUser
      * @var string
      */
     protected $password;
+    
+    /**
+     * @var string
+     */
+    private $status = self::STATUS_PENDING;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -306,4 +315,55 @@ class User extends BaseUser
         return $this->username;
     }
 
+    /**
+     * Returns the user roles
+     *
+     * @return array The roles
+     */
+    public function getRoles()
+    {
+        $roles = $this->roles;
+
+        foreach ($this->getGroups() as $group) {
+            $roles = array_merge($roles, $group->getRoles());
+        }
+
+        // we need to make sure to have at least one role
+        $roles[] = static::ROLE_DEFAULT;
+
+        return array_unique($roles);
+    }
+
+    /**
+     * Set status
+     *
+     * @param string $status
+     * @return User
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return string 
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+    
+    /**
+     * Overriding default method to allow only approved users to login
+     *
+     * @return boolean
+     */
+    public function isEnabled()
+    {
+        return $this->status == self::STATUS_APPROVED;
+    }
 }

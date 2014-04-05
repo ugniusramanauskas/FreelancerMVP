@@ -1,8 +1,8 @@
-{% extends '::base.html.twig' %}
+{% extends 'TGCAdminBundle::formlayout.html.twig' %}
 
-{% block body -%}
-    <h1>Contract creation</h1>
+{% block title -%}Create a new Contract{% endblock %}
 
+{% block content -%}
     {{ form(form) }}
 
         <ul class="record_actions">

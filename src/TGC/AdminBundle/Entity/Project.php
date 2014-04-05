@@ -316,7 +316,7 @@ class Project
      * @param \TGC\AdminBundle\Entity\User $userid
      * @return Project
      */
-    public function setUserid(\TGC\AdminBundle\Entity\User $userid = null)
+    public function setUserid(\TGC\AdminBundle\Entity\User $userid)
     {
         $this->userid = $userid;
 

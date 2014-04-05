@@ -2,6 +2,11 @@ tgc_admin_homepage:
     pattern:  /hello/{name}
     defaults: { _controller: TGCAdminBundle:Default:index }
 
+# Importing routes from annotations in controllers    
+    
+tgc_admin_controller:
+    resource: "@TGCAdminBundle/Controller"
+
 # Doctrine auto-generated routes:
 
 TGCAdminBundle_user:
@@ -23,6 +28,10 @@ TGCAdminBundle_contract:
 TGCAdminBundle_proposal:
     resource: "@TGCAdminBundle/Resources/config/routing/proposal.yml"
     prefix:   /proposal
+
+tgc_dashboard:
+    pattern:  /dashboard
+    defaults: { _controller: "TGCAdminBundle:Dashboard:index" }
 
 # FOR_UserBundle routes:
 

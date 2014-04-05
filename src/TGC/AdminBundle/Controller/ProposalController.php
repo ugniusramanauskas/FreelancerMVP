@@ -8,6 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use TGC\AdminBundle\Entity\Proposal;
 use TGC\AdminBundle\Form\ProposalType;
 
+use TGC\AdminBundle\Entity\User;
+use TGC\AdminBundle\Entity\Project;
 /**
  * Proposal controller.
  *
@@ -19,11 +21,21 @@ class ProposalController extends Controller
      * Lists all Proposal entities.
      *
      */
-    public function indexAction()
+    public function indexAction($projectid)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('TGCAdminBundle:Proposal')->findAll();
+        $qb = $em->createQueryBuilder();
+        $qb
+            ->select('prop')
+            ->from('TGCAdminBundle:Proposal', 'prop')
+            ->where($qb->expr()->eq('prop.projectid', ':projectid'))
+            ->setParameter('projectid', $projectid)
+        ;
+        $query = $qb->getQuery();
+        $entities = $query->getResult();
+
+        // $entities = $em->getRepository('TGCAdminBundle:Proposal')->findAll();
 
         return $this->render('TGCAdminBundle:Proposal:index.html.twig', array(
             'entities' => $entities,
@@ -36,6 +48,17 @@ class ProposalController extends Controller
     public function createAction(Request $request)
     {
         $entity = new Proposal();
+
+        $user = new User();
+        $entity->setUserid($user);
+
+        $project = new Project();
+        $entity->setProjectid($project);
+
+        // Deafault values:
+        $entity->setDuration(1);
+        $entity->setStatus(1);
+
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -44,7 +67,8 @@ class ProposalController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('proposal_show', array('id' => $entity->getId())));
+            // return $this->redirect($this->generateUrl('proposal_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('project_search'));
         }
 
         return $this->render('TGCAdminBundle:Proposal:new.html.twig', array(
@@ -65,6 +89,7 @@ class ProposalController extends Controller
         $form = $this->createForm(new ProposalType(), $entity, array(
             'action' => $this->generateUrl('proposal_create'),
             'method' => 'POST',
+            'em' => $this->getDoctrine()->getManager()
         ));
 
         $form->add('submit', 'submit', array('label' => 'Create'));
@@ -76,9 +101,26 @@ class ProposalController extends Controller
      * Displays a form to create a new Proposal entity.
      *
      */
-    public function newAction()
+    public function newAction($projectid)
     {
+        if (!$projectid) {
+            throw new InvalidArgumentException("No projectId provided. Please contact the website support.");
+        }
+
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        // $currentUserId = $user->getId();
+
+        $em = $this->getDoctrine()->getManager();
+        $project = $em->getRepository('TGCAdminBundle:Project')->findById($projectid);
+
+
         $entity = new Proposal();
+        $entity->setUserid($user);
+
+        if (isset($project[0])) {            
+            $entity->setProjectid($project[0]);
+        }
+
         $form   = $this->createCreateForm($entity);
 
         return $this->render('TGCAdminBundle:Proposal:new.html.twig', array(

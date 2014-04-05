@@ -14,9 +14,12 @@
         </div>
         
         <div id="content" class="site-content full" role="main">
-        
-
-
         {% block content %}{% endblock %}
+
+	        <div class="col-md-6">
+			{% block content_half %}{% endblock %}
+			</div>
+		</div>
+
 
 {% endblock %}

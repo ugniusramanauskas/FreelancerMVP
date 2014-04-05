@@ -6,10 +6,10 @@ TGC\AdminBundle\Entity\User:
             type: integer
             generator:
                 strategy: AUTO
-    # fields:
-    #     usernametest:
-    #         type: string
-    #         length: 100
+    fields:
+        status:
+            type: string
+            length: 100
     #     emailtest:
     #         type: string
     #         length: 100

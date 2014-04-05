@@ -1,14 +1,15 @@
-{% extends '::base.html.twig' %}
+{% extends 'TGCAdminBundle::tablelayout.html.twig' %}
 
-{% block body -%}
-    <h1>Proposal</h1>
+{% block title -%}Selected Proposal{% endblock %}
+
+{% block content -%}
 
     <table class="record_properties">
         <tbody>
-            <tr>
+{#             <tr>
                 <th>Id</th>
                 <td>{{ entity.id }}</td>
-            </tr>
+            </tr> #}
             <tr>
                 <th>Coverletter</th>
                 <td>{{ entity.coverletter }}</td>
@@ -17,18 +18,6 @@
                 <th>Hourlyrate</th>
                 <td>{{ entity.hourlyrate }}</td>
             </tr>
-            <tr>
-                <th>Duration</th>
-                <td>{{ entity.duration }}</td>
-            </tr>
-            <tr>
-                <th>Registrationtimestamp</th>
-                <td>{{ entity.registrationtimestamp|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Status</th>
-                <td>{{ entity.status }}</td>
-            </tr>
         </tbody>
     </table>
 
@@ -36,11 +25,6 @@
     <li>
         <a href="{{ path('proposal') }}">
             Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('proposal_edit', { 'id': entity.id }) }}">
-            Edit
         </a>
     </li>
     <li>{{ form(delete_form) }}</li>

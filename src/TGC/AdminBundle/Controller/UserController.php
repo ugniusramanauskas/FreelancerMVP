@@ -4,6 +4,7 @@ namespace TGC\AdminBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 use TGC\AdminBundle\Entity\User;
 use TGC\AdminBundle\Form\UserType;
@@ -219,5 +220,32 @@ class UserController extends Controller
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
+    }
+    
+    /**
+     * @Route("/set_status/{id}/{status}", name="user_set_status")
+     */
+    public function setStatusAction($id, $status)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('TGCAdminBundle:User')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find User entity.');
+        }
+        
+        switch ($status) {
+            case 'approved':
+                $entity->setStatus(User::STATUS_APPROVED);
+                break;
+            case 'rejected':
+                $entity->setStatus(User::STATUS_REJECTED);
+                break;
+        }
+        
+        $em->flush();
+        
+        return $this->redirect($this->generateUrl('user'));
     }
 }

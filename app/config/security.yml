@@ -18,7 +18,7 @@ security:
             form_login:
                 provider: fos_userbundle
                 csrf_provider: form.csrf_provider
-                default_target_path: profile
+                default_target_path: tgc_dashboard
             logout:
                 path:   /logout
                 target: /login

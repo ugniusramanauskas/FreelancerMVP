@@ -26,7 +26,13 @@ class DashboardController extends Controller
      */
     public function indexAction()
     {
-        if ($this->get('security.context')->isGranted('ROLE_BUSINESS')) {
+
+        if ($this->get('security.context')->isGranted('ROLE_SUPER_ADMIN')) {
+            
+            // show stuff for consultant
+            return $this->redirect($this->generateUrl('user'));
+
+        } elseif ($this->get('security.context')->isGranted('ROLE_BUSINESS')) {
         	
         	// show stuff for business
             return $this->redirect($this->generateUrl('project'));
@@ -35,6 +41,7 @@ class DashboardController extends Controller
 			
 			// show stuff for consultant
             return $this->redirect($this->generateUrl('fos_user_profile_show'));
+
 
 		} else {
 			

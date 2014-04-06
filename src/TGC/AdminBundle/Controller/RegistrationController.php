@@ -13,6 +13,8 @@ class RegistrationController extends BaseController
      */
     public function confirmedAction()
     {
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
         return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:confirmed.html.'.$this->getEngine(), array(
             'user' => $user,
         ));

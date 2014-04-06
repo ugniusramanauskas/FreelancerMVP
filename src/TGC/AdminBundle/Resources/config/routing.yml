@@ -3,7 +3,7 @@ tgc_admin_homepage:
     defaults: { _controller: TGCAdminBundle:Default:index }
 
 # Importing routes from annotations in controllers    
-    
+
 tgc_admin_controller:
     resource: "@TGCAdminBundle/Controller"
 

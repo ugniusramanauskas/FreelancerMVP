@@ -1,6 +1,8 @@
+# Default route:
+
 tgc_admin_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: TGCAdminBundle:Default:index }
+    pattern:  /
+    defaults: { _controller: FOSUserBundle:Security:login }
 
 # Importing routes from annotations in controllers    
 

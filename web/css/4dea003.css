@@ -4918,7 +4918,7 @@ input,
 select,
 textarea {
 	font-size: 100%;
-	margin: 0;
+	margin: 0 0 10px 0;
 	max-width: 100%;
 	vertical-align: baseline;
 }
@@ -4973,7 +4973,7 @@ table {
 	border-spacing: 0;*/
 	font-size: 14px;
 	line-height: 2;
-	margin: 0 0 20px;
+	margin: 20px 0 20px;
 	width: 100%;
 
 border: 2px solid #aaa;
@@ -9325,16 +9325,18 @@ button.mfp-close,
 .paginate-links .page-numbers:hover {
 }
 
+/*input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="number"]:focus,
+select:focus,
+*/
+
 .button:hover,
 a.button-secondary,
 .load_more_jobs,
 .load_more_resumes,
 .paginate-links .page-numbers:hover,
-input[type="email"]:focus,
-input[type="password"]:focus,
-input[type="search"]:focus,
-input[type="number"]:focus,
-select:focus,
 #wp-submit:hover,
 #submitcomment:hover,
 #searchsubmit:hover,

@@ -62,9 +62,12 @@ class ProposalController extends Controller
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
+
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
+            // die("Got here.");
+
             $em->flush();
 
             // return $this->redirect($this->generateUrl('proposal_show', array('id' => $entity->getId())));

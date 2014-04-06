@@ -1,11 +1,9 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+{% extends "TGCAdminBundle::fos_user_layout.html.twig" %}
 
 {% trans_default_domain 'FOSUserBundle' %}
 
+{% block title %}Registration complete{% endblock title %}
+
 {% block fos_user_content %}
-    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
-    {% if app.session is not empty %}
-        {% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}
-        {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>{% endif %}
-    {% endif %}
+    Thank you for registering. We will review your application, and will approve it within 24 hours.
 {% endblock fos_user_content %}

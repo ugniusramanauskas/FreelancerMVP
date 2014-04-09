@@ -22,7 +22,7 @@ class RegistrationController extends BaseController
         ));
     }
     
-    public function validateStep1Action(Request $request)
+    public function validateFormAction(Request $request)
     {
         $formFactory = $this->container->get('fos_user.registration.form.factory');
         $userManager = $this->container->get('fos_user.user_manager');

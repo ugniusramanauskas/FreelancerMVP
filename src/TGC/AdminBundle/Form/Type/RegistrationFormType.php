@@ -106,15 +106,16 @@ class RegistrationFormType extends RegistrationFormTypeBase
             'data_class' => 'TGC\AdminBundle\Entity\User',
             'intention'  => 'registration',
             'csrf_protection' => false,
-            'validation_groups' => array('business')
-//            'validation_groups' => function(FormInterface $form) {
-//                $data = $form->getData();
-//                if (in_array("ROLE_BUSINESS", $data->getRoles())) {
-//                    return array('business');
-//                } elseif (in_array("ROLE_CONSULTANT", $data->getRoles())) {
-//                    return array('consultant');
-//                }
-//            }
+            'validation_groups' => function(FormInterface $form) {
+                $data = $form->getData();
+                if (in_array("ROLE_BUSINESS", $data->getRoles())) {
+                    return array('business', 'Default', 'Registration');
+                } elseif (in_array("ROLE_CONSULTANT", $data->getRoles())) {
+                    return array('consultant', 'Default', 'Registration');
+                } else {
+                    return array('Default', 'Registration');
+                }
+            }
         ));
     }
 }

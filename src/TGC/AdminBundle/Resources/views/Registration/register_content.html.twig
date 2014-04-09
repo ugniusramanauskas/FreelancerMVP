@@ -1,18 +1,23 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
-    <div id="registration-step1" {% if not form.vars.valid %}style="display:none"{% endif %}>
+<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} 
+      id="registration-form"
+      method="POST" class="fos_user_registration_register"
+      data-validate-url="{{ path('registration_validate') }}">
+    <div id="registration-step1">
         {{ form_row(form.email) }}
         {{ form_row(form.username) }}
         {{ form_row(form.plainPassword) }}
         {{ form_row(form.roles) }}
-        <button id="goto-step2" data-validate-url="{{ path('registration_validate_step1') }}">Go to step 2</button>
+        <button id="goto-step2">Go to step 2</button>
     </div>
     
     <div id="registration-step2" style="display:none">
         <h2 class="business-field">Business sign up</h2>
         <h2 class="consultant-field">Consultant sign up</h2>
-        {{ form_errors(form) }}
+        <div class="form_errors">
+            {{ form_errors(form) }}
+        </div>
         <div class="business-field">
             {{ form_label(form.businessName) }}
             {{ form_errors(form.businessName) }}
@@ -93,10 +98,3 @@
         {{ form_rest(form) }}
     </div>
 </form>
-{% if not form.vars.valid %}
-    <script type="text/javascript">
-        $(function() {
-            $("#goto-step2").click();
-        });
-    </script>
-{% endif %}

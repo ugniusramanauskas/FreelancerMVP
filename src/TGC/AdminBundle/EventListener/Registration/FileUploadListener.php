@@ -33,13 +33,14 @@ class FileUploadListener implements EventSubscriberInterface
         if ($form->isValid()) {
             $username = $form['username']->getData();
             $file = $form['cv']->getData();
-
-            $extension = $file->guessExtension();
-            if (!$extension) {
-                $extension = 'bin';
+            
+            if ($file) {
+                $extension = $file->guessExtension();
+                if (!$extension) {
+                    $extension = 'bin';
+                }
+                $file->move($this->uploadDir . '/' . $username, 'cv.' . $extension);
             }
-            $file->move($this->uploadDir . '/' . $username, 'cv.' . $extension);
-
         }
     }
 }

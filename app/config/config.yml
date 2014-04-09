@@ -77,3 +77,4 @@ fos_user:
     registration:
         form:
             type: tgc_admin_registration
+            validation_groups: ~

@@ -6,6 +6,10 @@ services:
 #        class: %tgc_admin.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
 
+    fos_user.registration.form.factory:
+        class: TGC\AdminBundle\Form\Factory\FOSRegistrationFormFactory
+        arguments: [@form.factory, %fos_user.registration.form.name%, %fos_user.registration.form.type%, %fos_user.registration.form.validation_groups%]
+
     tgc_admin.registration.form.type:   
         class: TGC\AdminBundle\Form\Type\RegistrationFormType     
         arguments: [%fos_user.model.user.class%, %security.role_hierarchy.roles%]

@@ -1,41 +1,83 @@
-$(function() {
-    $("#goto-step2").click(function(e) {
-        e.preventDefault();
+var TGCRegistration = function() {
+    function init() {
+        $("#goto-step2").click(function(e) {
+            e.preventDefault();
+
+            var $button = $(this);
+            $button.attr('disabled', 'disabled');
+            $button.html('Please wait...');
+            
+            var success = function() { switchStep() };
+            var fail = function() {
+                $button.removeAttr('disabled');
+                $button.html('Go to step 2');
+            };
+            validateForm($("#registration-step1 input"), success, fail);
+        });
         
+        $("#fos_user_registration_form_submit").click(function(e) {
+            e.preventDefault();
+
+            var $button = $(this);
+            $button.attr('disabled', 'disabled');
+            $button.html('Please wait...');
+
+            var success = function() { $("#registration-form").submit() };
+            var fail = function() {
+                $button.removeAttr('disabled');
+                $button.html('Submit');
+            };
+            validateForm($("#registration-form"), success, fail);
+        });
+    }
+    function validateForm(fields, successCallback, failCallback) {
         $("ul.error").remove();
-        
-        var button = $(this);
-        button.attr('disabled', 'disabled');
-        button.html('Please wait...');
-        
-        var formData = $("#registration-step1 input").serialize();
-        $.getJSON($(this).attr("data-validate-url"), formData, function(data) {
+        var formData = fields.serializeArray();
+        // workaround for file field
+        fields.find("input[type=file]").each(function() {
+            var $this = $(this);
+            console.log($this);
+            formData.push({'name': $this.attr('name'), 'value': $this.val()});
+        });
+        $.post($("#registration-form").attr("data-validate-url"), formData, function(data) {
             if (data.errors) {
-                // displaying form errors
-                button.removeAttr('disabled');
-                button.html('Go to step 2');
-                
                 $.each(data.errors, function(key, val) {
                     var message = '<ul class="error"><li>' + val + '</li></ul>';
-                    var field = $("#fos_user_registration_form_" + key);
-                    if (!field.size()) {
-                        field = $("#fos_user_registration_form_" + key + "_first");
+                    var $field = $("#fos_user_registration_form_" + key);
+                    if (!$field.size()) {
+                        $field = $("#fos_user_registration_form_" + key + "_first");
                     }
-                    field.before(message);
+                    if ($field.size()) {
+                        $field.before(message);
+                    } else {
+                        $(".form_errors").append(message);
+                    }
                 });
-            } else {
-                // proceeding to step 2
-                $("#registration-step1").slideUp().find("input").removeAttr("required");
-                $("#registration-step2").slideDown();
 
-                if ($("#fos_user_registration_form_roles").val() == "ROLE_CONSULTANT") {
-                    $(".business-field").hide().find("input, textarea").removeAttr("required");
-                } else {
-                    $(".consultant-field").hide().find("input, textarea").removeAttr("required");
-                }
+                $('html,body').animate({
+                    scrollTop: $("ul.error").first().offset().top},
+                    'slow');
+                    
+                failCallback();
+            } else {
+                successCallback();
             }
         });
+    }
+    function switchStep() {
+        $("#registration-step1").slideUp().find("input").removeAttr("required");
+        $("#registration-step2").slideDown();
 
-    });
+        if ($("#fos_user_registration_form_roles").val() == "ROLE_CONSULTANT") {
+            $(".business-field").hide().find("input, textarea").removeAttr("required");
+        } else {
+            $(".consultant-field").hide().find("input, textarea").removeAttr("required");
+        }
+    }
+    return {
+        init: init,
+        switchStep: switchStep
+    }
+}();
 
-});
+$(document).ready(TGCRegistration.init);

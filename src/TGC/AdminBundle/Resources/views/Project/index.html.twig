@@ -7,6 +7,8 @@
     <a class="load_more_jobs" href=
                 "{{ path('project_new') }}"><strong>Add A New Project</strong>
                 </a>
+
+    {% if entities is not empty %}
     <table class="table table-striped table-bordered dataTable" id="example" aria-describedby="example_info">
         <thead>
             <tr>
@@ -50,6 +52,9 @@
         {% endfor %}
         </tbody>
     </table>
+    {% else %}
+    <h3>You don't have any projects yet. Click the button above to add one.</h3>
+    {% endif %}
 
 {#         <ul>
         <li>

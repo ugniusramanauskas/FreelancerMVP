@@ -3,17 +3,16 @@
 tgc_admin_homepage:
     pattern:  /
     defaults: { _controller: FOSUserBundle:Security:login }
-
-# Importing routes from annotations in controllers    
-
-tgc_admin_controller:
-    resource: "@TGCAdminBundle/Controller"
-
+    
 # Doctrine auto-generated routes:
 
 TGCAdminBundle_user:
     resource: "@TGCAdminBundle/Resources/config/routing/user.yml"
     prefix:   /user
+    
+TGCAdminBundle_registration:
+    resource: "@TGCAdminBundle/Resources/config/routing/registration.yml"
+    prefix:   /register
 
 TGCAdminBundle_role:
     resource: "@TGCAdminBundle/Resources/config/routing/role.yml"

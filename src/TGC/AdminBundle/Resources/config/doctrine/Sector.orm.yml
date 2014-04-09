@@ -1,0 +1,22 @@
+TGC\AdminBundle\Entity\Sector:
+    type: entity
+    table: sector
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        name:
+            type: string
+    manyToMany:
+        users:
+            targetEntity: User
+            mappedBy: sectors
+            joinTable:
+                name: user_sector
+                joinColumns:
+                  sector_id:
+                    referencedColumnName: id
+                inverseJoinColumns:
+                  user_id:
+                    referencedColumnName: id

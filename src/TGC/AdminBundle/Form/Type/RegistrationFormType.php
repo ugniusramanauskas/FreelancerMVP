@@ -7,11 +7,11 @@
 namespace TGC\AdminBundle\Form\Type;
 
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormBuilderInterface;
 use FOS\UserBundle\Form\Type\RegistrationFormType as RegistrationFormTypeBase;
 
 use TGC\AdminBundle\Form\DataTransformer\StringToArrayTransformer;
-
 
 class RegistrationFormType extends RegistrationFormTypeBase
 {
@@ -43,7 +43,50 @@ class RegistrationFormType extends RegistrationFormTypeBase
                         'choices' => $roles
                     ))
                     ->addModelTransformer($arrayTransformer)
-        );
+            )
+            ->add('firstName')
+            ->add('lastName')
+            ->add('phone')
+            ->add('location')
+                
+            // business fields
+            ->add('businessName')
+            ->add('businessDescription', null, array(
+                'required'  => false
+            ))
+            ->add('businessWebsite', null, array(
+                'required'  => false
+            ))
+                
+            // consultant fields
+            ->add('universityEmail', 'email')
+            ->add('university')
+            ->add('degree')
+            ->add('sectors', null, array(
+                'expanded'  => true,
+                'multiple'  => true
+            ))
+            ->add('skills')
+            ->add('tasks')
+            ->add('cv', 'file')
+            ->add('linkedin', null, array(
+                'required'  => false
+            ))
+                
+            // readding password field with error_bubbling to be able
+            // to get validation errors
+            ->add('plainPassword', 'repeated', array(
+                'type' => 'password',
+                'options' => array('translation_domain' => 'FOSUserBundle'),
+                'first_options' => array('label' => 'form.password', 'error_bubbling' => true),
+                'second_options' => array('label' => 'form.password_confirmation'),
+                'invalid_message' => 'fos_user.password.mismatch',
+            ))
+//            ->add('nextStep', 'submit', array(
+//                'validation_groups' => array('Registration'),
+//                'label' => 'Go to step 2'
+//            ))
+            ->add('submit', 'submit');
 
         // $builder->add('gender', 'choice', array(
         //     'choices'   => array('m' => 'Male', 'f' => 'Female'),
@@ -62,6 +105,16 @@ class RegistrationFormType extends RegistrationFormTypeBase
         $resolver->setDefaults(array(
             'data_class' => 'TGC\AdminBundle\Entity\User',
             'intention'  => 'registration',
+            'csrf_protection' => false,
+            'validation_groups' => array('business')
+//            'validation_groups' => function(FormInterface $form) {
+//                $data = $form->getData();
+//                if (in_array("ROLE_BUSINESS", $data->getRoles())) {
+//                    return array('business');
+//                } elseif (in_array("ROLE_CONSULTANT", $data->getRoles())) {
+//                    return array('consultant');
+//                }
+//            }
         ));
     }
 }

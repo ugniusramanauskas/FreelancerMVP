@@ -11,3 +11,9 @@ services:
         arguments: [%fos_user.model.user.class%, %security.role_hierarchy.roles%]
         tags:       
             - { name: form.type, alias: tgc_admin_registration }
+
+    tgc_admin.registration.upload:
+        class: TGC\AdminBundle\EventListener\Registration\FileUploadListener
+        arguments: [%cv_upload_dir%]
+        tags:
+            - { name: kernel.event_subscriber }

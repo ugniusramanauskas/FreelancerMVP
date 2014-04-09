@@ -1,0 +1,32 @@
+TGC\AdminBundle\Entity\User:
+    properties:
+        location:
+            - NotBlank: { groups: [business, consultant] }
+            - Length:
+                min: 3
+                groups: [business, consultant]
+        firstName:
+            - NotBlank: { groups: [business, consultant] }
+        lastName:
+            - NotBlank: { groups: [business, consultant] }
+        phone:
+            - NotBlank: { groups: [business] }
+            - Length:
+                min: 5
+        businessName:
+            - NotBlank: { groups: [business] }
+        university:
+            - NotBlank: { groups: [consultant] }
+        universityEmail:
+            - NotBlank: { groups: [consultant] }
+            - Email: { groups: [consultant] }
+        degree:
+            - NotBlank: { groups: [consultant] }
+        sectors:
+            - NotBlank: { groups: [consultant] }
+        skills:
+            - NotBlank: { groups: [consultant] }
+        tasks:
+            - NotBlank: { groups: [consultant] }
+        cv:
+            - NotBlank: { groups: [consultant] }

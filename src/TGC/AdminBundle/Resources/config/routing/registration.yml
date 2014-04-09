@@ -1,0 +1,3 @@
+registration_validate_step1:
+    pattern: /validate_step1
+    defaults: { _controller: "TGCAdminBundle:Registration:validateStep1" }

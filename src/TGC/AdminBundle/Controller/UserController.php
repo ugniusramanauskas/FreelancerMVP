@@ -4,7 +4,6 @@ namespace TGC\AdminBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 use TGC\AdminBundle\Entity\User;
 use TGC\AdminBundle\Form\UserType;
@@ -223,7 +222,10 @@ class UserController extends Controller
     }
     
     /**
-     * @Route("/set_status/{id}/{status}", name="user_set_status")
+     * Updates user status 
+     * 
+     * @param mixed $id The entity id
+     * @param string $status Status to set
      */
     public function setStatusAction($id, $status)
     {

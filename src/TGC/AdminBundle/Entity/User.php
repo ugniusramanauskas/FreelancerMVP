@@ -38,6 +38,81 @@ class User extends BaseUser
      * @var string
      */
     private $status = self::STATUS_PENDING;
+    
+    /**
+     * @var string
+     */
+    private $firstName;
+
+    /**
+     * @var string
+     */
+    private $lastName;
+
+    /**
+     * @var string
+     */
+    private $location;
+
+    /**
+     * @var string
+     */
+    private $businessName;
+
+    /**
+     * @var string
+     */
+    private $phone;
+
+    /**
+     * @var string
+     */
+    private $businessDescription;
+
+    /**
+     * @var string
+     */
+    private $businessWebsite;
+
+    /**
+     * @var string
+     */
+    private $university;
+
+    /**
+     * @var string
+     */
+    private $universityEmail;
+
+    /**
+     * @var string
+     */
+    private $degree;
+
+    /**
+     * @var string
+     */
+    private $skills;
+
+    /**
+     * @var string
+     */
+    private $tasks;
+
+    /**
+     * @var string
+     */
+    private $cv;
+
+    /**
+     * @var string
+     */
+    private $linkedin;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $sectors;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -365,5 +440,360 @@ class User extends BaseUser
     public function isEnabled()
     {
         return $this->status == self::STATUS_APPROVED;
+    }
+
+    /**
+     * Set firstName
+     *
+     * @param string $firstName
+     * @return User
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * Get firstName
+     *
+     * @return string 
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * Set lastName
+     *
+     * @param string $lastName
+     * @return User
+     */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    /**
+     * Get lastName
+     *
+     * @return string 
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * Set location
+     *
+     * @param string $location
+     * @return User
+     */
+    public function setLocation($location)
+    {
+        $this->location = $location;
+
+        return $this;
+    }
+
+    /**
+     * Get location
+     *
+     * @return string 
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
+
+    /**
+     * Set businessName
+     *
+     * @param string $businessName
+     * @return User
+     */
+    public function setBusinessName($businessName)
+    {
+        $this->businessName = $businessName;
+
+        return $this;
+    }
+
+    /**
+     * Get businessName
+     *
+     * @return string 
+     */
+    public function getBusinessName()
+    {
+        return $this->businessName;
+    }
+
+    /**
+     * Set phone
+     *
+     * @param string $phone
+     * @return User
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return string 
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * Set businessDescription
+     *
+     * @param string $businessDescription
+     * @return User
+     */
+    public function setBusinessDescription($businessDescription)
+    {
+        $this->businessDescription = $businessDescription;
+
+        return $this;
+    }
+
+    /**
+     * Get businessDescription
+     *
+     * @return string 
+     */
+    public function getBusinessDescription()
+    {
+        return $this->businessDescription;
+    }
+
+    /**
+     * Set businessWebsite
+     *
+     * @param string $businessWebsite
+     * @return User
+     */
+    public function setBusinessWebsite($businessWebsite)
+    {
+        $this->businessWebsite = $businessWebsite;
+
+        return $this;
+    }
+
+    /**
+     * Get businessWebsite
+     *
+     * @return string 
+     */
+    public function getBusinessWebsite()
+    {
+        return $this->businessWebsite;
+    }
+
+    /**
+     * Set university
+     *
+     * @param string $university
+     * @return User
+     */
+    public function setUniversity($university)
+    {
+        $this->university = $university;
+
+        return $this;
+    }
+
+    /**
+     * Get university
+     *
+     * @return string 
+     */
+    public function getUniversity()
+    {
+        return $this->university;
+    }
+
+    /**
+     * Set universityEmail
+     *
+     * @param string $universityEmail
+     * @return User
+     */
+    public function setUniversityEmail($universityEmail)
+    {
+        $this->universityEmail = $universityEmail;
+
+        return $this;
+    }
+
+    /**
+     * Get universityEmail
+     *
+     * @return string 
+     */
+    public function getUniversityEmail()
+    {
+        return $this->universityEmail;
+    }
+
+    /**
+     * Set degree
+     *
+     * @param string $degree
+     * @return User
+     */
+    public function setDegree($degree)
+    {
+        $this->degree = $degree;
+
+        return $this;
+    }
+
+    /**
+     * Get degree
+     *
+     * @return string 
+     */
+    public function getDegree()
+    {
+        return $this->degree;
+    }
+
+    /**
+     * Set skills
+     *
+     * @param string $skills
+     * @return User
+     */
+    public function setSkills($skills)
+    {
+        $this->skills = $skills;
+
+        return $this;
+    }
+
+    /**
+     * Get skills
+     *
+     * @return string 
+     */
+    public function getSkills()
+    {
+        return $this->skills;
+    }
+
+    /**
+     * Set tasks
+     *
+     * @param string $tasks
+     * @return User
+     */
+    public function setTasks($tasks)
+    {
+        $this->tasks = $tasks;
+
+        return $this;
+    }
+
+    /**
+     * Get tasks
+     *
+     * @return string 
+     */
+    public function getTasks()
+    {
+        return $this->tasks;
+    }
+
+    /**
+     * Set cv
+     *
+     * @param string $cv
+     * @return User
+     */
+    public function setCv($cv)
+    {
+        $this->cv = $cv;
+
+        return $this;
+    }
+
+    /**
+     * Get cv
+     *
+     * @return string 
+     */
+    public function getCv()
+    {
+        return $this->cv;
+    }
+
+    /**
+     * Set linkedin
+     *
+     * @param string $linkedin
+     * @return User
+     */
+    public function setLinkedin($linkedin)
+    {
+        $this->linkedin = $linkedin;
+
+        return $this;
+    }
+
+    /**
+     * Get linkedin
+     *
+     * @return string 
+     */
+    public function getLinkedin()
+    {
+        return $this->linkedin;
+    }
+
+    /**
+     * Add sectors
+     *
+     * @param \TGC\AdminBundle\Entity\Sector $sectors
+     * @return User
+     */
+    public function addSector(\TGC\AdminBundle\Entity\Sector $sectors)
+    {
+        $this->sectors[] = $sectors;
+
+        return $this;
+    }
+
+    /**
+     * Remove sectors
+     *
+     * @param \TGC\AdminBundle\Entity\Sector $sectors
+     */
+    public function removeSector(\TGC\AdminBundle\Entity\Sector $sectors)
+    {
+        $this->sectors->removeElement($sectors);
+    }
+
+    /**
+     * Get sectors
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSectors()
+    {
+        return $this->sectors;
     }
 }

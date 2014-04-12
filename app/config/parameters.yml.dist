@@ -13,3 +13,6 @@ parameters:
 
     locale:            en
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    # directory to store uploaded CV's
+    cv_upload_dir:     %kernel.root_dir%/../web/upload

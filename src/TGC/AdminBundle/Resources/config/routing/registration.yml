@@ -1,0 +1,3 @@
+registration_validate:
+    pattern: /validate
+    defaults: { _controller: "TGCAdminBundle:Registration:validateForm" }

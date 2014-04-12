@@ -1,8 +1,100 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
-    {{ form_widget(form) }}
-    <div>
-        <input type="submit" value="{{ 'registration.submit'|trans }}" />
+<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} 
+      id="registration-form"
+      method="POST" class="fos_user_registration_register"
+      data-validate-url="{{ path('registration_validate') }}">
+    <div id="registration-step1">
+        {{ form_row(form.email) }}
+        {{ form_row(form.username) }}
+        {{ form_row(form.plainPassword) }}
+        {{ form_row(form.roles) }}
+        <button id="goto-step2">Go to step 2</button>
+    </div>
+    
+    <div id="registration-step2" style="display:none">
+        <h2 class="business-field">Business sign up</h2>
+        <h2 class="consultant-field">Consultant sign up</h2>
+        <div class="form_errors">
+            {{ form_errors(form) }}
+        </div>
+        <div class="business-field">
+            {{ form_label(form.businessName) }}
+            {{ form_errors(form.businessName) }}
+            {{ form_widget(form.businessName) }}
+        </div>
+        <div>
+            {{ form_label(form.firstName) }}
+            {{ form_errors(form.firstName) }}
+            {{ form_widget(form.firstName) }}
+        </div>
+        <div>
+            {{ form_label(form.lastName) }}
+            {{ form_errors(form.lastName) }}
+            {{ form_widget(form.lastName) }}
+        </div>
+        <div class="business-field">
+            {{ form_label(form.phone) }}
+            {{ form_errors(form.phone) }}
+            {{ form_widget(form.phone) }}
+        </div>
+        <div>
+            <span class="business-field">{{ form_label(form.location, 'Business location') }}</span>
+            <span class="consultant-field">{{ form_label(form.location, 'Current location') }}</span>
+            {{ form_errors(form.location) }}
+            {{ form_widget(form.location) }}
+        </div>
+        <div class="business-field">
+            {{ form_label(form.businessDescription) }}
+            {{ form_errors(form.businessDescription) }}
+            {{ form_widget(form.businessDescription) }}
+        </div>
+        <div class="business-field">
+            {{ form_label(form.businessWebsite) }}
+            {{ form_errors(form.businessWebsite) }}
+            {{ form_widget(form.businessWebsite) }}
+        </div>
+        <div class="consultant-field">
+            {{ form_label(form.universityEmail) }}
+            {{ form_errors(form.universityEmail) }}
+            {{ form_widget(form.universityEmail) }}
+        </div>
+        <div class="consultant-field">
+            {{ form_label(form.university, 'Past/ Current University') }}
+            {{ form_errors(form.university) }}
+            {{ form_widget(form.university) }}
+        </div>
+        <div class="consultant-field">
+            {{ form_label(form.degree) }}
+            {{ form_errors(form.degree) }}
+            {{ form_widget(form.degree) }}
+        </div>
+        <div class="consultant-field">
+            {{ form_label(form.sectors) }}
+            {{ form_errors(form.sectors) }}
+            {{ form_widget(form.sectors) }}
+        </div>
+        <div class="consultant-field">
+            {{ form_label(form.skills, 'Your skills and prefered projects') }}
+            {{ form_errors(form.skills) }}
+            {{ form_widget(form.skills) }}
+        </div>
+        <div class="consultant-field">
+            {{ form_label(form.tasks, 'Please list possible tasks and projects you can do for businesses and firms') }}
+            {{ form_errors(form.tasks) }}
+            {{ form_widget(form.tasks) }}
+        </div>
+        <div class="consultant-field">
+            {{ form_label(form.cv, 'Upload your CV') }}
+            {{ form_errors(form.cv) }}
+            {{ form_widget(form.cv) }}
+        </div>
+        <div class="consultant-field">
+            {{ form_label(form.linkedin, 'Your LinkedIn') }}
+            {{ form_errors(form.linkedin) }}
+            {{ form_widget(form.linkedin) }}
+        </div>
+        {{ form_row(form.submit) }}
+        {{ form_rest(form) }}
     </div>
 </form>

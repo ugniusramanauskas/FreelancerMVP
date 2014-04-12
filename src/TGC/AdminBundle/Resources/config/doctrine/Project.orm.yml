@@ -32,6 +32,12 @@ TGC\AdminBundle\Entity\Project:
             joinColumn:
                 name: business_user_id
                 referencedColumnName: id
+        sector:
+            targetEntity: Sector
+            inversedBy: projects
+            joinColumn:
+                name: sector_id
+                referencedColumnName: id
     oneToMany:
         proposals:
             targetEntity: Proposal

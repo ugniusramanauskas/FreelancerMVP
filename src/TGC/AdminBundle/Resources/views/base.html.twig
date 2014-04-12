@@ -40,6 +40,12 @@
     %}
         <link rel="stylesheet" href="{{ asset_url }}" screen="media" />
     {% endstylesheets %}
+    
+    {% javascripts 
+        '@TGCAdminBundle/Resources/public/js/jquery-1.11.0.min.js'
+        '@TGCAdminBundle/Resources/public/js/registration.js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 
 <style type="text/css">/* =Responsive Map fix
     -------------------------------------------------------------- */

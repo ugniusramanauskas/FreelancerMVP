@@ -20,8 +20,6 @@ class ProjectType extends AbstractType
         $builder
             // ->add('title')
             // ->add('startdate')
-            // ->add('budget')
-            // ->add('duration')
             // ->add('description')
             // ->add('registrationtimestamp')
             // ->add('status')
@@ -32,6 +30,12 @@ class ProjectType extends AbstractType
             ->add('description', 'textarea', array(
                 'label' => 'Description:',
                 ))
+            ->add('budget')
+            ->add('duration')
+            ->add('sector', null, array(
+                'empty_value' => 'Please select sector',
+                'required'    => true
+            ))
             ->add('startdate', 'date', array(
                 'input'  => 'datetime',
                 'widget' => 'single_text',

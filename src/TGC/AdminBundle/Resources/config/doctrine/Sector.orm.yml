@@ -8,6 +8,10 @@ TGC\AdminBundle\Entity\Sector:
     fields:
         name:
             type: string
+    oneToMany:
+        projects:
+            targetEntity: Project
+            mappedBy: sector
     manyToMany:
         users:
             targetEntity: User

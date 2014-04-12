@@ -18,8 +18,25 @@ class Sector
      * @var string
      */
     private $name;
+    
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $projects;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $users;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
     /**
      * Get id
      *
@@ -51,18 +68,6 @@ class Sector
     public function getName()
     {
         return $this->name;
-    }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $users;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -101,5 +106,38 @@ class Sector
     public function __toString()
     {
         return $this->name;
+    }
+
+    /**
+     * Add projects
+     *
+     * @param \TGC\AdminBundle\Entity\Project $projects
+     * @return Sector
+     */
+    public function addProject(\TGC\AdminBundle\Entity\Project $projects)
+    {
+        $this->projects[] = $projects;
+
+        return $this;
+    }
+
+    /**
+     * Remove projects
+     *
+     * @param \TGC\AdminBundle\Entity\Project $projects
+     */
+    public function removeProject(\TGC\AdminBundle\Entity\Project $projects)
+    {
+        $this->projects->removeElement($projects);
+    }
+
+    /**
+     * Get projects
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProjects()
+    {
+        return $this->projects;
     }
 }

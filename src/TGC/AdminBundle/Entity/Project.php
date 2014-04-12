@@ -63,6 +63,11 @@ class Project
      * @var \TGC\AdminBundle\Entity\User
      */
     private $userid;
+    
+    /**
+     * @var \TGC\AdminBundle\Entity\Sector
+     */
+    private $sector;
 
     /**
      * Constructor
@@ -336,5 +341,28 @@ class Project
     public function __toString()
     {
         return $this->title;
+    }
+
+    /**
+     * Set sector
+     *
+     * @param \TGC\AdminBundle\Entity\Sector $sector
+     * @return Project
+     */
+    public function setSector(\TGC\AdminBundle\Entity\Sector $sector = null)
+    {
+        $this->sector = $sector;
+
+        return $this;
+    }
+
+    /**
+     * Get sector
+     *
+     * @return \TGC\AdminBundle\Entity\Sector 
+     */
+    public function getSector()
+    {
+        return $this->sector;
     }
 }

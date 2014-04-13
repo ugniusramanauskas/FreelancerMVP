@@ -1,6 +1,5 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<<<<<<< HEAD
 <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} 
       id="registration-form"
       method="POST" class="fos_user_registration_register"
@@ -11,7 +10,7 @@
         {{ form_row(form.plainPassword) }}
         {{ form_row(form.roles) }}
         <button id="goto-step2">Go to step 2</button>
-=======
+{# =======
 <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
     {{ form_widget(form) }}
 
@@ -24,7 +23,7 @@
 
     <div>
         <input type="submit" value="{{ 'registration.submit'|trans }}" />
->>>>>>> develop
+>>>>>>> develop #}
     </div>
     
     <div id="registration-step2" style="display:none">

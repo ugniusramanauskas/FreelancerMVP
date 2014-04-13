@@ -41,6 +41,7 @@ var TGCRegistration = function() {
         });
         $.post($("#registration-form").attr("data-validate-url"), formData, function(data) {
             if (data.errors) {
+                console.log(data.errors);
                 $.each(data.errors, function(key, val) {
                     var message = '<ul class="error"><li>' + val + '</li></ul>';
                     var $field = $("#fos_user_registration_form_" + key);

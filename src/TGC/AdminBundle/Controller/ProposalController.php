@@ -35,8 +35,6 @@ class ProposalController extends Controller
         $query = $qb->getQuery();
         $entities = $query->getResult();
 
-        // $entities = $em->getRepository('TGCAdminBundle:Proposal')->findAll();
-
         return $this->render('TGCAdminBundle:Proposal:index.html.twig', array(
             'entities' => $entities,
         ));
@@ -66,12 +64,15 @@ class ProposalController extends Controller
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
-            // die("Got here.");
-
             $em->flush();
 
-            // return $this->redirect($this->generateUrl('proposal_show', array('id' => $entity->getId())));
+            // Navigate back to the previous view (project_search with the search parameters)
+            // And pass on a message as a parameter (will appear in the url (not optimal))
+            // The message should be passed via the SESSION variables, but not $_GET.
+
             return $this->redirect($this->generateUrl('project_search'));
+        } else {
+            // Return to the same view with the messages from the validation engine
         }
 
         return $this->render('TGCAdminBundle:Proposal:new.html.twig', array(

@@ -24,8 +24,6 @@ class ProjectController extends Controller
      */
     public function indexAction()
     {
-        // var_dump($this->get('security.context')); die;
-
         if (false === $this->get('security.context')->isGranted('ROLE_BUSINESS')) {
             throw new AccessDeniedException("You must be registered on TGC system as a Business to access this functionality.");
         }
@@ -86,6 +84,9 @@ class ProjectController extends Controller
     public function showSearchResultsAction(Request $request)
     {
 
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        $currentUserId = $user->getId();
+
         $entity = new Project();
         $form = $this->createSearchForm($entity);
             // 'entity' => $entity
@@ -98,16 +99,38 @@ class ProjectController extends Controller
                 break;
             }
         }
-        // var_dump($searchfield);
-        // die();
+
         $em = $this->getDoctrine()->getManager();
         $qb = $em->createQueryBuilder();
+
+        /** 
+         * Query should be: 
+         * 
+         * SELECT * FROM project LEFT JOIN 
+         *     (SELECT id as proposalid, project_id, consultant_user_id
+         *     FROM proposal 
+         *     WHERE proposal.consultant_user_id = 9) 
+         * as props 
+         * ON project.id = props.project_id 
+         * WHERE project.title LIKE '%p%' 
+         */ 
+
+        /**
+         * Then in the view, sort the view by proposalid. When proposalid is not NULL,
+         * it means that the project has already been applied for.
+         */
+
         $qb
             ->select('prj')
             ->from('TGCAdminBundle:Project', 'prj')
+            // ->from('TGCAdminBundle:Proposal', 'prop')
             ->where($qb->expr()->like('prj.title', ':title'))
+            // ->where($qb->expr()->eq('prop.projectid', 'prj.id'))
+            // ->where($qb->expr()->eq('prop.userid', ':userid'))
             ->setParameter('title', '%' . $search_key . '%')
+            // ->setParameter('userid', $currentUserId)
         ;
+
         $query = $qb->getQuery();
         $entities = $query->getResult();
 

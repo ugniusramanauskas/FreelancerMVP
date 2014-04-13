@@ -43,7 +43,7 @@ registration:
     check_email: An email has been sent to %email%. It contains an activation link you must click to activate your account.
     confirmed: Congrats %username%, your account is now activated.
     back: Back to the originating page.
-    submit: Register
+    submit: Go to step 2 (of 2)
     flash:
         user_created: The user has been created successfully
     email:

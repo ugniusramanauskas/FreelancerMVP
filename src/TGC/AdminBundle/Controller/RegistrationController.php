@@ -31,7 +31,7 @@ class RegistrationController extends BaseController
         $form = $formFactory->createForm();
         $form->setData($user);
         $result = array();
-
+        
         if ($request->isXmlHttpRequest()) {
             $form->bind($request);
 

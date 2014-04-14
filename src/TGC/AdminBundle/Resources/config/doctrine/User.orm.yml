@@ -44,12 +44,25 @@ TGC\AdminBundle\Entity\User:
         tasks:
             type: text
             nullable: true
+        photo:
+            type: string
+            nullable: true
         cv:
             type: string
             nullable: true
         linkedin:
             type: string
             nullable: true
+        created:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updated:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
     manyToOne:
         roleid:
             targetEntity: Role

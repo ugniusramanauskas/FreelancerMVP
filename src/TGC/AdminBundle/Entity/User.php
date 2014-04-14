@@ -103,6 +103,11 @@ class User extends BaseUser
      * @var string
      */
     private $cv;
+    
+    /**
+     * @var string
+     */
+    private $photo;
 
     /**
      * @var string
@@ -138,6 +143,16 @@ class User extends BaseUser
      * @var \TGC\AdminBundle\Entity\Role
      */
     private $roleid;
+    
+    /**
+     * @var \DateTime
+     */
+    private $created;
+    
+    /**
+     * @var \DateTime
+     */
+    private $updated;
 
     /**
      * Constructor
@@ -796,4 +811,74 @@ class User extends BaseUser
     {
         return $this->sectors;
     }
+
+    /**
+     * Set photo
+     *
+     * @param string $photo
+     * @return User
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+    /**
+     * Get photo
+     *
+     * @return string 
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     * @return User
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+    
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return \DateTime 
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return User
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+    
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime 
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
 }

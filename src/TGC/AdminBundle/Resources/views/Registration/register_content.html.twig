@@ -99,6 +99,11 @@
             {{ form_widget(form.tasks) }}
         </div>
         <div class="consultant-field">
+            {{ form_label(form.photo, 'Upload your photo') }}
+            {{ form_errors(form.photo) }}
+            {{ form_widget(form.photo) }}
+        </div>
+        <div class="consultant-field">
             {{ form_label(form.cv, 'Upload your CV') }}
             {{ form_errors(form.cv) }}
             {{ form_widget(form.cv) }}

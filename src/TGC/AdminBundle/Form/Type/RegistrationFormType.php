@@ -70,6 +70,7 @@ class RegistrationFormType extends RegistrationFormTypeBase
             ))
             ->add('skills')
             ->add('tasks')
+            ->add('photo', 'file')
             ->add('cv', 'file')
             ->add('linkedin', null, array(
                 'required'  => false

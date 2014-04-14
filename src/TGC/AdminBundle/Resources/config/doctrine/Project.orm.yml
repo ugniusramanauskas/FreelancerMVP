@@ -11,6 +11,8 @@ TGC\AdminBundle\Entity\Project:
             length: 100
         startdate:
             type: date
+        deadline:
+            type: date
         budget:
             type: integer
             nullable: TRUE

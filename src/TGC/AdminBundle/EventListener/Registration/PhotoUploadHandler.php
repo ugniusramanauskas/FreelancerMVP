@@ -6,7 +6,7 @@ use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\FormEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-class FileUploadListener implements EventSubscriberInterface
+class PhotoUploadHandler implements EventSubscriberInterface
 {
     private $uploadDir;
     
@@ -25,21 +25,25 @@ class FileUploadListener implements EventSubscriberInterface
     }
 
     /*
-     * Moves CV file uploaded by user to the directory specified in config
+     * Moves photo uploaded by user to the directory specified in config
      */
     public function upload(FormEvent $event)
     {
         $form = $event->getForm();
         if ($form->isValid()) {
             $username = $form['username']->getData();
-            $file = $form['cv']->getData();
+            $file = $form['photo']->getData();
             
             if ($file) {
                 $extension = $file->guessExtension();
                 if (!$extension) {
                     $extension = 'bin';
                 }
-                $file->move($this->uploadDir . '/' . $username, 'cv.' . $extension);
+                $filename = $username . '.' . $extension;
+
+                $file->move($this->uploadDir, $filename);
+
+                $form->getData()->setPhoto($filename);
             }
         }
     }

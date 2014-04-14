@@ -2,13 +2,13 @@
 
 {% block body %}
         <div class="page-header">
-        	<h1 class="page-title name">Jessie Hronesova</h1>
+        	<h1 class="page-title name">{{ user.firstName }} {{ user.lastName }}</h1>
         	<h2 class="page-subtitle">
         		<ul>
 
-        			<li class="job-title">PhD candidate and researcher</li>
-        			<li class="location"><i class="icon-location"></i> <span class="candidate-location">Oxford, United Kingdom</span></li>
-        			<li class="date-posted" itemprop="datePosted"><i class="icon-calendar"></i> <date>Updated 1 month ago</date></li>
+        			<li class="job-title">{{ user.degree }}</li>
+        			<li class="location"><i class="icon-location"></i> <span class="candidate-location">{{ user.location }}</span></li>
+        			<li class="date-posted" itemprop="datePosted"><i class="icon-calendar"></i> <date>Updated {{ user.updated|date('Y-m-d') }}</date></li>
 
         		</ul>
         	</h2>

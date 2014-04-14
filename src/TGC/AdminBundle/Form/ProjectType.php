@@ -42,6 +42,11 @@ class ProjectType extends AbstractType
                 'label' => 'Project starting date:'
                 )
             )
+            ->add('deadline', 'date', array(
+                'input'  => 'datetime',
+                'widget' => 'single_text'
+                )
+            )
             ->add($builder->create('userid', 'hidden')->addModelTransformer($UserTransformer))
         ;
     }

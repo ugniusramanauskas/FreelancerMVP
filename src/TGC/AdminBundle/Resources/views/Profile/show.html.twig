@@ -22,14 +22,13 @@
 		<div class="resume-info">
 
 			<h2>Skills</h2>
-			<ul class="resume-manager-skills">
-				<li>European Politics</li><li>Transitional Justice</li><li>International Relations</li><li>Qualitative Research</li>				</ul>
+            <p>{{ user.skills }}</p>
 
 				<h2>Education</h2>
 				<dl class="resume-manager-education">
 
 					<dt>
-						<h3>University of Oxford MPhil </h3>
+						<h3>{{ user.university }}</h3>
 					</dt>
 					<dd>
 						<small class="date">Dec 2009 - Sep 2011</small>
@@ -41,8 +40,7 @@
 			</div>
 
 			<div class="resume-aside">
-				<img src="{{ asset('bundles/tgcadmin/img/jessie.jpg') }}" alt="Photo">
-
+				<img src="{{ userPhotoUrl(user) }}" width="171" alt="Photo">
 
 				<div class="resume_contact">
 					<input class="resume_contact_button" type="button" value="Contact">
@@ -58,24 +56,18 @@
 					</div>
 				</div>
 				<ul class="resume-links">
-					<li class="resume-link resume-link-twitter"><a rel="nofollow" href="http://twitter.com/">Twitter</a></li>
-					<li class="resume-link resume-link-facebook"><a rel="nofollow" href="http://facebook.com/">Facebook</a></li>
-					<li class="resume-link resume-link-linkedin"><a rel="nofollow" href="http://linkedin.com/">LinkedIn</a></li>
-					<li class="resume-link resume-link-website"><a rel="nofollow" href="http://website.com/">Website</a></li>
+                    {% if user.linkedin %}
+                        <li class="resume-link resume-link-linkedin"><a rel="nofollow" href="{{ user.linkedin }}">LinkedIn</a></li>
+					{% endif %}
 				</ul>
 
 				<ul class="meta">
 
-					<li class="resume-category">
-						<a href="http://www.gradconsultancy.com"><i class="icon-tag"></i> Researcher</a>
-					</li>
-					<li class="resume-category">
-						<a href="http://www.gradconsultancy.com"><i class="icon-tag"></i> Politics specialist</a>
-					</li>
-					<li class="resume-category">
-						<a href="http://www.gradconsultancy.com"><i class="icon-tag"></i> Analyst</a>
-					</li>
-
+                    {% for sector in user.sectors %}
+                        <li class="resume-category">
+                            <a href="http://www.gradconsultancy.com"><i class="icon-tag"></i>{{ sector.name }}</a>
+                        </li>
+                    {% endfor %}
 				</ul>
 
 			</div>

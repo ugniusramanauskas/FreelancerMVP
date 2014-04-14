@@ -44,6 +44,9 @@ TGC\AdminBundle\Entity\User:
         tasks:
             type: text
             nullable: true
+        photo:
+            type: string
+            nullable: true
         cv:
             type: string
             nullable: true

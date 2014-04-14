@@ -365,4 +365,32 @@ class Project
     {
         return $this->sector;
     }
+    /**
+     * @var \DateTime
+     */
+    private $deadline;
+
+
+    /**
+     * Set deadline
+     *
+     * @param \DateTime $deadline
+     * @return Project
+     */
+    public function setDeadline($deadline)
+    {
+        $this->deadline = $deadline;
+
+        return $this;
+    }
+
+    /**
+     * Get deadline
+     *
+     * @return \DateTime 
+     */
+    public function getDeadline()
+    {
+        return $this->deadline;
+    }
 }

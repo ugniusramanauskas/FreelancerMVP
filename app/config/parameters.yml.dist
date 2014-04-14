@@ -14,5 +14,11 @@ parameters:
     locale:            en
     secret:            ThisTokenIsNotSoSecretChangeIt
 
+    cv_url: upload/cv
+    photo_url: upload/photo
+
     # directory to store uploaded CV's
-    cv_upload_dir:     %kernel.root_dir%/../web/upload
+    cv_upload_dir: %kernel.root_dir%/../web/%cv_url%
+
+    # directory to store uploaded user photos
+    photo_upload_dir: %kernel.root_dir%/../web/%photo_url%

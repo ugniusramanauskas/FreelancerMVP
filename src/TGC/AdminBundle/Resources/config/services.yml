@@ -16,8 +16,20 @@ services:
         tags:       
             - { name: form.type, alias: tgc_admin_registration }
 
-    tgc_admin.registration.upload:
-        class: TGC\AdminBundle\EventListener\Registration\FileUploadListener
+    tgc_admin.registration.upload.cv:
+        class: TGC\AdminBundle\EventListener\Registration\CVUploadHandler
         arguments: [%cv_upload_dir%]
         tags:
             - { name: kernel.event_subscriber }
+            
+    tgc_admin.registration.upload.photo:
+        class: TGC\AdminBundle\EventListener\Registration\PhotoUploadHandler
+        arguments: [%photo_upload_dir%]
+        tags:
+            - { name: kernel.event_subscriber }
+            
+    tgc_admin.twig.user_photo_extension:
+        class: TGC\AdminBundle\Twig\UserPhotoExtension
+        arguments: [%photo_url%]
+        tags:
+            - { name: twig.extension }

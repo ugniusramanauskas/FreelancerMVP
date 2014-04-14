@@ -103,6 +103,11 @@ class User extends BaseUser
      * @var string
      */
     private $cv;
+    
+    /**
+     * @var string
+     */
+    private $photo;
 
     /**
      * @var string
@@ -795,5 +800,28 @@ class User extends BaseUser
     public function getSectors()
     {
         return $this->sectors;
+    }
+
+    /**
+     * Set photo
+     *
+     * @param string $photo
+     * @return User
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+    /**
+     * Get photo
+     *
+     * @return string 
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
     }
 }

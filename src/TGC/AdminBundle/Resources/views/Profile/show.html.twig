@@ -10,7 +10,16 @@
 
 			{# <h3>Objective</h3> #}
 			{# <p>A stimulating position demanding advanced research and analysis abilities.</p> #}
-			<h3>Summary Of Skills</h3>
+			<h3>Sectors</h3>
+            <ul>
+                {% for sector in user.sectors %}
+                    <li class="resume-category">
+                        <a href="http://www.gradconsultancy.com"><i class="icon-tag"></i>{{ sector.name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+            <h3>Preferred tasks and projects</h3>
+            <p>{{ user.tasks }}</p>
 {# 			<ul>
 				<li>Advanced graduate researcher in post-conflict institutional design, transitional justice, peace-building and democratization with substantial professional experience from Central Europe and the Western Balkans.</li>
 				<li>Focus on political transformation, transitional justice, risk assessment, democratization, and the rule of law.</li>
@@ -28,7 +37,7 @@
 				<dl class="resume-manager-education">
 
 					<dt>
-						<h3>{{ user.university }}</h3>
+						<h3>{{ user.university }}, {{ user.degree }}</h3>
 					</dt>
 {# 					<dd>
 						<small class="date">Dec 2009 - Sep 2011</small>

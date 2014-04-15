@@ -24,9 +24,9 @@ TGC\AdminBundle\Entity\User:
             - NotBlank: { groups: [consultant] }
         sectors:
             - NotBlank: { groups: [consultant] }
-        skills:
+        bio:
             - NotBlank: { groups: [consultant] }
-        tasks:
+        skills:
             - NotBlank: { groups: [consultant] }
         cv:
             - NotBlank: { groups: [consultant] }

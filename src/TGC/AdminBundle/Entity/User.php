@@ -881,4 +881,83 @@ class User extends BaseUser
         return $this->created;
     }
 
+    /**
+     * @var string
+     */
+    private $description;
+
+    /**
+     * @var array
+     */
+    private $bio;
+
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return User
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set bio
+     *
+     * @param array $bio
+     * @return User
+     */
+    public function setBio($bio)
+    {
+        $this->bio = $bio;
+    
+        return $this;
+    }
+
+    /**
+     * Get bio
+     *
+     * @return array 
+     */
+    public function getBio()
+    {
+        return $this->bio;
+    }
+
+    /**
+     * Add addresses
+     *
+     * @param \TGC\AdminBundle\Entity\Address $addresses
+     * @return User
+     */
+    public function addAddresse(\TGC\AdminBundle\Entity\Address $addresses)
+    {
+        $this->addresses[] = $addresses;
+    
+        return $this;
+    }
+
+    /**
+     * Remove addresses
+     *
+     * @param \TGC\AdminBundle\Entity\Address $addresses
+     */
+    public function removeAddresse(\TGC\AdminBundle\Entity\Address $addresses)
+    {
+        $this->addresses->removeElement($addresses);
+    }
 }

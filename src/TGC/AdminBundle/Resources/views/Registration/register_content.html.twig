@@ -59,11 +59,6 @@
             {{ form_widget(form.location) }}
         </div>
         <div class="business-field">
-            {{ form_label(form.businessDescription) }}
-            {{ form_errors(form.businessDescription) }}
-            {{ form_widget(form.businessDescription) }}
-        </div>
-        <div class="business-field">
             {{ form_label(form.businessWebsite) }}
             {{ form_errors(form.businessWebsite) }}
             {{ form_widget(form.businessWebsite) }}
@@ -86,17 +81,44 @@
         <div class="consultant-field">
             {{ form_label(form.sectors) }}
             {{ form_errors(form.sectors) }}
-            {{ form_widget(form.sectors) }}
+            {% for sectorField in form.sectors %}
+                <div>
+                    {{ form_widget(sectorField) }}
+                    {{ form_label(sectorField) }}
+                    {{ form_errors(sectorField) }}
+                </div>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form_label(form.description) }}
+            {{ form_errors(form.description) }}
+            {{ form_widget(form.description) }}
         </div>
         <div class="consultant-field">
-            {{ form_label(form.skills, 'Your skills and prefered projects') }}
-            {{ form_errors(form.skills) }}
-            {{ form_widget(form.skills) }}
+            {{ form_label(form.bio) }}
+            <ul id="bio-fields-list" data-prototype="{{ form_widget(form.bio.vars.prototype)|e }}" data-count="{{ form.bio|length }}">
+            {% for bioField in form.bio %}
+                <li>
+                    {{ form_errors(bioField) }}
+                    {{ form_widget(bioField) }}
+                    <a class="remove-field">[x]</a>
+                </li>
+            {% endfor %}
+            </ul>
+            <a href="#" id="add-another-bio">Add</a>
         </div>
         <div class="consultant-field">
-            {{ form_label(form.tasks, 'Please list possible tasks and projects you can do for businesses and firms') }}
-            {{ form_errors(form.tasks) }}
-            {{ form_widget(form.tasks) }}
+            {{ form_label(form.skills, 'List your skills and possible projects you can do for businesses.') }}
+            <ul id="skills-fields-list" data-prototype="{{ form_widget(form.skills.vars.prototype)|e }}" data-count="{{ form.skills|length }}">
+            {% for skillField in form.skills %}
+                <li>
+                    {{ form_errors(skillField) }}
+                    {{ form_widget(skillField) }}
+                    <a class="remove-field">[x]</a>
+                </li>
+            {% endfor %}
+            </ul>
+            <a href="#" id="add-another-skill">Add</a>
         </div>
         <div class="consultant-field">
             {{ form_label(form.photo, 'Upload your photo') }}
@@ -114,6 +136,5 @@
             {{ form_widget(form.linkedin) }}
         </div>
         {{ form_row(form.submit) }}
-        {{ form_rest(form) }}
     </div>
 </form>

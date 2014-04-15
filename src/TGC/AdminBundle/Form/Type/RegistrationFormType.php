@@ -48,12 +48,12 @@ class RegistrationFormType extends RegistrationFormTypeBase
             ->add('lastName')
             ->add('phone')
             ->add('location')
-                
-            // business fields
-            ->add('businessName')
-            ->add('businessDescription', null, array(
+            ->add('description', null, array(
                 'required'  => false
             ))
+
+            // business fields
+            ->add('businessName')
             ->add('businessWebsite', null, array(
                 'required'  => false
             ))
@@ -66,8 +66,18 @@ class RegistrationFormType extends RegistrationFormTypeBase
                 'expanded'  => true,
                 'multiple'  => true
             ))
-            ->add('skills')
-            ->add('tasks')
+            ->add('bio', 'collection', array(
+                'type'      => 'textarea',
+                'allow_add' => true,
+                'allow_delete' => true,
+                'error_bubbling' => true
+            ))
+            ->add('skills', 'collection', array(
+                'type'      => 'text',
+                'allow_add' => true,
+                'allow_delete' => true,
+                'error_bubbling' => true
+            ))
             ->add('photo', 'file')
             ->add('cv', 'file')
             ->add('linkedin', null, array(

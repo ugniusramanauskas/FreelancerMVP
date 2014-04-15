@@ -15,15 +15,15 @@ TGC\AdminBundle\Entity\User:
             type: string
         location:
             type: string
+        description:
+            type: text
+            nullable: true
         # business-specific fields
         businessName:
             type: string
             nullable: true
         phone:
             type: string
-            nullable: true
-        businessDescription:
-            type: text
             nullable: true
         businessWebsite:
             type: string
@@ -39,10 +39,10 @@ TGC\AdminBundle\Entity\User:
             type: string
             nullable: true
         skills:
-            type: text
+            type: array
             nullable: true
-        tasks:
-            type: text
+        bio:
+            type: array
             nullable: true
         photo:
             type: string

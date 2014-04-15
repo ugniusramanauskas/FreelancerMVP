@@ -1,5 +1,12 @@
 var TGCRegistration = function() {
+    var bioCount, skillCount;
+
     function init() {
+        initFormButtons();
+        initFormFields();
+    }
+    
+    function initFormButtons() {
         $("#goto-step2").click(function(e) {
             e.preventDefault();
 
@@ -30,6 +37,43 @@ var TGCRegistration = function() {
             validateForm($("#registration-form"), success, fail);
         });
     }
+    
+    function initFormFields() {
+        bioCount = $("#bio-fields-list").attr('data-count');
+        skillCount = $("#skills-fields-list").attr('data-count');
+    
+        $('#add-another-bio').click(function() {
+            var bioList = $('#bio-fields-list');
+
+            var newWidget = bioList.attr('data-prototype');
+            newWidget = newWidget.replace(/__name__/g, bioCount);
+            bioCount++;
+
+            var newLi = $('<li></li>').html(newWidget + '<a class="remove-field">[x]</a>');
+            newLi.appendTo(bioList);
+
+            return false;
+        }).click();
+
+        $('#add-another-skill').click(function() {
+            var skillList = $('#skills-fields-list');
+
+            var newWidget = skillList.attr('data-prototype');
+            newWidget = newWidget.replace(/__name__/g, skillCount);
+            skillCount++;
+
+            var newLi = $('<li></li>').html(newWidget + '<a class="remove-field">[x]</a>');
+            newLi.appendTo(skillList);
+
+            return false;
+        }).click();
+        
+        $(document).on('click', ".remove-field", function() {
+            $(this).closest('li').remove();
+            return false;
+        });
+    }
+    
     function validateForm(fields, successCallback, failCallback) {
         $("ul.error").remove();
         var formData = fields.serializeArray();

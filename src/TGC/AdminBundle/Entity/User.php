@@ -960,4 +960,60 @@ class User extends BaseUser
     {
         $this->addresses->removeElement($addresses);
     }
+    /**
+     * @var string
+     */
+    private $clubName;
+
+
+    /**
+     * Set clubName
+     *
+     * @param string $clubName
+     * @return User
+     */
+    public function setClubName($clubName)
+    {
+        $this->clubName = $clubName;
+    
+        return $this;
+    }
+
+    /**
+     * Get clubName
+     *
+     * @return string 
+     */
+    public function getClubName()
+    {
+        return $this->clubName;
+    }
+    /**
+     * @var \TGC\AdminBundle\Entity\Invitation
+     */
+    private $invitation;
+
+
+    /**
+     * Set invitation
+     *
+     * @param \TGC\AdminBundle\Entity\Invitation $invitation
+     * @return User
+     */
+    public function setInvitation(\TGC\AdminBundle\Entity\Invitation $invitation = null)
+    {
+        $this->invitation = $invitation;
+    
+        return $this;
+    }
+
+    /**
+     * Get invitation
+     *
+     * @return \TGC\AdminBundle\Entity\Invitation 
+     */
+    public function getInvitation()
+    {
+        return $this->invitation;
+    }
 }

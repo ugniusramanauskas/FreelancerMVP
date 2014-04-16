@@ -33,3 +33,12 @@ services:
         arguments: [%photo_url%]
         tags:
             - { name: twig.extension }
+
+    tgc_admin.invitation.form.type:
+        class: TGC\AdminBundle\Form\Type\InvitationFormType
+        arguments: [@tgc_admin.invitation.form.data_transformer]
+        tags: [{ name: "form.type", alias: "tgc_invitation_type" }]
+
+    tgc_admin.invitation.form.data_transformer:
+        class: TGC\AdminBundle\Form\DataTransformer\InvitationToCodeTransformer
+        arguments: [@doctrine.orm.entity_manager]

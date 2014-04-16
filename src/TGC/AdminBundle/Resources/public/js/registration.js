@@ -53,7 +53,10 @@ var TGCRegistration = function() {
             newLi.appendTo(bioList);
 
             return false;
-        }).click();
+        });
+        if (bioCount == 0) {
+            $('#add-another-bio').click();
+        }
 
         $('#add-another-skill').click(function() {
             var skillList = $('#skills-fields-list');
@@ -66,7 +69,10 @@ var TGCRegistration = function() {
             newLi.appendTo(skillList);
 
             return false;
-        }).click();
+        });
+        if (skillCount == 0) {
+            $('#add-another-skill').click();
+        }
         
         $(document).on('click', ".remove-field", function() {
             $(this).closest('li').remove();
@@ -80,12 +86,10 @@ var TGCRegistration = function() {
         // workaround for file field
         fields.find("input[type=file]").each(function() {
             var $this = $(this);
-            console.log($this);
             formData.push({'name': $this.attr('name'), 'value': $this.val()});
         });
         $.post($("#registration-form").attr("data-validate-url"), formData, function(data) {
             if (data.errors) {
-                console.log(data.errors);
                 $.each(data.errors, function(key, val) {
                     var message = '<ul class="error"><li>' + val + '</li></ul>';
                     var $field = $("#fos_user_registration_form_" + key);

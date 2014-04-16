@@ -93,10 +93,6 @@ class RegistrationFormType extends RegistrationFormTypeBase
                 'second_options' => array('label' => 'form.password_confirmation'),
                 'invalid_message' => 'fos_user.password.mismatch',
             ))
-//            ->add('nextStep', 'submit', array(
-//                'validation_groups' => array('Registration'),
-//                'label' => 'Go to step 2'
-//            ))
             ->add('submit', 'submit');
 
         // $builder->add('gender', 'choice', array(

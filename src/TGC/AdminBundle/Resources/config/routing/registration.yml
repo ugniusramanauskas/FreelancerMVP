@@ -1,3 +1,7 @@
 registration_validate:
     pattern: /validate
     defaults: { _controller: "TGCAdminBundle:Registration:validateForm" }
+    
+register_club:
+    pattern: /club
+    defaults: { _controller: "TGCAdminBundle:Registration:registerClub" }

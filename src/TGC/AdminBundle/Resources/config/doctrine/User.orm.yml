@@ -11,8 +11,10 @@ TGC\AdminBundle\Entity\User:
             type: string
         firstName:
             type: string
+            nullable: true
         lastName:
             type: string
+            nullable: true
         location:
             type: string
         description:
@@ -53,6 +55,11 @@ TGC\AdminBundle\Entity\User:
         linkedin:
             type: string
             nullable: true
+        # consulting club-specific fields
+        clubName:
+            type: string
+            nullable: true
+
         created:
             type: datetime
             gedmo:
@@ -63,6 +70,12 @@ TGC\AdminBundle\Entity\User:
             gedmo:
                 timestampable:
                     on: update
+    oneToOne:
+        invitation:
+            targetEntity: Invitation
+            inversedBy: user
+            joinColumn:
+                referencedColumnName: code
     manyToOne:
         roleid:
             targetEntity: Role

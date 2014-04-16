@@ -30,7 +30,8 @@ class RegistrationController extends BaseController
             return $event->getResponse();
         }
 
-        $form = $this->container->get('form.factory')->create(new ConsultingClubRegistrationFormType());
+        $userClass = $this->container->getParameter('fos_user.model.user.class');
+        $form = $this->container->get('form.factory')->create(new ConsultingClubRegistrationFormType($userClass));
         $form->setData($user);
 
         if ('POST' === $request->getMethod()) {

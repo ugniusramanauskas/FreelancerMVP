@@ -5,6 +5,7 @@ namespace TGC\AdminBundle\Form\Type;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints;
 use FOS\UserBundle\Form\Type\RegistrationFormType as RegistrationFormTypeBase;
 
 class ConsultingClubRegistrationFormType extends RegistrationFormTypeBase
@@ -22,7 +23,6 @@ class ConsultingClubRegistrationFormType extends RegistrationFormTypeBase
             ))
             ->add('universityEmail', 'email')
             ->add('university')
-            ->add('degree')
             ->add('sectors', null, array(
                 'expanded'  => true,
                 'multiple'  => true
@@ -41,11 +41,24 @@ class ConsultingClubRegistrationFormType extends RegistrationFormTypeBase
             ))
             ->add('photo', 'file')
             ->add('cv', 'file')
-            ->add('linkedin', null, array(
+            ->add('website', null, array(
                 'required'  => false
             ))
             ->add('invitation', 'tgc_invitation_type')
-
+            ->add(
+                'terms',
+                'checkbox',
+                array(
+                    'mapped' => false,
+                    'constraints' => array(
+                        new Constraints\NotBlank(array('groups' => array('business', 'consultant', 'club'))),
+                        new Constraints\True(array(
+                            'groups' => array('business', 'consultant', 'club'),
+                            'message'   => 'Please accept terms and conditions'
+                            ))
+                    )
+                )
+            )
             ->add('submit', 'submit');
     }
 

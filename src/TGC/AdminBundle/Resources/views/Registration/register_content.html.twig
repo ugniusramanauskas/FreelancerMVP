@@ -59,9 +59,9 @@
             {{ form_widget(form.location) }}
         </div>
         <div class="business-field">
-            {{ form_label(form.businessWebsite) }}
-            {{ form_errors(form.businessWebsite) }}
-            {{ form_widget(form.businessWebsite) }}
+            {{ form_label(form.website) }}
+            {{ form_errors(form.website) }}
+            {{ form_widget(form.website) }}
         </div>
         <div class="consultant-field">
             {{ form_label(form.universityEmail) }}
@@ -134,6 +134,11 @@
             {{ form_label(form.linkedin, 'Your LinkedIn') }}
             {{ form_errors(form.linkedin) }}
             {{ form_widget(form.linkedin) }}
+        </div>
+        <div>
+            {{ form_errors(form.terms) }}
+            {{ form_widget(form.terms) }}
+            {{ form_label(form.terms, 'Accept Website Terms & Conditions') }}
         </div>
         {{ form_row(form.submit) }}
     </div>

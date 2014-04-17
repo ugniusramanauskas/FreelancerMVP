@@ -1016,4 +1016,32 @@ class User extends BaseUser
     {
         return $this->invitation;
     }
+    /**
+     * @var string
+     */
+    private $website;
+
+
+    /**
+     * Set website
+     *
+     * @param string $website
+     * @return User
+     */
+    public function setWebsite($website)
+    {
+        $this->website = $website;
+    
+        return $this;
+    }
+
+    /**
+     * Get website
+     *
+     * @return string 
+     */
+    public function getWebsite()
+    {
+        return $this->website;
+    }
 }

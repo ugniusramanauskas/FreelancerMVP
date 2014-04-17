@@ -21,7 +21,7 @@ TGC\AdminBundle\Entity\User:
             - NotBlank: { groups: [consultant, club] }
             - Email: { groups: [consultant, club] }
         degree:
-            - NotBlank: { groups: [consultant, club] }
+            - NotBlank: { groups: [consultant] }
         sectors:
             - NotBlank: { groups: [consultant, club] }
         bio:

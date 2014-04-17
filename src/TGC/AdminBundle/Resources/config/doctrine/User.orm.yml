@@ -20,14 +20,14 @@ TGC\AdminBundle\Entity\User:
         description:
             type: text
             nullable: true
+        website:
+            type: string
+            nullable: true
         # business-specific fields
         businessName:
             type: string
             nullable: true
         phone:
-            type: string
-            nullable: true
-        businessWebsite:
             type: string
             nullable: true
         # consultant-specific fields

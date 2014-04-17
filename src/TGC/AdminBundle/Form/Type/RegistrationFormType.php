@@ -9,6 +9,7 @@ namespace TGC\AdminBundle\Form\Type;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints;
 use FOS\UserBundle\Form\Type\RegistrationFormType as RegistrationFormTypeBase;
 
 use TGC\AdminBundle\Form\DataTransformer\StringToArrayTransformer;
@@ -54,7 +55,7 @@ class RegistrationFormType extends RegistrationFormTypeBase
 
             // business fields
             ->add('businessName')
-            ->add('businessWebsite', null, array(
+            ->add('website', null, array(
                 'required'  => false
             ))
                 
@@ -93,6 +94,20 @@ class RegistrationFormType extends RegistrationFormTypeBase
                 'second_options' => array('label' => 'form.password_confirmation'),
                 'invalid_message' => 'fos_user.password.mismatch',
             ))
+            ->add(
+                'terms',
+                'checkbox',
+                array(
+                    'mapped' => false,
+                    'constraints' => array(
+                        new Constraints\NotBlank(array('groups' => array('business', 'consultant', 'club'))),
+                        new Constraints\True(array(
+                            'groups' => array('business', 'consultant', 'club'),
+                            'message'   => 'Please accept terms and conditions'
+                            ))
+                    )
+                )
+            )
             ->add('submit', 'submit');
 
         // $builder->add('gender', 'choice', array(

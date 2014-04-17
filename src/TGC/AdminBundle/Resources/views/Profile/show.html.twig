@@ -7,11 +7,18 @@
 
 		<div class="resume_description">
 			<h2 class="job-overview-title">Description</h2>
-
-			{# <h3>Objective</h3> #}
-			{# <p>A stimulating position demanding advanced research and analysis abilities.</p> #}
-			<h3>Summary Of Skills</h3>
-{# 			<ul>
+			<p>{{ user.description }}</p>
+            
+			<h3>Bio</h3>
+            <ul>
+                {% for bio in user.bio %}
+                    <li class="resume-category">
+                        {{ bio }}
+                    </li>
+                {% endfor %}
+            </ul>
+{#            <h3>Preferred tasks and projects</h3>
+ 			<ul>
 				<li>Advanced graduate researcher in post-conflict institutional design, transitional justice, peace-building and democratization with substantial professional experience from Central Europe and the Western Balkans.</li>
 				<li>Focus on political transformation, transitional justice, risk assessment, democratization, and the rule of law.</li>
 				<li>Thorough presentation, problem solving and leadership skills improved through Research Assistant and Project Manager positions and project work.</li>
@@ -22,13 +29,19 @@
 		<div class="resume-info">
 
 			<h2>Skills</h2>
-            <p>{{ user.skills }}</p>
+            <ul>
+                {% for skill in user.skills %}
+                    <li class="resume-category">
+                        {{ skill }}
+                    </li>
+                {% endfor %}
+            </ul>
 
 				<h2>Education</h2>
 				<dl class="resume-manager-education">
 
 					<dt>
-						<h3>{{ user.university }}</h3>
+						<h3>{{ user.university }}, {{ user.degree }}</h3>
 					</dt>
 {# 					<dd>
 						<small class="date">Dec 2009 - Sep 2011</small>

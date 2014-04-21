@@ -21,7 +21,9 @@
         {% for entity in entities %}
             <div class="box">
                 <div class="box-inner">
-                    <div class="info-box">{{ entity.title }}</div>
+                    <div class="info-box">
+                        <a href="{{ path('project_show', { 'id': entity.id }) }}">{{ entity.title }}</a>
+                    </div>
                     <div class="info-box">{% if entity.startdate %}{{ entity.startdate|date('Y-m-d') }}{% endif %}</div>
                     <div class="info-box">
                         <a href="{{ path('project_proposal_new', { 'projectid': entity.id }) }}">Apply For This Project</a>

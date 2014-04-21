@@ -1,0 +1,103 @@
+{% extends "TGCAdminBundle::fos_user_layout.html.twig" %}
+
+{% block title %}Consulting club sign up{% endblock title %}
+
+{% block fos_user_content %}
+<form action="{{ path('register_club') }}" {{ form_enctype(form) }} 
+      id="registration-form"
+      method="POST" class="fos_user_registration_register">
+    <div class="form_errors">
+        {{ form_errors(form) }}
+    </div>
+
+    {{ form_row(form.invitation) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.username) }}
+    {{ form_row(form.plainPassword) }}
+
+    <div>
+        {{ form_label(form.clubName) }}
+        {{ form_errors(form.clubName) }}
+        {{ form_widget(form.clubName) }}
+    </div>
+    <div>
+        {{ form_label(form.location, 'Current location') }}
+        {{ form_errors(form.location) }}
+        {{ form_widget(form.location) }}
+    </div>
+    <div>
+        {{ form_label(form.universityEmail) }}
+        {{ form_errors(form.universityEmail) }}
+        {{ form_widget(form.universityEmail) }}
+    </div>
+    <div>
+        {{ form_label(form.university) }}
+        {{ form_errors(form.university) }}
+        {{ form_widget(form.university) }}
+    </div>
+    <div>
+        {{ form_label(form.sectors) }}
+        {{ form_errors(form.sectors) }}
+        {% for sectorField in form.sectors %}
+            <div>
+                {{ form_widget(sectorField) }}
+                {{ form_label(sectorField) }}
+                {{ form_errors(sectorField) }}
+            </div>
+        {% endfor %}
+    </div>
+    <div>
+        {{ form_label(form.description) }}
+        {{ form_errors(form.description) }}
+        {{ form_widget(form.description) }}
+    </div>
+    <div>
+        {{ form_label(form.bio) }}
+        <ul id="bio-fields-list" data-prototype="{{ form_widget(form.bio.vars.prototype)|e }}" data-count="{{ form.bio|length }}">
+        {% for bioField in form.bio %}
+            <li>
+                {{ form_errors(bioField) }}
+                {{ form_widget(bioField) }}
+                <a class="remove-field">[x]</a>
+            </li>
+        {% endfor %}
+        </ul>
+        <a href="#" id="add-another-bio">Add</a>
+    </div>
+    <div>
+        {{ form_label(form.skills, 'List your organisation\'s skills and possible projects you can do for businesses.') }}
+        <ul id="skills-fields-list" data-prototype="{{ form_widget(form.skills.vars.prototype)|e }}" data-count="{{ form.skills|length }}">
+        {% for skillField in form.skills %}
+            <li>
+                {{ form_errors(skillField) }}
+                {{ form_widget(skillField) }}
+                <a class="remove-field">[x]</a>
+            </li>
+        {% endfor %}
+        </ul>
+        <a href="#" id="add-another-skill">Add</a>
+    </div>
+    <div>
+        {{ form_label(form.photo, 'Upload your club logo') }}
+        {{ form_errors(form.photo) }}
+        {{ form_widget(form.photo) }}
+    </div>
+    <div>
+        {{ form_label(form.cv, 'Upload your CV') }}
+        {{ form_errors(form.cv) }}
+        {{ form_widget(form.cv) }}
+    </div>
+    <div>
+        {{ form_label(form.website, 'Your Site') }}
+        {{ form_errors(form.website) }}
+        {{ form_widget(form.website) }}
+    </div>
+    <div>
+        {{ form_errors(form.terms) }}
+        {{ form_widget(form.terms) }}
+        {{ form_label(form.terms, 'Accept Website Terms & Conditions') }}
+    </div>
+    {{ form_row(form._token) }}
+    {{ form_row(form.submit) }}
+</form>
+{% endblock fos_user_content %}

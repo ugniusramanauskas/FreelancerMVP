@@ -1,0 +1,17 @@
+TGC\AdminBundle\Entity\Invitation:
+    type:  entity
+    table: invitation
+    id:
+        code:
+            type: string
+            length: 6
+    fields:
+        email:
+            type: string
+        sent:
+            type: boolean
+    oneToOne:
+        user:
+            targetEntity: User
+            mappedBy: invitation
+            cascade: [persist, merge]

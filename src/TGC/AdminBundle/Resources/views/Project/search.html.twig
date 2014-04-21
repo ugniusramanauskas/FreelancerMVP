@@ -17,46 +17,19 @@
 <p>&nbsp;</p>
 
 {% else %}
-    <table class="table table-striped table-bordered dataTable" id="example" aria-describedby="example_info">
-        <thead>
-            <tr>
-                <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 238px;" aria-label="Browser: activate to sort column ascending">Project Title</th>
-                <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 238px;" aria-label="Browser: activate to sort column ascending">Startdate</th>
-                <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 238px;" aria-label="Browser: activate to sort column ascending">Actions</th>
-
-                {# <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 238px;" aria-label="Browser: activate to sort column ascending">Status</th> #}
-
-{#                 <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 238px;" aria-label="Browser: activate to sort column ascending">Actions</th> #}
-
-            </tr>
-        </thead>
-        <tbody>
+    <div class="projects-wrap">
         {% for entity in entities %}
-            <tr>
-                {# <td><a href="{{ path('project_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td> #}
-                <td>{{ entity.title }}</td>
-                <td>{% if entity.startdate %}{{ entity.startdate|date('Y-m-d') }}{% endif %}</td>
-                
-                <td>
-                    <a href="{{ path('project_proposal_new', { 'projectid': entity.id }) }}">Apply For This Project</a>
-                </td>
-
-                {# <td>{{ entity.status }}</td> #}
-
-{#                 <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('project_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('project_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td> #}
-            </tr>
+            <div class="box">
+                <div class="box-inner">
+                    <div class="info-box">{{ entity.title }}</div>
+                    <div class="info-box">{% if entity.startdate %}{{ entity.startdate|date('Y-m-d') }}{% endif %}</div>
+                    <div class="info-box">
+                        <a href="{{ path('project_proposal_new', { 'projectid': entity.id }) }}">Apply For This Project</a>
+                    </div>
+                </div>
+            </div>
         {% endfor %}
-        </tbody>
-    </table>
+    </div>
 
 {#         <ul>
         <li>

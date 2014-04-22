@@ -3802,12 +3802,12 @@ body .pac-container {
 .projects-wrap .box {
     float: left;
     width: 25%;
-    height: 220px;
     padding: 0 10px 10px 0; 
 }
 .projects-wrap .box-inner {
     border: 2px solid #aaa;
     border-radius: 6px;
+    height: 205px;
 }
 .projects-wrap .box-inner .info-box {
     padding: 10px;

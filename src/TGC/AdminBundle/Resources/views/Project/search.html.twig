@@ -20,13 +20,17 @@
     <div class="projects-wrap">
         {% for entity in entities %}
             <div class="box">
-                <div class="box-inner">
+                <div class="box-inner"
+                 {% if entity.sector is not empty and entity.sector.color is not empty %}
+                     style="background-color: {{ entity.sector.color }}"
+                 {% endif %}>
                     <div class="info-box">
                         <a href="{{ path('project_show', { 'id': entity.id }) }}">{{ entity.title }}</a>
                     </div>
+                    <div class="info-box">Budget: ${{ entity.budget }}</div>
                     <div class="info-box">{% if entity.startdate %}{{ entity.startdate|date('Y-m-d') }}{% endif %}</div>
                     <div class="info-box">
-                        <a href="{{ path('project_proposal_new', { 'projectid': entity.id }) }}">Apply For This Project</a>
+                        <a href="{{ path('project_proposal_new', { 'projectid': entity.id }) }}">Apply now</a>
                     </div>
                 </div>
             </div>

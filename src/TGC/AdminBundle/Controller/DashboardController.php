@@ -34,20 +34,20 @@ class DashboardController extends Controller
 
         } elseif ($this->get('security.context')->isGranted('ROLE_BUSINESS')) {
         	
-        	// show stuff for business
+            // show stuff for business
             return $this->redirect($this->generateUrl('project'));
 
-		} elseif ($this->get('security.context')->isGranted('ROLE_CONSULTANT')) {
-			
-			// show stuff for consultant
+        } elseif ($this->get('security.context')->isGranted('ROLE_CONSULTANT') || 
+                  $this->get('security.context')->isGranted('ROLE_CLUB')) {
+
+            // show stuff for consultant
             return $this->redirect($this->generateUrl('fos_user_profile_show'));
 
-
-		} else {
+        } else {
 			
-			// logout & show login view
+            // logout & show login view
             return $this->redirect($this->generateUrl('logout'));
-		
-		}
+    	
+        }
     }
 }

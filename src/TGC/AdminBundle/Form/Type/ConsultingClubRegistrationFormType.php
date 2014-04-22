@@ -27,12 +27,6 @@ class ConsultingClubRegistrationFormType extends RegistrationFormTypeBase
                 'expanded'  => true,
                 'multiple'  => true
             ))
-            ->add('bio', 'collection', array(
-                'type'      => 'textarea',
-                'allow_add' => true,
-                'allow_delete' => true,
-                'error_bubbling' => true
-            ))
             ->add('skills', 'collection', array(
                 'type'      => 'text',
                 'allow_add' => true,
@@ -40,7 +34,6 @@ class ConsultingClubRegistrationFormType extends RegistrationFormTypeBase
                 'error_bubbling' => true
             ))
             ->add('photo', 'file')
-            ->add('cv', 'file')
             ->add('website', null, array(
                 'required'  => false
             ))

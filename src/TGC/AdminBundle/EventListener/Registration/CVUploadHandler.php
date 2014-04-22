@@ -30,7 +30,7 @@ class CVUploadHandler implements EventSubscriberInterface
     public function upload(FormEvent $event)
     {
         $form = $event->getForm();
-        if ($form->isValid()) {
+        if ($form->isValid() && isset($form['cv'])) {
             $username = $form['username']->getData();
             $file = $form['cv']->getData();
             

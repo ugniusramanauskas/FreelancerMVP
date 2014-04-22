@@ -25,11 +25,11 @@ TGC\AdminBundle\Entity\User:
         sectors:
             - NotBlank: { groups: [consultant, club] }
         bio:
-            - NotBlank: { groups: [consultant, club] }
+            - NotBlank: { groups: [consultant] }
         skills:
             - NotBlank: { groups: [consultant, club] }
         cv:
-            - NotBlank: { groups: [consultant, club] }
+            - NotBlank: { groups: [consultant] }
         clubName:
             - NotBlank: { groups: [club] }
         invitation:

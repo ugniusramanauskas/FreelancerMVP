@@ -52,19 +52,6 @@
         {{ form_widget(form.description) }}
     </div>
     <div>
-        {{ form_label(form.bio) }}
-        <ul id="bio-fields-list" data-prototype="{{ form_widget(form.bio.vars.prototype)|e }}" data-count="{{ form.bio|length }}">
-        {% for bioField in form.bio %}
-            <li>
-                {{ form_errors(bioField) }}
-                {{ form_widget(bioField) }}
-                <a class="remove-field">[x]</a>
-            </li>
-        {% endfor %}
-        </ul>
-        <a href="#" id="add-another-bio">Add</a>
-    </div>
-    <div>
         {{ form_label(form.skills, 'List your organisation\'s skills and possible projects you can do for businesses.') }}
         <ul id="skills-fields-list" data-prototype="{{ form_widget(form.skills.vars.prototype)|e }}" data-count="{{ form.skills|length }}">
         {% for skillField in form.skills %}
@@ -81,11 +68,6 @@
         {{ form_label(form.photo, 'Upload your club logo') }}
         {{ form_errors(form.photo) }}
         {{ form_widget(form.photo) }}
-    </div>
-    <div>
-        {{ form_label(form.cv, 'Upload your CV') }}
-        {{ form_errors(form.cv) }}
-        {{ form_widget(form.cv) }}
     </div>
     <div>
         {{ form_label(form.website, 'Your Site') }}

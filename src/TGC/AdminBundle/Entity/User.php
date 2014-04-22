@@ -881,4 +881,167 @@ class User extends BaseUser
         return $this->created;
     }
 
+    /**
+     * @var string
+     */
+    private $description;
+
+    /**
+     * @var array
+     */
+    private $bio;
+
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return User
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set bio
+     *
+     * @param array $bio
+     * @return User
+     */
+    public function setBio($bio)
+    {
+        $this->bio = $bio;
+    
+        return $this;
+    }
+
+    /**
+     * Get bio
+     *
+     * @return array 
+     */
+    public function getBio()
+    {
+        return $this->bio;
+    }
+
+    /**
+     * Add addresses
+     *
+     * @param \TGC\AdminBundle\Entity\Address $addresses
+     * @return User
+     */
+    public function addAddresse(\TGC\AdminBundle\Entity\Address $addresses)
+    {
+        $this->addresses[] = $addresses;
+    
+        return $this;
+    }
+
+    /**
+     * Remove addresses
+     *
+     * @param \TGC\AdminBundle\Entity\Address $addresses
+     */
+    public function removeAddresse(\TGC\AdminBundle\Entity\Address $addresses)
+    {
+        $this->addresses->removeElement($addresses);
+    }
+    /**
+     * @var string
+     */
+    private $clubName;
+
+
+    /**
+     * Set clubName
+     *
+     * @param string $clubName
+     * @return User
+     */
+    public function setClubName($clubName)
+    {
+        $this->clubName = $clubName;
+    
+        return $this;
+    }
+
+    /**
+     * Get clubName
+     *
+     * @return string 
+     */
+    public function getClubName()
+    {
+        return $this->clubName;
+    }
+    /**
+     * @var \TGC\AdminBundle\Entity\Invitation
+     */
+    private $invitation;
+
+
+    /**
+     * Set invitation
+     *
+     * @param \TGC\AdminBundle\Entity\Invitation $invitation
+     * @return User
+     */
+    public function setInvitation(\TGC\AdminBundle\Entity\Invitation $invitation = null)
+    {
+        $this->invitation = $invitation;
+    
+        return $this;
+    }
+
+    /**
+     * Get invitation
+     *
+     * @return \TGC\AdminBundle\Entity\Invitation 
+     */
+    public function getInvitation()
+    {
+        return $this->invitation;
+    }
+    /**
+     * @var string
+     */
+    private $website;
+
+
+    /**
+     * Set website
+     *
+     * @param string $website
+     * @return User
+     */
+    public function setWebsite($website)
+    {
+        $this->website = $website;
+    
+        return $this;
+    }
+
+    /**
+     * Get website
+     *
+     * @return string 
+     */
+    public function getWebsite()
+    {
+        return $this->website;
+    }
 }

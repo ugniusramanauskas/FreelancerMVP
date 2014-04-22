@@ -9,6 +9,7 @@ namespace TGC\AdminBundle\Form\Type;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints;
 use FOS\UserBundle\Form\Type\RegistrationFormType as RegistrationFormTypeBase;
 
 use TGC\AdminBundle\Form\DataTransformer\StringToArrayTransformer;
@@ -48,13 +49,13 @@ class RegistrationFormType extends RegistrationFormTypeBase
             ->add('lastName')
             ->add('phone')
             ->add('location')
-                
-            // business fields
-            ->add('businessName')
-            ->add('businessDescription', null, array(
+            ->add('description', null, array(
                 'required'  => false
             ))
-            ->add('businessWebsite', null, array(
+
+            // business fields
+            ->add('businessName')
+            ->add('website', null, array(
                 'required'  => false
             ))
                 
@@ -66,8 +67,18 @@ class RegistrationFormType extends RegistrationFormTypeBase
                 'expanded'  => true,
                 'multiple'  => true
             ))
-            ->add('skills')
-            ->add('tasks')
+            ->add('bio', 'collection', array(
+                'type'      => 'textarea',
+                'allow_add' => true,
+                'allow_delete' => true,
+                'error_bubbling' => true
+            ))
+            ->add('skills', 'collection', array(
+                'type'      => 'text',
+                'allow_add' => true,
+                'allow_delete' => true,
+                'error_bubbling' => true
+            ))
             ->add('photo', 'file')
             ->add('cv', 'file')
             ->add('linkedin', null, array(
@@ -83,10 +94,20 @@ class RegistrationFormType extends RegistrationFormTypeBase
                 'second_options' => array('label' => 'form.password_confirmation'),
                 'invalid_message' => 'fos_user.password.mismatch',
             ))
-//            ->add('nextStep', 'submit', array(
-//                'validation_groups' => array('Registration'),
-//                'label' => 'Go to step 2'
-//            ))
+            ->add(
+                'terms',
+                'checkbox',
+                array(
+                    'mapped' => false,
+                    'constraints' => array(
+                        new Constraints\NotBlank(array('groups' => array('business', 'consultant', 'club'))),
+                        new Constraints\True(array(
+                            'groups' => array('business', 'consultant', 'club'),
+                            'message'   => 'Please accept terms and conditions'
+                            ))
+                    )
+                )
+            )
             ->add('submit', 'submit');
 
         // $builder->add('gender', 'choice', array(

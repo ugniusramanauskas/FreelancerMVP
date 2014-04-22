@@ -11,21 +11,23 @@ TGC\AdminBundle\Entity\User:
             type: string
         firstName:
             type: string
+            nullable: true
         lastName:
             type: string
+            nullable: true
         location:
             type: string
+        description:
+            type: text
+            nullable: true
+        website:
+            type: string
+            nullable: true
         # business-specific fields
         businessName:
             type: string
             nullable: true
         phone:
-            type: string
-            nullable: true
-        businessDescription:
-            type: text
-            nullable: true
-        businessWebsite:
             type: string
             nullable: true
         # consultant-specific fields
@@ -39,10 +41,10 @@ TGC\AdminBundle\Entity\User:
             type: string
             nullable: true
         skills:
-            type: text
+            type: array
             nullable: true
-        tasks:
-            type: text
+        bio:
+            type: array
             nullable: true
         photo:
             type: string
@@ -53,6 +55,11 @@ TGC\AdminBundle\Entity\User:
         linkedin:
             type: string
             nullable: true
+        # consulting club-specific fields
+        clubName:
+            type: string
+            nullable: true
+
         created:
             type: datetime
             gedmo:
@@ -63,6 +70,12 @@ TGC\AdminBundle\Entity\User:
             gedmo:
                 timestampable:
                     on: update
+    oneToOne:
+        invitation:
+            targetEntity: Invitation
+            inversedBy: user
+            joinColumn:
+                referencedColumnName: code
     manyToOne:
         roleid:
             targetEntity: Role

@@ -8,6 +8,8 @@ TGC\AdminBundle\Entity\Sector:
     fields:
         name:
             type: string
+        color:
+            type: string
     oneToMany:
         projects:
             targetEntity: Project

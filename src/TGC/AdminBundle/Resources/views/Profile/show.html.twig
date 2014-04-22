@@ -9,7 +9,7 @@
             <h2 class="job-overview-title">Description</h2>
             <p>{{ user.description }}</p>
             
-            {% if 'ROLE_CLUB' not in user.roles %}
+            {% if 'ROLE_CONSULTANT' in user.roles %}
                 <h3>Bio</h3>
                 <ul>
                     {% for bio in user.bio %}
@@ -29,31 +29,39 @@
         </div>
 
         <div class="resume-info">
+            {% if 'ROLE_BUSINESS' not in user.roles %}
+                <h2>Skills</h2>
+                <ul>
+                    {% for skill in user.skills %}
+                        <li class="resume-category">
+                            {{ skill }}
+                        </li>
+                    {% endfor %}
+                </ul>
 
-            <h2>Skills</h2>
-            <ul>
-                {% for skill in user.skills %}
-                    <li class="resume-category">
-                        {{ skill }}
-                    </li>
-                {% endfor %}
-            </ul>
+                <h2>Education</h2>
+                <dl class="resume-manager-education">
+                    <dt>
+                        <h3>{{ user.university }}{% if user.degree %}, {{ user.degree }}{% endif %}</h3>
+                    </dt>
+                    {% if 'ROLE_CLUB' in user.roles %}
+                        <dt>
+                            <h3>{% if user.universityEmail %}Email: {{ user.universityEmail }}{% endif %}</h3>
+                        </dt>
+                    {% endif %}
+    {# 					<dd>
+                            <small class="date">Dec 2009 - Sep 2011</small>
+                            <strong class="qualification">Distinction, Russian and East European Studies</strong>
+                    </dd> #}
 
-            <h2>Education</h2>
-            <dl class="resume-manager-education">
-                <dt>
-                    <h3>{{ user.university }}{% if user.degree %}, {{ user.degree }}{% endif %}</h3>
-                </dt>
-{# 					<dd>
-                        <small class="date">Dec 2009 - Sep 2011</small>
-                        <strong class="qualification">Distinction, Russian and East European Studies</strong>
-                </dd> #}
-
-            </dl>
+                </dl>
+            {% endif %}
         </div>
 
         <div class="resume-aside">
-            <img src="{{ userPhotoUrl(user) }}" width="171" alt="Photo">
+            {% if 'ROLE_BUSINESS' not in user.roles %}
+                <img src="{{ userPhotoUrl(user) }}" width="171" alt="Photo">
+            {% endif %}
 
             <div class="resume_contact">
                 <input class="resume_contact_button" type="button" value="Contact">

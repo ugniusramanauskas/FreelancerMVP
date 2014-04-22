@@ -24,7 +24,7 @@
                  {% if entity.sector is not empty and entity.sector.color is not empty %}
                      style="background-color: {{ entity.sector.color }}"
                  {% endif %}>
-                    <div class="info-box">
+                    <div class="info-box title">
                         <a href="{{ path('project_show', { 'id': entity.id }) }}">{{ entity.title }}</a>
                     </div>
                     <div class="info-box">Budget: ${{ entity.budget }}</div>

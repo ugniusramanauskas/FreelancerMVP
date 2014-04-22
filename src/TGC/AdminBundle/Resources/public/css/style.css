@@ -3817,6 +3817,9 @@ body .pac-container {
     -o-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
 }
+.projects-wrap .box-inner .info-box.title {
+    height: 64px;
+}
 body.no-touch .box-inner:hover .info-box, body.touch .box-inner.touchFocus .info-box {
     margin-bottom: 0;
 }

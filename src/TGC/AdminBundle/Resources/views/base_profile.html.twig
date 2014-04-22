@@ -5,6 +5,8 @@
         <h1 class="page-title name">
             {% if 'ROLE_CLUB' in user.roles %}
                 {{ user.clubName }}
+            {% elseif 'ROLE_BUSINESS' in user.roles %}
+                {{ user.businessName }}
             {% else %}
                 {{ user.firstName }} {{ user.lastName }}
             {% endif %}

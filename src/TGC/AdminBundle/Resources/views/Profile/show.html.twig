@@ -6,6 +6,10 @@
     <div class="single-resume-content">
 
         <div class="resume_description">
+            {% if 'ROLE_CLUB' in user.roles %}
+                <h2 class="job-overview-title">Club name</h2>
+                <p>{{ user.clubName }}</p>
+            {% endif %}
             <h2 class="job-overview-title">Description</h2>
             <p>{{ user.description }}</p>
             
@@ -15,6 +19,16 @@
                     {% for bio in user.bio %}
                         <li class="resume-category">
                             {{ bio }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            {% if 'ROLE_CLUB' in user.roles %}
+                <h2>Current locations</h2>
+                <ul>
+                    {% for location in user.locations %}
+                        <li class="resume-category">
+                            {{ location }}
                         </li>
                     {% endfor %}
                 </ul>
@@ -30,7 +44,11 @@
 
         <div class="resume-info">
             {% if 'ROLE_BUSINESS' not in user.roles %}
-                <h2>Skills</h2>
+                {% if 'ROLE_CLUB' in user.roles %}
+                    <h2>Organisation's skills and possible projects</h2>
+                {% else %}
+                    <h2>Skills</h2>
+                {% endif %}
                 <ul>
                     {% for skill in user.skills %}
                         <li class="resume-category">
@@ -39,22 +57,36 @@
                     {% endfor %}
                 </ul>
 
-                <h2>Education</h2>
-                <dl class="resume-manager-education">
-                    <dt>
-                        <h3>{{ user.university }}{% if user.degree %}, {{ user.degree }}{% endif %}</h3>
-                    </dt>
-                    {% if 'ROLE_CLUB' in user.roles %}
-                        <dt>
-                            <h3>{% if user.universityEmail %}Email: {{ user.universityEmail }}{% endif %}</h3>
-                        </dt>
+                {% if 'ROLE_CLUB' in user.roles %}
+                    <h2>Sectors</h2>
+                    <ul>
+                        {% for sector in user.sectors %}
+                            <li class="resume-category">
+                                {{ sector.name }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <h2>University</h2>
+                    <p>{{ user.university }}{% if user.degree %}, {{ user.degree }}{% endif %}</p>
+                    {% if 'ROLE_CLUB' in user.roles and user.universityEmail %}
+                        <h2>University email</h2>
+                        <p>{{ user.universityEmail }}</p>
                     {% endif %}
+                    <h2>Organization's website</h2>
+                    <p><a href="{{ user.website }}">{{ user.website }}</a></p>
+                {% else %}
+                    <h2>Education</h2>
+                    <dl class="resume-manager-education">
+                        <dt>
+                            <h3>{{ user.university }}{% if user.degree %}, {{ user.degree }}{% endif %}</h3>
+                        </dt>
+                    </dl>
+                {% endif %}
     {# 					<dd>
                             <small class="date">Dec 2009 - Sep 2011</small>
                             <strong class="qualification">Distinction, Russian and East European Studies</strong>
                     </dd> #}
 
-                </dl>
             {% endif %}
         </div>
 

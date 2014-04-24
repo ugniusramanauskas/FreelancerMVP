@@ -17,6 +17,7 @@ TGC\AdminBundle\Entity\User:
             nullable: true
         location:
             type: string
+            nullable: true
         description:
             type: text
             nullable: true
@@ -54,6 +55,9 @@ TGC\AdminBundle\Entity\User:
             nullable: true
         linkedin:
             type: string
+            nullable: true
+        locations:
+            type: array
             nullable: true
         # consulting club-specific fields
         clubName:

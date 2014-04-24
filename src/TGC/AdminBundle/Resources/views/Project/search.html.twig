@@ -30,7 +30,7 @@
                     <div class="info-box">Budget: ${{ entity.budget }}</div>
                     <div class="info-box">{% if entity.startdate %}{{ entity.startdate|date('Y-m-d') }}{% endif %}</div>
                     <div class="info-box">
-                        <a href="{{ path('project_proposal_new', { 'projectid': entity.id }) }}">Apply now</a>
+                        <a href="{{ path('project_show', { 'id': entity.id }) }}">View details</a>
                     </div>
                 </div>
             </div>

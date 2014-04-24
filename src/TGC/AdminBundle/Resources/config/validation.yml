@@ -1,10 +1,10 @@
 TGC\AdminBundle\Entity\User:
     properties:
         location:
-            - NotBlank: { groups: [business, consultant, club] }
+            - NotBlank: { groups: [business, consultant] }
             - Length:
                 min: 3
-                groups: [business, consultant, club]
+                groups: [business, consultant]
         firstName:
             - NotBlank: { groups: [business, consultant] }
         lastName:
@@ -31,6 +31,8 @@ TGC\AdminBundle\Entity\User:
         cv:
             - NotBlank: { groups: [consultant] }
         clubName:
+            - NotBlank: { groups: [club] }
+        locations:
             - NotBlank: { groups: [club] }
         invitation:
             - NotNull: 

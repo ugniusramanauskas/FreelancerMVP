@@ -1,5 +1,7 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
+<p>Already have an account? Click <a href="{{ path('fos_user_security_login') }}">here</a> to Log in.</p>
+
 <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} 
       id="registration-form"
       method="POST" class="fos_user_registration_register"

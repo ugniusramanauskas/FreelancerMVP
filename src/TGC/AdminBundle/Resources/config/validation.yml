@@ -38,3 +38,8 @@ TGC\AdminBundle\Entity\User:
             - NotNull: 
                 groups: [club]
                 message: Your invitation is wrong
+        roles:
+            - Choice:
+                choices:  [ROLE_CONSULTANT, ROLE_BUSINESS, ROLE_CLUB]
+                multiple: true
+                multipleMessage:  Choose a valid role

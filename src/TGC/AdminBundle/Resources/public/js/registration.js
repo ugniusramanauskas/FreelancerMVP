@@ -19,7 +19,7 @@ var TGCRegistration = function() {
                 $button.removeAttr('disabled');
                 $button.html('Go to step 2');
             };
-            validateForm($("#registration-step1 input"), success, fail);
+            validateForm($("#registration-step1 input, #registration-step1 select"), success, fail);
         });
         
         $("#fos_user_registration_form_submit").click(function(e) {

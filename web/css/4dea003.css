@@ -7859,7 +7859,7 @@ body.woocommerce-page form.checkout_coupon .form-row {
 /** Linkedin */
 .resume-link a[href*="linkedin.com"]::before,
 .footer-social a[href*="linkedin.com"]::before {
-	/*content: '\e8fd';*/
+	content: '\e8fd';
 }
 
 .resume-link a:hover[href*="linkedin.com"]::before,

@@ -1,7 +1,112 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 <form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
-    {{ form_widget(form) }}
+    <div class="form_errors">
+        {{ form_errors(form) }}
+    </div>
+    {{ form_row(form.username) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.current_password) }}
+    
+    {% if form.businessName is defined %}
+        {{ form_row(form.businessName) }}
+    {% endif %}
+    {% if form.firstName is defined %}
+        {{ form_row(form.firstName) }}
+    {% endif %}
+    {% if form.lastName is defined %}
+        {{ form_row(form.lastName) }}
+    {% endif %}
+    {% if form.clubName is defined %}
+        {{ form_row(form.clubName) }}
+    {% endif %}
+    {% if form.phone is defined %}
+        {{ form_row(form.phone) }}
+    {% endif %}
+    {% if form.location is defined %}
+        {{ form_row(form.location) }}
+    {% endif %}
+    {% if form.locations is defined %}
+        {{ form_label(form.locations) }}
+        <ul id="location-fields-list" data-prototype="{{ form_widget(form.locations.vars.prototype)|e }}" data-count="{{ form.locations|length }}">
+        {% for locationField in form.locations %}
+            <li>
+                {{ form_errors(locationField) }}
+                {{ form_widget(locationField) }}
+                <a class="remove-field">[x]</a>
+            </li>
+        {% endfor %}
+        </ul>
+        <a href="#" id="add-another-location">Add</a>
+    {% endif %}
+    {% if form.website is defined %}
+        {{ form_row(form.website) }}
+    {% endif %}
+    {% if form.universityEmail is defined %}
+        {{ form_row(form.universityEmail) }}
+    {% endif %}
+    {% if form.university is defined %}
+        {{ form_row(form.university) }}
+    {% endif %}
+    {% if form.degree is defined %}
+        {{ form_row(form.degree) }}
+    {% endif %}
+    {% if form.sectors is defined %}
+        <div>
+            {{ form_label(form.sectors) }}
+            {{ form_errors(form.sectors) }}
+            {% for sectorField in form.sectors %}
+                <div>
+                    {{ form_widget(sectorField) }}
+                    {{ form_label(sectorField) }}
+                    {{ form_errors(sectorField) }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% if form.description is defined %}
+        {{ form_row(form.description) }}
+    {% endif %}
+    {% if form.bio is defined %}
+        <div>
+            {{ form_label(form.bio) }}
+            <ul id="bio-fields-list" data-prototype="{{ form_widget(form.bio.vars.prototype)|e }}" data-count="{{ form.bio|length }}">
+            {% for bioField in form.bio %}
+                <li>
+                    {{ form_errors(bioField) }}
+                    {{ form_widget(bioField) }}
+                    <a class="remove-field">[x]</a>
+                </li>
+            {% endfor %}
+            </ul>
+            <a href="#" id="add-another-bio">Add</a>
+        </div>
+    {% endif %}
+    {% if form.skills is defined %}
+        <div class="consultant-field">
+            {{ form_label(form.skills) }}
+            <ul id="skills-fields-list" data-prototype="{{ form_widget(form.skills.vars.prototype)|e }}" data-count="{{ form.skills|length }}">
+            {% for skillField in form.skills %}
+                <li>
+                    {{ form_errors(skillField) }}
+                    {{ form_widget(skillField) }}
+                    <a class="remove-field">[x]</a>
+                </li>
+            {% endfor %}
+            </ul>
+            <a href="#" id="add-another-skill">Add</a>
+        </div>
+    {% endif %}
+    {% if form.photo is defined %}
+        {{ form_row(form.photo) }}
+    {% endif %}
+    {% if form.cv is defined %}
+        {{ form_row(form.cv) }}
+    {% endif %}
+    {% if form.linkedin is defined %}
+        {{ form_row(form.linkedin) }}
+    {% endif %}
+    {{ form_row(form._token) }}
     <div>
         <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
     </div>

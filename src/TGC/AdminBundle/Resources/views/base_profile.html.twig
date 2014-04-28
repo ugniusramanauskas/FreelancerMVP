@@ -21,6 +21,14 @@
             </ul>
         </h2>
     </div>
+            
+    {% for type, messages in app.session.flashbag.all() %}
+        {% for message in messages %}
+            <div class="flash-{{ type }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
 
     <div id="content" class="site-content full" role="main">
         {% block content %}{% endblock %}

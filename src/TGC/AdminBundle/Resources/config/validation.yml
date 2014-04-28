@@ -40,6 +40,6 @@ TGC\AdminBundle\Entity\User:
                 message: Your invitation is wrong
         roles:
             - Choice:
-                choices:  [ROLE_CONSULTANT, ROLE_BUSINESS, ROLE_CLUB]
+                choices:  [ROLE_CONSULTANT, ROLE_BUSINESS, ROLE_CLUB, ROLE_SUPER_ADMIN]
                 multiple: true
                 multipleMessage:  Choose a valid role

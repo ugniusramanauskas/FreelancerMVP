@@ -41,7 +41,7 @@ var TGCRegistration = function() {
     function initFormFields() {
         bioCount = $("#bio-fields-list").attr('data-count');
         skillCount = $("#skills-fields-list").attr('data-count');
-        locationCount = $("#skills-fields-list").attr('data-count');
+        locationCount = $("#location-fields-list").attr('data-count');
     
         $('#add-another-bio').click(function() {
             var bioList = $('#bio-fields-list');

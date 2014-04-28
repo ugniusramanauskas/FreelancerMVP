@@ -83,3 +83,6 @@ fos_user:
         form:
             type: tgc_admin_registration
             validation_groups: ~
+    profile:
+        form:
+            type: tgc_admin_profile

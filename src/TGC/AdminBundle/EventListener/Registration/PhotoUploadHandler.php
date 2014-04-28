@@ -20,7 +20,8 @@ class PhotoUploadHandler implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return array(
-            FOSUserEvents::REGISTRATION_SUCCESS => 'upload'
+            FOSUserEvents::REGISTRATION_SUCCESS => 'upload',
+            FOSUserEvents::PROFILE_EDIT_SUCCESS => 'upload'
         );
     }
 
@@ -30,7 +31,7 @@ class PhotoUploadHandler implements EventSubscriberInterface
     public function upload(FormEvent $event)
     {
         $form = $event->getForm();
-        if ($form->isValid()) {
+        if ($form->isValid() && isset($form['photo'])) {
             $username = $form['username']->getData();
             $file = $form['photo']->getData();
             

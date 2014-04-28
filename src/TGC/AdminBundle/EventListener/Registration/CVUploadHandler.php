@@ -20,7 +20,8 @@ class CVUploadHandler implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return array(
-            FOSUserEvents::REGISTRATION_SUCCESS => 'upload'
+            FOSUserEvents::REGISTRATION_SUCCESS => 'upload',
+            FOSUserEvents::PROFILE_EDIT_SUCCESS => 'upload'
         );
     }
 

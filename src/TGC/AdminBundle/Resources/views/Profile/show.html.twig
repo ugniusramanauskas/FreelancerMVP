@@ -6,10 +6,14 @@
     <div class="single-resume-content">
 
         <div class="resume_description">
+            
+{#
             {% if 'ROLE_CLUB' in user.roles %}
                 <h2 class="job-overview-title">Club name</h2>
                 <p>{{ user.clubName }}</p>
             {% endif %}
+#}
+
             <h2 class="job-overview-title">Description</h2>
             <p>{{ user.description }}</p>
             
@@ -23,6 +27,8 @@
                     {% endfor %}
                 </ul>
             {% endif %}
+
+{#
             {% if 'ROLE_CLUB' in user.roles %}
                 <h2>Current locations</h2>
                 <ul>
@@ -33,19 +39,25 @@
                     {% endfor %}
                 </ul>
             {% endif %}
-{#            <h3>Preferred tasks and projects</h3>
+#}
+
+{#            
+            <h3>Preferred tasks and projects</h3>
  			<ul>
 				<li>Advanced graduate researcher in post-conflict institutional design, transitional justice, peace-building and democratization with substantial professional experience from Central Europe and the Western Balkans.</li>
 				<li>Focus on political transformation, transitional justice, risk assessment, democratization, and the rule of law.</li>
 				<li>Thorough presentation, problem solving and leadership skills improved through Research Assistant and Project Manager positions and project work.</li>
 				<li>As a junior researcher at the Department of Sociology of Politics, I have been working as a researcher on the European Project Reconstituting Democracy in Europe, especially focusing on issues of collective identities and European integration (http://www.reconproject.eu/). I further focus on the issue of Euroscepticism in Central and Eastern Europe.</li>
-			</ul> #}
+			</ul> 
+#}
+
+
         </div>
 
         <div class="resume-info">
             {% if 'ROLE_BUSINESS' not in user.roles %}
                 {% if 'ROLE_CLUB' in user.roles %}
-                    <h2>Organisation's skills and possible projects</h2>
+                    <h2>Skills and possible projects</h2>
                 {% else %}
                     <h2>Skills</h2>
                 {% endif %}
@@ -66,23 +78,34 @@
                             </li>
                         {% endfor %}
                     </ul>
+
+{#                    
                     <h2>University</h2>
                     <p>{{ user.university }}{% if user.degree %}, {{ user.degree }}{% endif %}</p>
                     {% if 'ROLE_CLUB' in user.roles and user.universityEmail %}
                         <h2>University email</h2>
                         <p>{{ user.universityEmail }}</p>
                     {% endif %}
+
                     <h2>Organization's website</h2>
                     <p><a href="{{ user.website }}">{{ user.website }}</a></p>
+#}
                 {% else %}
                     <h2>Education</h2>
                     <dl class="resume-manager-education">
                         <dt>
-                            <h3>{{ user.university }}{% if user.degree %}, {{ user.degree }}{% endif %}</h3>
+                            <h3>{{ user.university }}</h3>
                         </dt>
+
+                        {% if user.degree %}
+                        <dd>
+                            <strong class="qualification">{{ user.degree }}</strong>
+                        </dd>
+                        {% endif %}
+
                     </dl>
                 {% endif %}
-    {# 					<dd>
+                {#	<dd>
                             <small class="date">Dec 2009 - Sep 2011</small>
                             <strong class="qualification">Distinction, Russian and East European Studies</strong>
                     </dd> #}
@@ -109,7 +132,11 @@
             </div>
             <ul class="resume-links">
                 {% if user.linkedin %}
-                    <li class="resume-link resume-link-linkedin"><a rel="nofollow" href="{{ user.linkedin }}">LinkedIn</a></li>
+                    <li class="resume-link resume-link-linkedin">
+                        <a rel="nofollow" href="{{ user.linkedin }}">
+                        LinkedIn
+                        </a>
+                    </li>
                 {% endif %}
                 {% if user.website %}
                     <li class="resume-link resume-link-linkedin"><a rel="nofollow" href="{{ user.website }}">Website</a></li>
@@ -118,16 +145,19 @@
                     <li class="resume-link resume-link-linkedin">Phone: {{ user.phone }}</li>
                 {% endif %}
             </ul>
-
+{#
             <ul class="meta">
+
 
                 {% for sector in user.sectors %}
                     <li class="resume-category">
                         <a href="http://www.gradconsultancy.com"><i class="icon-tag"></i>{{ sector.name }}</a>
                     </li>
                 {% endfor %}
-            </ul>
 
+
+            </ul>
+#}
         </div>
     </div>
 </div>

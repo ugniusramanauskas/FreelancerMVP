@@ -1,5 +1,5 @@
 var TGCRegistration = function() {
-    var bioCount, skillCount;
+    var bioCount, skillCount, locationCount;
 
     function init() {
         initFormButtons();
@@ -19,7 +19,7 @@ var TGCRegistration = function() {
                 $button.removeAttr('disabled');
                 $button.html('Go to step 2');
             };
-            validateForm($("#registration-step1 input"), success, fail);
+            validateForm($("#registration-step1 input, #registration-step1 select"), success, fail);
         });
         
         $("#fos_user_registration_form_submit").click(function(e) {
@@ -41,6 +41,7 @@ var TGCRegistration = function() {
     function initFormFields() {
         bioCount = $("#bio-fields-list").attr('data-count');
         skillCount = $("#skills-fields-list").attr('data-count');
+        locationCount = $("#skills-fields-list").attr('data-count');
     
         $('#add-another-bio').click(function() {
             var bioList = $('#bio-fields-list');
@@ -72,6 +73,22 @@ var TGCRegistration = function() {
         });
         if (skillCount == 0) {
             $('#add-another-skill').click();
+        }
+        
+        $('#add-another-location').click(function() {
+            var locationList = $('#location-fields-list');
+
+            var newWidget = locationList.attr('data-prototype');
+            newWidget = newWidget.replace(/__name__/g, locationCount);
+            locationCount++;
+
+            var newLi = $('<li></li>').html(newWidget + '<a class="remove-field">[x]</a>');
+            newLi.appendTo(locationList);
+
+            return false;
+        });
+        if (locationCount == 0) {
+            $('#add-another-location').click();
         }
         
         $(document).on('click', ".remove-field", function() {

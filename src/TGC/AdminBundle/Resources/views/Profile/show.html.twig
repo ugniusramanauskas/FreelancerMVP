@@ -6,11 +6,39 @@
     <div class="single-resume-content">
 
         <div class="resume_description">
-            <h2 class="job-overview-title">Description</h2>
-            <p>{{ user.description }}</p>
             
-            {% if 'ROLE_CLUB' not in user.roles %}
-                <h3>Bio</h3>
+{#
+            {% if 'ROLE_CLUB' in user.roles %}
+                <h2 class="job-overview-title">Club name</h2>
+                <p>{{ user.clubName }}</p>
+            {% endif %}
+#}
+
+            <h2 class="job-overview-title">Summary</h2>
+            <p>{{ user.description }}
+
+            {% if 'ROLE_CLUB' in user.roles %}
+
+                <h2 class="job-overview-title">About Us</h2>
+
+                <ul>
+                    <li class="resume-category">
+                        CUSCG was founded in early 2012 by Ravi Hanspal, while studying Natural Sciences at Cambridge, with the aim to provide students with the opportunity to have hands-on interaction with the business world around them.
+                    </li>
+
+                    <li class="resume-category">
+                        We have a network of over 5,000 talented students from a growing number of top universities all over the world. We are working hard to create more partnerships and through that increase our network even further. 
+                    </li>
+
+                    <li class="resume-category">
+                        We’ve worked on projects with start-ups, social enterprises and a global private equity firm. Industries we have worked in also include retail, non-profits, education and technology.
+                    </li>
+                </ul>
+
+            {% endif %}
+
+            {% if 'ROLE_CONSULTANT' in user.roles %}
+                <h2>Bio</h2>
                 <ul>
                     {% for bio in user.bio %}
                         <li class="resume-category">
@@ -19,41 +47,131 @@
                     {% endfor %}
                 </ul>
             {% endif %}
-{#            <h3>Preferred tasks and projects</h3>
+
+{#
+            {% if 'ROLE_CLUB' in user.roles %}
+                <h2>Current locations</h2>
+                <ul>
+                    {% for location in user.locations %}
+                        <li class="resume-category">
+                            {{ location }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+#}
+
+{#            
+            <h3>Preferred tasks and projects</h3>
  			<ul>
 				<li>Advanced graduate researcher in post-conflict institutional design, transitional justice, peace-building and democratization with substantial professional experience from Central Europe and the Western Balkans.</li>
 				<li>Focus on political transformation, transitional justice, risk assessment, democratization, and the rule of law.</li>
 				<li>Thorough presentation, problem solving and leadership skills improved through Research Assistant and Project Manager positions and project work.</li>
 				<li>As a junior researcher at the Department of Sociology of Politics, I have been working as a researcher on the European Project Reconstituting Democracy in Europe, especially focusing on issues of collective identities and European integration (http://www.reconproject.eu/). I further focus on the issue of Euroscepticism in Central and Eastern Europe.</li>
-			</ul> #}
+			</ul> 
+#}
+
+
         </div>
 
         <div class="resume-info">
+            {% if 'ROLE_BUSINESS' not in user.roles %}
+                <h2>Sectors</h2>
+                <ul>
+                    {% for sector in user.sectors %}
+                        <li class="resume-category">
+                            {{ sector.name }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
 
-            <h2>Skills</h2>
-            <ul>
-                {% for skill in user.skills %}
-                    <li class="resume-category">
-                        {{ skill }}
-                    </li>
-                {% endfor %}
-            </ul>
 
-            <h2>Education</h2>
-            <dl class="resume-manager-education">
-                <dt>
-                    <h3>{{ user.university }}{% if user.degree %}, {{ user.degree }}{% endif %}</h3>
-                </dt>
-{# 					<dd>
-                        <small class="date">Dec 2009 - Sep 2011</small>
-                        <strong class="qualification">Distinction, Russian and East European Studies</strong>
-                </dd> #}
+            {% if 'ROLE_BUSINESS' not in user.roles %}
+                {% if 'ROLE_CLUB' in user.roles %}
+                    <h2>Skills and possible projects</h2>
+                {% else %}
+                    <h2>Skills</h2>
+                {% endif %}
+                <ul>
+                    {% for skill in user.skills %}
+                        <li class="resume-category">
+                            {{ skill }}
+                        </li>
+                    {% endfor %}
+                </ul>
 
-            </dl>
+                {% if 'ROLE_CLUB' not in user.roles %}
+                    <h2>Education</h2>
+                    <dl class="resume-manager-education">
+                        <dt>
+                            <h3>{{ user.university }}</h3>
+                        </dt>
+
+                        {% if user.degree %}
+                        <dd>
+                            <strong class="qualification">{{ user.degree }}</strong>
+                        </dd>
+                        {% endif %}
+
+                    </dl>
+
+                {% endif %}
+
+                {% if 'ROLE_CLUB' in user.roles %}
+
+                    <h2>Past Experience</h2>
+                    <dl class="resume-manager-education">
+                        <dt>
+                            <h3>Private Equity in Emerging Markets</h3>
+                        </dt>
+                        <dd>
+                            <strong class="qualification">Opportunities in Indonesia’s Healthcare, Consumer Goods and Telecommunications Sectors</strong>
+                            <ul>
+                                <li>Reached the local economies and industry trends and the evaluation of potential acquisition targets. </li>
+                                <li>Looked into opportunities within emerging markets, particularly focusing in Indonesia and South-East Asia.</li>
+                            </ul>
+                        </dd>
+                        <dt>
+                            <h3>GC Project</h3>
+                        </dt>
+                        <dd>
+                            <strong class="qualification">Launching an early stage Ed Tech startup</strong>
+                            <ul>
+                                <li>Researched market background and the competitive background, marketing and growth strategy, product development, and legal and technology due diligence.</li>
+                                <li>The largest CUSCG project to date, involving a team of 20 CUSCG members.</li>
+                            </ul>
+                        </dd>
+                        <dt>
+                            <h3>Tribe LLC</h3>
+                        </dt>
+                        <dd>
+                            <strong class="qualification">Marketing & growth strategy for a social networking app</strong>
+                            <ul>
+                                <li>Explored cost-effective marketing strategies for Tribe, including the use of social networking and targeted cost-per-click adverts. </li>
+                                <li>Analytics were also used to determine the level of interest and appeal by the various audience groups.</li>
+                                <li>CUSCG followed this up by working with Tribe to launch an updated product.</li>
+                            </ul>
+                        </dd>
+
+                    </dl>
+
+                {% endif %}
+
+
+
+                {#	<dd>
+                            <small class="date">Dec 2009 - Sep 2011</small>
+                            <strong class="qualification">Distinction, Russian and East European Studies</strong>
+                    </dd> #}
+
+            {% endif %}
         </div>
 
         <div class="resume-aside">
-            <img src="{{ userPhotoUrl(user) }}" width="171" alt="Photo">
+            {% if 'ROLE_BUSINESS' not in user.roles %}
+                <img src="{{ userPhotoUrl(user) }}" width="171" alt="Photo">
+            {% endif %}
 
             <div class="resume_contact">
                 <input class="resume_contact_button" type="button" value="Contact">
@@ -69,7 +187,11 @@
             </div>
             <ul class="resume-links">
                 {% if user.linkedin %}
-                    <li class="resume-link resume-link-linkedin"><a rel="nofollow" href="{{ user.linkedin }}">LinkedIn</a></li>
+                    <li class="resume-link resume-link-linkedin">
+                        <a rel="nofollow" href="{{ user.linkedin }}">
+                        LinkedIn
+                        </a>
+                    </li>
                 {% endif %}
                 {% if user.website %}
                     <li class="resume-link resume-link-linkedin"><a rel="nofollow" href="{{ user.website }}">Website</a></li>
@@ -78,15 +200,19 @@
                     <li class="resume-link resume-link-linkedin">Phone: {{ user.phone }}</li>
                 {% endif %}
             </ul>
-
+{#
             <ul class="meta">
+
 
                 {% for sector in user.sectors %}
                     <li class="resume-category">
                         <a href="http://www.gradconsultancy.com"><i class="icon-tag"></i>{{ sector.name }}</a>
                     </li>
                 {% endfor %}
+
+
             </ul>
+#}
 
         </div>
     </div>

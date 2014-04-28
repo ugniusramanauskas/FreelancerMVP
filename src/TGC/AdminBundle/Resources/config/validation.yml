@@ -1,10 +1,10 @@
 TGC\AdminBundle\Entity\User:
     properties:
         location:
-            - NotBlank: { groups: [business, consultant, club] }
+            - NotBlank: { groups: [business, consultant] }
             - Length:
                 min: 3
-                groups: [business, consultant, club]
+                groups: [business, consultant]
         firstName:
             - NotBlank: { groups: [business, consultant] }
         lastName:
@@ -32,7 +32,14 @@ TGC\AdminBundle\Entity\User:
             - NotBlank: { groups: [consultant] }
         clubName:
             - NotBlank: { groups: [club] }
+        locations:
+            - NotBlank: { groups: [club] }
         invitation:
             - NotNull: 
                 groups: [club]
                 message: Your invitation is wrong
+        roles:
+            - Choice:
+                choices:  [ROLE_CONSULTANT, ROLE_BUSINESS, ROLE_CLUB]
+                multiple: true
+                multipleMessage:  Choose a valid role

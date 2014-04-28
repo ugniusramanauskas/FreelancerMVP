@@ -98,6 +98,10 @@
                                 <li id="menu-item-29" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-14 current_page_item menu-item-29"><a href="{{ path('project_new') }}">Post a Project</a></li> #}
                                 <li id="menu-item-3021" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3021"><a href="{{ path('project_search') }}">Search Projects</a></li>
                                 <li id="menu-item-3021" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3021"><a href="{{ path('fos_user_profile_show') }} ">My Profile</a></li>
+{#
+                                <li id="menu-item-3021" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3021"><a href="{{ path('fos_user_profile_edit') }} ">Edit My Profile</a></li>
+#}
+
                             {% endif %}
                                 <li id="menu-item-3021" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3021">
                                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}

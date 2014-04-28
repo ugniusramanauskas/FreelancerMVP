@@ -42,6 +42,7 @@ class RegistrationFormType extends RegistrationFormTypeBase
                 $builder
                     ->create('roles', 'choice', array(
                         'choices' => $roles,
+                        'empty_value' => '------- SELECT -------'
                     ))
                     ->addModelTransformer($arrayTransformer)
             )

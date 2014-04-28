@@ -21,9 +21,17 @@
         {{ form_widget(form.clubName) }}
     </div>
     <div>
-        {{ form_label(form.location, 'Current location') }}
-        {{ form_errors(form.location) }}
-        {{ form_widget(form.location) }}
+        {{ form_label(form.locations, 'Current location') }}
+        <ul id="location-fields-list" data-prototype="{{ form_widget(form.locations.vars.prototype)|e }}" data-count="{{ form.locations|length }}">
+        {% for locationField in form.locations %}
+            <li>
+                {{ form_errors(locationField) }}
+                {{ form_widget(locationField) }}
+                <a class="remove-field">[x]</a>
+            </li>
+        {% endfor %}
+        </ul>
+        <a href="#" id="add-another-location">Add</a>
     </div>
     <div>
         {{ form_label(form.universityEmail) }}

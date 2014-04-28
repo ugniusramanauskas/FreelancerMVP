@@ -1044,4 +1044,32 @@ class User extends BaseUser
     {
         return $this->website;
     }
+    /**
+     * @var array
+     */
+    private $locations;
+
+
+    /**
+     * Set locations
+     *
+     * @param array $locations
+     * @return User
+     */
+    public function setLocations($locations)
+    {
+        $this->locations = $locations;
+    
+        return $this;
+    }
+
+    /**
+     * Get locations
+     *
+     * @return array 
+     */
+    public function getLocations()
+    {
+        return $this->locations;
+    }
 }

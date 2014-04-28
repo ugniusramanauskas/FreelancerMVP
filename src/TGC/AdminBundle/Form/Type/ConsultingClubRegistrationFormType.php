@@ -17,7 +17,11 @@ class ConsultingClubRegistrationFormType extends RegistrationFormTypeBase
         // add your custom field
         $builder->add('clubName')
             ->add('phone')
-            ->add('location')
+            ->add('locations', 'collection', array(
+                'type'      => 'text',
+                'allow_add' => true,
+                'allow_delete' => true
+            ))
             ->add('description', null, array(
                 'required'  => false
             ))

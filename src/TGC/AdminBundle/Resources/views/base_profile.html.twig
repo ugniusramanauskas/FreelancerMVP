@@ -5,6 +5,8 @@
         <h1 class="page-title name">
             {% if 'ROLE_CLUB' in user.roles %}
                 {{ user.clubName }}
+            {% elseif 'ROLE_BUSINESS' in user.roles %}
+                {{ user.businessName }}
             {% else %}
                 {{ user.firstName }} {{ user.lastName }}
             {% endif %}
@@ -12,7 +14,15 @@
         <h2 class="page-subtitle">
             <ul>
                 <li class="job-title">{{ user.degree }}</li>
-                <li class="location"><i class="icon-location"></i> <span class="candidate-location">{{ user.location }}</span></li>
+                {% if 'ROLE_CLUB' not in user.roles %}
+                    <li class="location"><i class="icon-location"></i> <span class="candidate-location">{{ user.location }}</span></li>
+                {% endif %}
+
+                {% if 'ROLE_CLUB' in user.roles %}
+                    <li class="location"><i class="icon-location"></i> <span class="candidate-location">{{ user.university }}</span></li>
+                    <li class="location"><i class="icon-location"></i> <span class="candidate-location">{{ user.locations[0] }}</span></li>                    
+                {% endif %}
+
                 <li class="date-posted" itemprop="datePosted"><i class="icon-calendar"></i> <date>Updated on {{ user.updated|date('Y-m-d') }}</date></li>
             </ul>
         </h2>

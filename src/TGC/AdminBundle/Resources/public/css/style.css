@@ -1027,7 +1027,7 @@ ul.nav-menu-primary li:hover ul ul,
 .page-header {
 	font: normal 38px/normal 'Varela Round', sans-serif;
 	text-align: center;
-	padding: 20px 0;
+	padding: 10px 0;
 	background: #aaaaaa;
 	border-bottom: 1px solid #999;
 }
@@ -1059,7 +1059,7 @@ ul.nav-menu-primary li:hover ul ul,
 .page-subtitle {
 	font: normal 14px/normal 'Montserrat', sans-serif;
 	color: #5a5b5e;
-	margin-top: -15px;
+	margin-top: -8px;
 }
 /*9a9b9e*/
 .page-subtitle ul {
@@ -3816,6 +3816,9 @@ body .pac-container {
     -moz-transition: all 0.3s ease-out;
     -o-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
+}
+.projects-wrap .box-inner .info-box.title {
+    height: 64px;
 }
 body.no-touch .box-inner:hover .info-box, body.touch .box-inner.touchFocus .info-box {
     margin-bottom: 0;

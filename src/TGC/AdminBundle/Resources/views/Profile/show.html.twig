@@ -17,21 +17,25 @@
             <h2 class="job-overview-title">Summary</h2>
             <p>{{ user.description }}
 
-            <h2 class="job-overview-title">About Us</h2>
+            {% if 'ROLE_CLUB' in user.roles %}
 
-            <ul>
-                <li class="resume-category">
-                    CUSCG was founded in early 2012 by Ravi Hanspal, while studying Natural Sciences at Cambridge, with the aim to provide students with the opportunity to have hands-on interaction with the business world around them.
-                </li>
+                <h2 class="job-overview-title">About Us</h2>
 
-                <li class="resume-category">
-                    We have a network of over 5,000 talented students from a growing number of top universities all over the world. We are working hard to create more partnerships and through that increase our network even further. 
-                </li>
+                <ul>
+                    <li class="resume-category">
+                        CUSCG was founded in early 2012 by Ravi Hanspal, while studying Natural Sciences at Cambridge, with the aim to provide students with the opportunity to have hands-on interaction with the business world around them.
+                    </li>
 
-                <li class="resume-category">
-                    We’ve worked on projects with start-ups, social enterprises and a global private equity firm. Industries we have worked in also include retail, non-profits, education and technology.
-                </li>
-            </ul>
+                    <li class="resume-category">
+                        We have a network of over 5,000 talented students from a growing number of top universities all over the world. We are working hard to create more partnerships and through that increase our network even further. 
+                    </li>
+
+                    <li class="resume-category">
+                        We’ve worked on projects with start-ups, social enterprises and a global private equity firm. Industries we have worked in also include retail, non-profits, education and technology.
+                    </li>
+                </ul>
+
+            {% endif %}
 
             {% if 'ROLE_CONSULTANT' in user.roles %}
                 <h2>Bio</h2>
@@ -71,7 +75,7 @@
         </div>
 
         <div class="resume-info">
-            {% if 'ROLE_CLUB' in user.roles %}
+            {% if 'ROLE_BUSINESS' not in user.roles %}
                 <h2>Sectors</h2>
                 <ul>
                     {% for sector in user.sectors %}

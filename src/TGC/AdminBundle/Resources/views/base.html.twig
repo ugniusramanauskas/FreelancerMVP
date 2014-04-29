@@ -21,22 +21,23 @@
     <link rel="alternate" type="application/rss+xml" title="Jobify » Comments Feed" href="jobify/comments/feed/">
 
     {% stylesheets 
-        '@TGCAdminBundle/Resources/public/css/woocommerce-layout.css'
-        '@TGCAdminBundle/Resources/public/css/woocommerce-smallscreen.css'
-        '@TGCAdminBundle/Resources/public/css/woocommerce.css'
-        '@TGCAdminBundle/Resources/public/css/chosen.css'
-        '@TGCAdminBundle/Resources/public/css/frontend.css'
-        '@TGCAdminBundle/Resources/public/css/jquery-ui.css'
-        '@TGCAdminBundle/Resources/public/css/frontend(1).css'
-        '@TGCAdminBundle/Resources/public/css/packages.css'
-        '@TGCAdminBundle/Resources/public/css/fontscss.css'
-        '@TGCAdminBundle/Resources/public/css/animate.css'
-        '@TGCAdminBundle/Resources/public/css/entypo.css'
-        '@TGCAdminBundle/Resources/public/css/magnific-popup.css'
-        '@TGCAdminBundle/Resources/public/css/style.css'
-        '@TGCAdminBundle/Resources/public/css/responsive.css'
-        '@TGCAdminBundle/Resources/public/css/shortcodes.css'
-        '@TGCAdminBundle/Resources/public/css/custom.css'
+        'bundles/tgcadmin/css/woocommerce-layout.css'
+        'bundles/tgcadmin/css/woocommerce-smallscreen.css'
+        'bundles/tgcadmin/css/woocommerce.css'
+        'bundles/tgcadmin/css/chosen.css'
+        'bundles/tgcadmin/css/frontend.css'
+        'bundles/tgcadmin/css/jquery-ui.css'
+        'bundles/tgcadmin/css/frontend(1).css'
+        'bundles/tgcadmin/css/packages.css'
+        'bundles/tgcadmin/css/fontscss.css'
+        'bundles/tgcadmin/css/animate.css'
+        'bundles/tgcadmin/css/entypo.css'
+        'bundles/tgcadmin/css/magnific-popup.css'
+        'bundles/tgcadmin/css/style.css'
+        'bundles/tgcadmin/css/responsive.css'
+        'bundles/tgcadmin/css/shortcodes.css'
+        'bundles/tgcadmin/css/custom.css'
+        filter='cssrewrite'
     %}
         <link rel="stylesheet" href="{{ asset_url }}" screen="media" />
     {% endstylesheets %}
@@ -97,16 +98,21 @@
                                 </li>
                                 <li id="menu-item-29" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-14 current_page_item menu-item-29"><a href="{{ path('project_new') }}">Post a Project</a></li> #}
                                 <li id="menu-item-3021" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3021"><a href="{{ path('project_search') }}">Search Projects</a></li>
-                                <li id="menu-item-3021" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3021"><a href="{{ path('fos_user_profile_show') }} ">My Profile</a></li>
-                                <li id="menu-item-3021" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3021"><a href="{{ path('fos_user_profile_edit') }} ">Edit My Profile</a></li>
-
                             {% endif %}
                                 <li id="menu-item-3021" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3021">
                                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                         <span style="padding: 8px 14px; vertical-align: middle;">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</span><span>|</span>
-                                        <a href="{{ path('fos_user_security_logout') }}">
-                                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                                        </a>
+                                        <li id="menu-item-3021" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3021 has-children">
+                                            <a href="{{ path('fos_user_profile_show') }} ">My Profile</a>
+                                            <ul class="sub-menu">
+                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3021"><a href="{{ path('fos_user_profile_edit') }} ">Edit My Profile</a></li>
+                                                <li id="menu-item-3173" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3173">
+                                                    <a href="{{ path('fos_user_security_logout') }}">
+                                                        {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
                                     {% else %}
                                         <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
                                     {% endif %}

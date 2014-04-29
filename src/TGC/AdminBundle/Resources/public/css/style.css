@@ -938,7 +938,7 @@ input.button-medium,
 }
 
 .nav-menu-primary li.has-children a:after {
-	 content: '\e874';
+	 content: 'v';
 }
 
 .nav-menu-primary li.has-children li a:after {

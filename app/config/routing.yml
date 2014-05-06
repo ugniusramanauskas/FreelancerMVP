@@ -1,13 +1,3 @@
-hwi_oauth_redirect:
-    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
-    prefix:   /connect2
-
-hwi_oauth_login:
-    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
-    prefix: /oauth
-
-linkedin_login:
-    pattern: /oauth/check-linkedin
 
 tgc_admin:
     resource: "@TGCAdminBundle/Resources/config/routing.yml"

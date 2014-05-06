@@ -23,24 +23,14 @@ security:
                 path:   /logout
                 target: /login
             anonymous:    true
-            oauth:
-                resource_owners:
-                    linkedin: "/oauth/check-linkedin"
-                login_path:        /oauth
-                use_forward:       false
-                failure_path:      /oauth
-
-                oauth_user_provider:
-                    service: hwi_oauth.user.provider
+   
 
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
-        - { path: ^/oauth, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/connect, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        #^added line for linkedin also line 27-39 new
+
 
 # security:
 #     encoders:

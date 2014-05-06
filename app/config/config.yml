@@ -72,6 +72,7 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: TGC\AdminBundle\Entity\User
-    registration:
-        form:
-            type: tgc_admin_registration
+
+parameters:
+    oauth_token: "77r2rsay1jaw7e"
+    oauth_secret: "dt3lnsiCfXXHdQA0"

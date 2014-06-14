@@ -23,7 +23,7 @@ security:
                 path:   /logout
                 target: /login
             anonymous:    true
-
+   
 
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
@@ -114,3 +114,5 @@ security:
 
 #     access_control:
 #         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+
+

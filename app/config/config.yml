@@ -83,3 +83,7 @@ fos_user:
         form:
             type: tgc_admin_registration
             validation_groups: ~
+
+parameters:
+    oauth_token: "77r2rsay1jaw7e"
+    oauth_secret: "dt3lnsiCfXXHdQA0"

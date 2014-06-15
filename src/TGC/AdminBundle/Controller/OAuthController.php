@@ -62,13 +62,26 @@ class OAuthController extends Controller {
             ""
         );
         
-        $result = json_decode($linkedin->request('people/~:(id,first-name,last-name,formatted-name,location:(name),industry,summary,specialties,positions,picture-url,proposal-comments,associations,interests,languages,skills,certifications,educations,courses,volunteer,three-current-positions,three-past-positions,recommendations-received,job-bookmarks,suggestions,honors-awards)?format=json'));
+
+
+        $requestString = 'people/~:(id,first-name,last-name,';
+        $requestString .= 'formatted-name,location:(name),industry,summary,';
+        $requestString .=     'specialties,positions,picture-url,proposal-comments,';
+        $requestString .=     'associations,interests,languages,skills,certifications,';
+        $requestString .=     'educations,courses,volunteer,three-current-positions,';
+        $requestString .=     'three-past-positions,recommendations-received,job-bookmarks,';
+        $requestString .=     'suggestions,honors-awards)?format=json';
+
+
+
+        $result = json_decode($linkedin->request($requestString));
+        
         var_dump($result);
         
         //id,first-name,last-name,formatted-name,location:(name),industry,summary,specialties,positions,picture-url
         //proposal-comments,associations,interests,languages,skills,certifications,educations,courses,volunteer,three-current-positions,three-past-positions,recommendations-received,job-bookmarks,suggestions,honors-awards
         
-        return new Response("success! token: ".$token);
+        return new Response("success! token: " . $token);
     }
     
     private function setAccessToken($accessToken) {

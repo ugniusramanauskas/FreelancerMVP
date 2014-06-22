@@ -128,3 +128,46 @@ ul.job_listings .job_listing:hover,
     width: 400px;
 }
 
+
+
+/*LinkedIn button - incomplete CSS:*/
+.oBtnJumbo {
+    margin-bottom: 20px;
+    display: block;
+    font-size: 18px;
+    padding: 12px 24px;
+    font-weight: 600;
+    height: 50px;
+}
+
+.oSocialImg {
+    width: 35px;
+    height: 35px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    background-size: 35px auto;
+}
+
+.oSignupSocialLargeIcons .oSignupTabs .oSocialIconsLarge button .oSocialImg {
+    background-size: 32px 32px;
+    width: 32px;
+    height: 32px;
+    float: left;
+    margin-right: 15px;
+}
+
+.oSignupSocialLargeIcons .oSignupTabs .oSocialIconsLarge button.oLinkedinConnectLarge i {
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiP…w0NS4zNjktODIuNzY4LDQ1LjM2OVYxODcuMzMzeiIgZmlsbD0id2hpdGUiLz4KCjwvc3ZnPgoK);
+}
+#registration-form button i {
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiP…w0NS4zNjktODIuNzY4LDQ1LjM2OVYxODcuMzMzeiIgZmlsbD0id2hpdGUiLz4KCjwvc3ZnPgoK);
+}
+
+
+
+
+
+

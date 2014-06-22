@@ -175,9 +175,6 @@ class ProjectController extends Controller
         ));
     }
 
-
-
-
     /**
     * Creates a form to create a Project entity.
     *

@@ -48,3 +48,12 @@ services:
     tgc_admin.invitation.form.data_transformer:
         class: TGC\AdminBundle\Form\DataTransformer\InvitationToCodeTransformer
         arguments: [@doctrine.orm.entity_manager]
+
+    tgc_admin.user_manager:
+        class: TGC\AdminBundle\User\Manager\UserManager
+        arguments: 
+            - @security.encoder_factory
+            - @fos_user.util.username_canonicalizer
+            - @fos_user.util.email_canonicalizer
+            - @fos_user.entity_manager
+            - %fos_user.model.user.class%

@@ -47,6 +47,10 @@ fos_user_register:
     resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
     prefix: /register
 
+custom_register_consultant:
+    pattern:  /register_consultant
+    defaults: { _controller: TGCAdminBundle:Registration:registerConsultant }
+
 fos_user_resetting:
     resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
     prefix: /resetting
@@ -54,3 +58,15 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
+    
+oauth_login:
+    pattern:  /oauth/login
+    defaults: { _controller: TGCAdminBundle:OAuth:login }
+
+oauth_login_callback:
+    pattern:  /oauth/callback
+    defaults: { _controller: TGCAdminBundle:OAuth:callback }
+    
+oauth_pull_data:
+    pattern:  /oauth/pulldata
+    defaults: { _controller: TGCAdminBundle:OAuth:pull }

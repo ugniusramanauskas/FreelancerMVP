@@ -47,7 +47,7 @@ class OAuthController extends Controller {
                 $_GET['oauth_verifier'],
                 $token->getRequestTokenSecret()
             );
-            return $this->redirect($router->generate('oauth_pull_data', array(), true));
+            return $this->redirect($router->generate('custom_register_consultant', array(), true));
         }
         return new Response("error!");
     }
@@ -55,29 +55,27 @@ class OAuthController extends Controller {
     public function pullAction(Request $request) {
         $storage = new SymfonySession($request->getSession());
         $token = $storage->retrieveAccessToken('LinkedinService');
-        $linkedin = LinkedinService::create(
-            $storage,
-            $this->container->getParameter( 'oauth_token' ),
-            $this->container->getParameter( 'oauth_secret' ),
-            ""
-        );
-        
 
+        if ($token) {
+            $linkedin = LinkedinService::create(
+                $storage,
+                $this->container->getParameter( 'oauth_token' ),
+                $this->container->getParameter( 'oauth_secret' ),
+                ""
+            );
 
-        $requestString = 'people/~:(id,first-name,last-name,';
-        $requestString .= 'formatted-name,location:(name),industry,summary,';
-        $requestString .=     'specialties,positions,picture-url,proposal-comments,';
-        $requestString .=     'associations,interests,languages,skills,certifications,';
-        $requestString .=     'educations,courses,volunteer,three-current-positions,';
-        $requestString .=     'three-past-positions,recommendations-received,job-bookmarks,';
-        $requestString .=     'suggestions,honors-awards)?format=json';
+            $requestString = 'people/~:(id,first-name,last-name,';
+            $requestString .= 'formatted-name,location:(name),industry,summary,';
+            $requestString .=     'specialties,positions,picture-url,proposal-comments,';
+            $requestString .=     'associations,interests,languages,skills,certifications,';
+            $requestString .=     'educations,courses,volunteer,three-current-positions,';
+            $requestString .=     'three-past-positions,recommendations-received,job-bookmarks,';
+            $requestString .=     'suggestions,honors-awards)?format=json';
 
-
-
-        $result = json_decode($linkedin->request($requestString));
-        
-        var_dump($result);
-        
+            $result = json_decode($linkedin->request($requestString));
+            
+            var_dump($result);
+        }        
         //id,first-name,last-name,formatted-name,location:(name),industry,summary,specialties,positions,picture-url
         //proposal-comments,associations,interests,languages,skills,certifications,educations,courses,volunteer,three-current-positions,three-past-positions,recommendations-received,job-bookmarks,suggestions,honors-awards
         

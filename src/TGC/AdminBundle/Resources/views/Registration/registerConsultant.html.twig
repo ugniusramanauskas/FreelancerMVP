@@ -1,0 +1,140 @@
+{% extends "TGCAdminBundle::fos_registration_layout.html.twig" %}
+
+{% block title %}Consultant sign up{% endblock title %}
+
+
+{% block fos_user_content %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+
+{{ form_start(linkedin_form) }}
+
+    {{ form_row(linkedin_form.submit) }}
+
+{{ form_end(linkedin_form) }}
+
+
+<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(reg_form) }} 
+      id="registration-form"
+      method="POST" class="fos_user_registration_register"
+      data-validate-url="{{ path('registration_validate') }}">
+
+    <div class="form_errors">
+        {{ form_errors(reg_form) }}
+    </div>
+
+
+{#         <button href="#" onclick="return false;" class="oLinkedInConnectButton oLinkedinConnectLarge oBtn oBtnSecondary oBtnJumbo">
+            <i class="oImg oSocialImg"></i>
+            <span>
+                Sign up with LinkedIn
+            </span>
+        </button> #}
+
+        <div>
+            {{ form_label(reg_form.firstName) }}
+            {{ form_errors(reg_form.firstName) }}
+            {{ form_widget(reg_form.firstName) }}
+        </div>
+        <div>
+            {{ form_label(reg_form.lastName) }}
+            {{ form_errors(reg_form.lastName) }}
+            {{ form_widget(reg_form.lastName) }}
+        </div>
+
+    <div id="registration-step1">
+        {{ form_row(reg_form.email) }}
+        {{ form_row(reg_form.username) }}
+        {{ form_row(reg_form.plainPassword) }}
+    </div>
+        <div>
+            <span class="consultant-field">{{ form_label(reg_form.location, 'Current location') }}</span>
+            {{ form_errors(reg_form.location) }}
+            {{ form_widget(reg_form.location) }}
+        </div>
+        <div class="consultant-field">
+            {{ form_label(reg_form.universityEmail) }}
+            {{ form_errors(reg_form.universityEmail) }}
+            {{ form_widget(reg_form.universityEmail) }}
+        </div>
+        <div class="consultant-field">
+            {{ form_label(reg_form.university, 'Past/ Current University') }}
+            {{ form_errors(reg_form.university) }}
+            {{ form_widget(reg_form.university) }}
+        </div>
+        <div class="consultant-field">
+            {{ form_label(reg_form.degree) }}
+            {{ form_errors(reg_form.degree) }}
+            {{ form_widget(reg_form.degree) }}
+        </div>
+        <div class="consultant-field">
+            {{ form_label(reg_form.sectors) }}
+            {{ form_errors(reg_form.sectors) }}
+            {% for sectorField in reg_form.sectors %}
+                <div>
+                    {{ form_widget(sectorField) }}
+                    {{ form_label(sectorField) }}
+                    {{ form_errors(sectorField) }}
+                </div>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form_label(reg_form.description) }}
+            {{ form_errors(reg_form.description) }}
+            {{ form_widget(reg_form.description) }}
+        </div>
+        <div class="consultant-field">
+            {{ form_label(reg_form.bio) }}
+            <ul id="bio-fields-list" data-prototype="{{ form_widget(reg_form.bio.vars.prototype)|e }}" data-count="{{ reg_form.bio|length }}">
+            {% for bioField in reg_form.bio %}
+                <li>
+                    {{ form_errors(bioField) }}
+                    {{ form_widget(bioField) }}
+                    <a class="remove-field">[x]</a>
+                </li>
+            {% endfor %}
+            </ul>
+            <a href="#" id="add-another-bio">Add</a>
+        </div>
+        <div class="consultant-field">
+            {{ form_label(reg_form.skills, 'List your skills and possible projects you can do for businesses.') }}
+            <ul id="skills-fields-list" data-prototype="{{ form_widget(reg_form.skills.vars.prototype)|e }}" data-count="{{ reg_form.skills|length }}">
+            {% for skillField in reg_form.skills %}
+                <li>
+                    {{ form_errors(skillField) }}
+                    {{ form_widget(skillField) }}
+                    <a class="remove-field">[x]</a>
+                </li>
+            {% endfor %}
+            </ul>
+            <a href="#" id="add-another-skill">Add</a>
+        </div>
+        <div class="consultant-field">
+            {{ form_label(reg_form.photo, 'Upload your photo') }}
+            {{ form_errors(reg_form.photo) }}
+            {{ form_widget(reg_form.photo) }}
+        </div>
+        <div class="consultant-field">
+            {{ form_label(reg_form.cv, 'Upload your CV') }}
+            {{ form_errors(reg_form.cv) }}
+            {{ form_widget(reg_form.cv) }}
+        </div>
+        <div class="consultant-field">
+            {{ form_label(reg_form.linkedin, 'Your LinkedIn') }}
+            {{ form_errors(reg_form.linkedin) }}
+            {{ form_widget(reg_form.linkedin) }}
+        </div>
+
+
+
+    <div>
+        {{ form_errors(reg_form.terms) }}
+        {{ form_widget(reg_form.terms) }}
+        {{ form_label(reg_form.terms, 'Accept Website Terms & Conditions') }}
+    </div>
+    {{ form_row(reg_form._token) }}
+    {{ form_row(reg_form.submit) }}
+</form>
+{% endblock fos_user_content %}

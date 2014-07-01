@@ -19,7 +19,7 @@ var TGCRegistration = function() {
                 $button.removeAttr('disabled');
                 $button.html('Go to step 2');
             };
-            validateForm($("#registration-step1 input, #registration-step1 select"), success, fail);
+            validateForm($("#registration-step1 input, #registration-step1 select"), 1, success, fail);
         });
         
         $("#fos_user_registration_form_submit").click(function(e) {
@@ -34,7 +34,7 @@ var TGCRegistration = function() {
                 $button.removeAttr('disabled');
                 $button.html('Submit');
             };
-            validateForm($("#registration-form"), success, fail);
+            validateForm($("#registration-form"), 2, success, fail);
         });
     }
     
@@ -97,9 +97,10 @@ var TGCRegistration = function() {
         });
     }
     
-    function validateForm(fields, successCallback, failCallback) {
+    function validateForm(fields, step, successCallback, failCallback) {
         $("ul.error").remove();
         var formData = fields.serializeArray();
+        formData.push({'name': "fos_user_registration_form[step]", 'value': step});
         // workaround for file field
         fields.find("input[type=file]").each(function() {
             var $this = $(this);

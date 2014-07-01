@@ -109,7 +109,11 @@ class RegistrationFormType extends RegistrationFormTypeBase
                     )
                 )
             )
-            ->add('submit', 'submit');
+            ->add('submit', 'submit')
+            ->add('step', 'hidden', array(
+                'mapped'  => false
+            ))
+            ;
 
         // $builder->add('gender', 'choice', array(
         //     'choices'   => array('m' => 'Male', 'f' => 'Female'),
@@ -131,9 +135,9 @@ class RegistrationFormType extends RegistrationFormTypeBase
             'csrf_protection' => false,
             'validation_groups' => function(FormInterface $form) {
                 $data = $form->getData();
-                if (in_array("ROLE_BUSINESS", $data->getRoles())) {
+                if (in_array("ROLE_BUSINESS", $data->getRoles()) && $form['step']->getData() == 2) {
                     return array('business', 'Default', 'Registration');
-                } elseif (in_array("ROLE_CONSULTANT", $data->getRoles())) {
+                } elseif (in_array("ROLE_CONSULTANT", $data->getRoles()) && $form['step']->getData() == 2) {
                     return array('consultant', 'Default', 'Registration');
                 } else {
                     return array('Default', 'Registration');

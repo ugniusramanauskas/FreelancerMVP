@@ -10,7 +10,6 @@
 /build/
 /vendor/
 /bin/
-/composer.phar
 .DS_Store
 /composer.lock
 /web/upload/

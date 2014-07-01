@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use FOS\UserBundle\Controller\ProfileController as BaseProfileController;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Controller managing the user profile
@@ -58,6 +59,7 @@ class ProfileController extends BaseProfileController
         $formFactory = $this->container->get('fos_user.profile.form.factory');
 
         $form = $formFactory->createForm();
+        $user->setUpdated(new \DateTime('now'));
         $form->setData($user);
 
         if ('POST' === $request->getMethod()) {

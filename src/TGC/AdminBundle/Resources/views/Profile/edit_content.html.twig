@@ -26,6 +26,9 @@
     {% if form.location is defined %}
         {{ form_row(form.location) }}
     {% endif %}
+    {% if form.file is defined %}
+        {{ form_row(form.file) }}
+    {% endif %}
     {% if form.locations is defined %}
         {{ form_label(form.locations) }}
         <ul id="location-fields-list" data-prototype="{{ form_widget(form.locations.vars.prototype)|e }}" data-count="{{ form.locations|length }}">

@@ -1879,13 +1879,23 @@ ul.resumes li.resume:only-child {
 .single-resume-content .resume_description,
 .single-resume-content .resume-info,
 .single-resume-content .resume-aside {
-	float: left;
-	margin-right: 5%;
+    margin-right: 0;
+    float: right;
+    padding-right: 200px;
 }
 
 .job-overview-content .job-overview,
 .single-resume-content .resume_description {
-	width: 43%;
+	width: 65%;
+    padding-left: 150px;
+    float: left;
+}
+
+.resume_description h2 {
+    font-size: 28px;
+    margin: 0px 0;
+}
+
 }
 
 .job-overview-content .job-overview.no-company-desc {
@@ -1899,7 +1909,7 @@ ul.resumes li.resume:only-child {
 
 .job-overview-content .job-meta,
 .single-resume-content .resume-aside {
-	width: 15%;
+	width: 35%;
 }
 
 .job-overview-content .job-meta .meta,

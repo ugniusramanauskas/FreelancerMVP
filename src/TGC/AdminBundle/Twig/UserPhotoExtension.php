@@ -19,6 +19,7 @@ class UserPhotoExtension extends Twig_Extension
     {
         return array(
             'userPhotoUrl' => new Twig_Function_Method($this, 'getPhotoUrl'),
+            'getBusinessLogoUrl' => new Twig_Function_Method($this, 'getBusinessLogoUrl'),
         );
     }
 
@@ -26,6 +27,17 @@ class UserPhotoExtension extends Twig_Extension
     {
         if ($user->getPhoto()) {
             $path = '/'.$this->photosUrl .'/'.$user->getPhoto();
+        } else {
+            $path = '/bundles/tgcadmin/img/jessie.jpg';
+        }
+
+        return $path;
+    }
+
+    public function getBusinessLogoUrl(User $user)
+    {
+        if ($user->getWebPath()) {
+            $path = $user->getWebPath();
         } else {
             $path = '/bundles/tgcadmin/img/jessie.jpg';
         }

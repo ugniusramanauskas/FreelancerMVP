@@ -113,52 +113,66 @@
             {% endif %}
         </div>
 
-        <div class="resume-aside">
-            {% if 'ROLE_BUSINESS' not in user.roles %}
-                <img src="{{ userPhotoUrl(user) }}" width="171" alt="Photo">
-            {% endif %}
+        <div class="profile-right">
+            <div class="resume-aside">
+                {% if 'ROLE_BUSINESS' not in user.roles %}
+                    <img src="{{ userPhotoUrl(user) }}" width="171" alt="Photo">
+                {% else %}
+                    <img src="{{ asset(getBusinessLogoUrl(user)) }}" alt="Photo" />
+                {% endif %}
 
-            <div class="resume_contact">
-                <input class="resume_contact_button" type="button" value="Contact">
+                <div class="resume_contact">
+                    <input class="resume_contact_button" type="button" value="Contact">
 
-                <div class="resume_contact_details" style="display: none;">
-                    <h2 class="modal-title">Contact</h2>
+                    <div class="resume_contact_details" style="display: none;">
+                        <h2 class="modal-title">Contact</h2>
 
-                    <div class="resume-contact-content">
-                        <div class="gf_browser_chrome gform_wrapper" id="gform_wrapper_3">
+                        <div class="resume-contact-content">
+                            <div class="gf_browser_chrome gform_wrapper" id="gform_wrapper_3">
+                            </div>
                         </div>
                     </div>
                 </div>
+                <ul class="resume-links">
+                    {% if user.linkedin %}
+                        <li class="resume-link resume-link-linkedin">
+                            <a rel="nofollow" href="{{ user.linkedin }}">
+                                LinkedIn
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% if user.website %}
+                        {% if user.website starts with 'http' %}
+                            <li class="resume-link resume-link-linkedin"><a rel="nofollow" href="{{ user.website }}">Website</a></li>
+                        {% else %}
+                            <li class="resume-link resume-link-linkedin"><a rel="nofollow" href="http://{{ user.website }}">Website</a></li>
+                        {% endif %}
+
+                    {% endif %}
+                    {% if user.phone %}
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li class="resume-link resume-link-linkedin">Phone: {{ user.phone }}</li>
+                        {% endif %}
+                    {% endif %}
+
+
+                </ul>
+                {#
+                            <ul class="meta">
+
+
+                                {% for sector in user.sectors %}
+                                    <li class="resume-category">
+                                        <a href="http://www.gradconsultancy.com"><i class="icon-tag"></i>{{ sector.name }}</a>
+                                    </li>
+                                {% endfor %}
+
+
+                            </ul>
+                #}
             </div>
-            <ul class="resume-links">
-                {% if user.linkedin %}
-                    <li class="resume-link resume-link-linkedin">
-                        <a rel="nofollow" href="{{ user.linkedin }}">
-                        LinkedIn
-                        </a>
-                    </li>
-                {% endif %}
-                {% if user.website %}
-                    <li class="resume-link resume-link-linkedin"><a rel="nofollow" href="{{ user.website }}">Website</a></li>
-                {% endif %}
-                {% if user.phone %}
-                    <li class="resume-link resume-link-linkedin">Phone: {{ user.phone }}</li>
-                {% endif %}
-            </ul>
-{#
-            <ul class="meta">
-
-
-                {% for sector in user.sectors %}
-                    <li class="resume-category">
-                        <a href="http://www.gradconsultancy.com"><i class="icon-tag"></i>{{ sector.name }}</a>
-                    </li>
-                {% endfor %}
-
-
-            </ul>
-#}
         </div>
+
     </div>
 </div>
 {% endblock %}

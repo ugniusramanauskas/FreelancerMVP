@@ -27,7 +27,19 @@
 {#                 <td><a href="{{ path('proposal_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
  #}
                 <td>{{ entity.userid }}</td>
-                <td>{{ entity.coverletter }}</td>
+                <td>
+                    {% if entity.coverletter|length > 150 %}
+                        <span class="cover-letter-excerpt">
+                            {{ entity.coverletter|slice(0, 150) }}...
+                            <a href="#" class="show-full-letter">More info</a>
+                        </span>
+                        <span class="cover-letter-full">
+                            {{ entity.coverletter }}
+                        </span>
+                    {% else %}
+                        {{ entity.coverletter }}
+                    {% endif %}
+                </td>
                 <td>{{ entity.hourlyrate }}</td>
 
 {#                 <td>{{ entity.duration }}</td>

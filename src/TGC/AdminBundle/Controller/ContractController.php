@@ -84,7 +84,7 @@ class ContractController extends Controller
             'em' => $this->getDoctrine()->getManager()
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Send to consultant (for approval)'));
+        $form->add('submit', 'submit', array('label' => 'Choose this consultant'));
 
         return $form;
     }

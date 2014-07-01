@@ -3,13 +3,16 @@
 {% block title -%}Create a new Contract{% endblock %}
 
 {% block content -%}
+    
+    <p>By clicking “Choose this consultant”, I accept the TGC terms and conditions.</p>
+    
     {{ form(form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('contract') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('contract') }}">
+                Back to the list
+            </a>
+        </li>
+    </ul>
 {% endblock %}

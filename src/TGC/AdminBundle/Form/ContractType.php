@@ -26,7 +26,7 @@ class ContractType extends AbstractType
             //     'label' => 'Contract starting date:'
             //     ))
 
-            ->add('contracttext', 'textarea')
+            //->add('contracttext', 'textarea')
             ->add($builder->create('userid', 'hidden')->addModelTransformer($UserTransformer))
             ->add($builder->create('projectid', 'hidden')->addModelTransformer($ProjectTransformer))
         ;

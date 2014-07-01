@@ -3841,3 +3841,7 @@ body.no-touch .box-inner:hover .info-box, body.touch .box-inner.touchFocus .info
       width: 33.3%;
    }
 }
+
+.cover-letter-full {
+    display: none;
+}

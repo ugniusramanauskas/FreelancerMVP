@@ -84,7 +84,7 @@
             {{ form_label(form.sectors) }}
             {{ form_errors(form.sectors) }}
             {% for sectorField in form.sectors %}
-                <div>
+                <div id="fos_user_registration_form_sectors">
                     {{ form_widget(sectorField) }}
                     {{ form_label(sectorField) }}
                     {{ form_errors(sectorField) }}

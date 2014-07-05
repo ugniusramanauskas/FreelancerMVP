@@ -25,6 +25,11 @@ class Project
     private $startdate;
 
     /**
+     * @var string
+     */
+    private $currency;
+
+    /**
      * @var integer
      */
     private $budget;
@@ -137,6 +142,29 @@ class Project
     public function getStartdate()
     {
         return $this->startdate;
+    }
+
+    /**
+     * Set currency
+     *
+     * @param string $currency
+     * @return Proposal
+     */
+    public function setCurrency($currency)
+    {
+        $this->currency = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Get currency
+     *
+     * @return string
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
     }
 
     /**

@@ -13,6 +13,10 @@ TGC\AdminBundle\Entity\Project:
             type: date
         deadline:
             type: date
+        currency:
+            type: string
+            length: 3
+            nullable: TRUE
         budget:
             type: integer
             nullable: TRUE

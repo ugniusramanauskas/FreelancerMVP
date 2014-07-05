@@ -30,6 +30,15 @@ class ProjectType extends AbstractType
             ->add('description', 'textarea', array(
                 'label' => 'Description:',
                 ))
+            ->add('currency', 'choice', array(
+                'choices'   => array(
+                    'GBP'=>'GBP',
+                    'USD'=>'USD',
+                    'EUR'=>'EUR'
+                ),
+                'required'    => true,
+                'empty_data'  => null,
+            ))
             ->add('budget')
             ->add('duration')
             ->add('sector', null, array(

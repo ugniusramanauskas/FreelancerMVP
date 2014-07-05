@@ -90,9 +90,9 @@ class ProposalController extends Controller
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createCreateForm(Proposal $entity)
+    private function createCreateForm(Proposal $entity, $currency=null)
     {
-        $form = $this->createForm(new ProposalType(), $entity, array(
+        $form = $this->createForm(new ProposalType($currency), $entity, array(
             'action' => $this->generateUrl('proposal_create'),
             'method' => 'POST',
             'em' => $this->getDoctrine()->getManager()
@@ -118,8 +118,7 @@ class ProposalController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-
-        $project = $em->getRepository('TGCAdminBundle:Project')->findById($projectid);
+        $project = $em->getRepository('TGCAdminBundle:Project')->find($projectid);
 
         $queryBuilder = $em->createQueryBuilder();
         $queryBuilder
@@ -142,14 +141,15 @@ class ProposalController extends Controller
         $entity = new Proposal();
         $entity->setUserid($user);
 
-        if (isset($project[0])) {            
-            $entity->setProjectid($project[0]);
+        if ($project->getId()) {
+            $entity->setProjectid($project);
         }
 
-        $form   = $this->createCreateForm($entity);
+        $form   = $this->createCreateForm($entity, $project->getCurrency());
 
         return $this->render('TGCAdminBundle:Proposal:new.html.twig', array(
             'entity' => $entity,
+            'project' => $project,
             'form'   => $form->createView(),
         ));
     }

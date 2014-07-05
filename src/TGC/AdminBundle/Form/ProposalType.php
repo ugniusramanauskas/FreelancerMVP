@@ -10,7 +10,13 @@ use TGC\AdminBundle\Form\DataTransformer\ProjectToIntTransformer;
 
 class ProposalType extends AbstractType
 {
-        /**
+    private $currency;
+
+    public function __construct($currency = false) {
+        $this->currency = $currency;
+    }
+
+     /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
@@ -24,16 +30,7 @@ class ProposalType extends AbstractType
                 'label'=>'Why are you suited for this project? Please outline any relevant skills and experience.',
                 'required' => true,
             ))
-            ->add('currency', 'choice', array(
-                'choices'   => array(
-                    'GBP'=>'GBP',
-                    'USD'=>'USD',
-                    'EUR'=>'EUR'
-                ),
-                'required'    => true,
-                'empty_data'  => null,
-                'expanded' => true,
-            ))
+            ->add('currency','text',array('read_only' => true, 'attr'=>array('value'=>$this->currency)))
             ->add('budget', 'text', array(
                 'label'=>'Proposed budget',
                 'required' => true

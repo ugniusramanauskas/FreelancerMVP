@@ -36,3 +36,7 @@ user_set_status:
 user_validate_step1:
     pattern: /set_status/{id}/{status}
     defaults: { _controller: "TGCAdminBundle:User:setStatus" }
+
+user_info:
+    pattern: /info
+    defaults: { _controller: "TGCAdminBundle:User:info" }

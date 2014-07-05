@@ -27,7 +27,7 @@
         {% for entity in pagination %}
             <tr>
                 <td><a href="{{ path('user_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.username }}</td>
+                <td><a href="{{ url('fos_user_profile_info', {username: entity.username}) }}" target="_blank">{{ entity.username }}</a></td>
                 <td>{{ entity.email }}</td>
                 <td>{{ entity.roles[0] }}</td>
                 <td>{{ entity.status }}</td>

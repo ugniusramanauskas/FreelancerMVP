@@ -114,4 +114,25 @@ class ProfileController extends Controller {
         );
     }
 
+    public function infoAction($username)
+    {
+
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
+
+        if ($this->get('security.context')->isGranted('ROLE_SUPER_ADMIN') || $this->get('security.context')->isGranted('ROLE_BUSINESS')) {
+
+            $userManager = $this->container->get('fos_user.user_manager');
+            $userToShow = $userManager->findUserByUsername($username);
+
+        }elseif($user->getUsername() === $username) {
+            $userToShow = $user;
+
+        }else{
+            throw new AccessDeniedException('This user does not have access to this section.');
+        }
+
+        return $this->render('TGCAdminBundle:Profile:info.html.twig', array('user'=>$userToShow));
+    }
+
 } 

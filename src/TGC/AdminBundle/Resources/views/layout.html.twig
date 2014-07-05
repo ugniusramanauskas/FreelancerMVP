@@ -13,7 +13,7 @@
         <h1 class="page-title">{% block title %}{% endblock %}</h1>
     </div>
 
-    {% if notification is defined %}
+    {% if notification is defined and notification != '' %}
         <div id="notification" style="position:relative; width:50%; margin: 0 auto;color:#555;
     border-radius:10px;
     font-family:Tahoma,Geneva,Arial,sans-serif;font-size:20px;

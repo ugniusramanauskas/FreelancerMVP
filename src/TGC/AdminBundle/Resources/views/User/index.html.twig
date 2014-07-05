@@ -39,7 +39,32 @@
                             <span style="color: #aaa;">Approve</span> | 
                             <span style="color: #aaa;">Reject</span> | 
                     {% endif %}
-                        <a href="{{ path('user_show', { 'id': entity.id }) }}">show</a> | <a href="{{ path('user_edit', { 'id': entity.id }) }}">edit</a>
+                    <a href="#" onclick="toggle_visibility('user_info_{{ entity.id }}');">Show</a>
+                </td>
+            </tr>
+            <tr style="display:none;" id="user_info_{{ entity.id }}">
+                <td colspan="6">
+                    <ul style="list-style-type: none;">
+                    <li>Username: {{ (entity.username is defined)? entity.username:'no info' }}</li>
+                    <li>Email: {{ (entity.email is defined)? entity.email:'no info' }}</li>
+                    <li>Location: {{ (entity.location is defined)? entity.location:'no info' }}</li>
+                    <li>First name: {{ (entity.firstName is defined)? entity.firstName:'no info' }}</li>
+                    <li>Last name: {{ (entity.lastName is defined)? entity.lastName:'no info' }}</li>
+                    <li>Business name: {{ (entity.businessName is defined)? entity.businessName:'no info' }}</li>
+                    <li>Description: {{ (entity.description is defined)? entity.description:'no info' }}</li>
+                    <li>Clun name: {{ (entity.clubName is defined)? entity.clubName:'no info' }}</li>
+                    <li>University: <a href="mailto:{{ entity.email }}?Subject=Dear {{ entity.firstName }}" target="_top">
+                                {{ entity.university }}</a></li>
+                    <li>Created at: {{ (entity.created is defined)? entity.created|date('Y-m-d H:i:s'):'no info' }}</li>
+                    {% for sector in entity.sectors %}
+                        <li>Sector: {{ sector.name }}</li>
+                    {% endfor %}
+
+                    {% for skill in entity.skills %}
+                        <li>Skill: {{ skill }}</li>
+                    {% endfor %}
+
+                    </ul>
                 </td>
             </tr>
         {% endfor %}
@@ -49,4 +74,16 @@
         {{ knp_pagination_render(pagination) }}
     </div>
 
-    {% endblock %}
+    <script type="text/javascript">
+        <!--
+        function toggle_visibility(id) {
+            var e = document.getElementById(id);
+            if(e.style.display == 'table-row')
+                e.style.display = 'none';
+            else
+                e.style.display = 'table-row';
+        }
+        //-->
+    </script>
+{% endblock %}
+

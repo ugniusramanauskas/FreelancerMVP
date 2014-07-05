@@ -20,6 +20,11 @@ class Proposal
     private $coverletter;
 
     /**
+     * @var string
+     */
+    private $currency;
+
+    /**
      * @var integer
      */
     private $budget;
@@ -84,12 +89,35 @@ class Proposal
     }
 
     /**
+     * Set currency
+     *
+     * @param string $currency
+     * @return Proposal
+     */
+    public function setCurrency($currency)
+    {
+        $this->currency = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Get currency
+     *
+     * @return string
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
+    }
+
+    /**
      * Set budget
      *
      * @param integer $budget
      * @return Proposal
      */
-    public function setBadget($budget)
+    public function setBudget($budget)
     {
         $this->budget = $budget;
 

@@ -8,6 +8,8 @@ TGC\AdminBundle\Entity\Proposal:
     fields:
         coverletter:
             type: text
+        currency:
+            type: text
         budget:
             type: integer
         duration:

@@ -40,7 +40,7 @@
                         {{ entity.coverletter }}
                     {% endif %}
                 </td>
-                <td>{{ entity.budget }}</td>
+                <td>{{ entity.budget }} {{ entity.currency }}</td>
 
 {#                 <td>{{ entity.duration }}</td>
                 <td>{% if entity.registrationtimestamp %}{{ entity.registrationtimestamp|date('Y-m-d H:i:s') }}{% endif %}</td>

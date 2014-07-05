@@ -64,6 +64,8 @@ class ProjectController extends Controller
 
         $sectors = $this->getDoctrine()->getRepository('TGCAdminBundle:Sector')->findAll();
 
+        $notification = $request->query->get('notification');
+
         if ($request->getMethod() === 'POST') {
 
             $search_key = $elements['tgc_adminbundle_project']['searchfield'];
@@ -115,6 +117,7 @@ class ProjectController extends Controller
             'entities' => null,
             'pagination' => $pagination,
             'sectors' => $sectors,
+            'notification' => $notification,
         ));
     }
 

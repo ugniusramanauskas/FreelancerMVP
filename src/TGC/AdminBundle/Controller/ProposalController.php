@@ -70,14 +70,16 @@ class ProposalController extends Controller
             // And pass on a message as a parameter (will appear in the url (not optimal))
             // The message should be passed via the SESSION variables, but not $_GET.
 
-            return $this->redirect($this->generateUrl('project_search'));
-        } else {
-            // Return to the same view with the messages from the validation engine
+            return $this->redirect($this->generateUrl('project_search', array(
+                'notification' => 'Thank you '.$user->getUsername().' for your application!',
+            )));
         }
 
+        // Return to the same view with the messages from the validation engine
         return $this->render('TGCAdminBundle:Proposal:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
+            'notification' => '',
         ));
     }
 
@@ -115,8 +117,27 @@ class ProposalController extends Controller
         // $currentUserId = $user->getId();
 
         $em = $this->getDoctrine()->getManager();
+
+
         $project = $em->getRepository('TGCAdminBundle:Project')->findById($projectid);
 
+        $queryBuilder = $em->createQueryBuilder();
+        $queryBuilder
+            ->select('a.id')
+            ->from('TGCAdminBundle:Proposal','a')
+            ->where('a.userid = :userId')
+            ->andWhere('a.projectid = :projectId')
+            ->setParameter('userId',$user)
+            ->setParameter('projectId',$project)
+        ;
+
+        $hasAppliedForProject = $queryBuilder->getQuery()->getResult();
+
+        if (!empty($hasAppliedForProject)) {
+            return $this->redirect($this->generateUrl('project_search', array(
+                'notification' => 'You have already applied for this project!',
+            )));
+        }
 
         $entity = new Proposal();
         $entity->setUserid($user);

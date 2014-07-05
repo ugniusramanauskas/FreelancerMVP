@@ -14,4 +14,4 @@
 .DS_Store
 /composer.lock
 /web/upload/
-
+.idea

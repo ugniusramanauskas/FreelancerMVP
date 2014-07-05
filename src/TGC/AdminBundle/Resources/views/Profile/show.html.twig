@@ -14,19 +14,19 @@
             {% endif %}
 #}
 
-            <h2 class="job-overview-title">Description</h2>
-            <p>{{ user.description }}</p>
-            
-            {% if 'ROLE_CONSULTANT' in user.roles %}
-                <h3>Bio</h3>
-                <ul>
-                    {% for bio in user.bio %}
-                        <li class="resume-category">
-                            {{ bio }}
-                        </li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
+            {#<h2 class="job-overview-title">Description</h2>#}
+            {#<p>{{ user.description }}</p>#}
+            {##}
+            {#{% if 'ROLE_CONSULTANT' in user.roles %}#}
+                {#<h3>Bio</h3>#}
+                {#<ul>#}
+                    {#{% for bio in user.bio %}#}
+                        {#<li class="resume-category">#}
+                            {#{{ bio }}#}
+                        {#</li>#}
+                    {#{% endfor %}#}
+                {#</ul>#}
+            {#{% endif %}#}
 
 {#
             {% if 'ROLE_CLUB' in user.roles %}
@@ -54,97 +54,97 @@
 
         </div>
 
-        <div class="resume-info">
-            {% if 'ROLE_BUSINESS' not in user.roles %}
-                {% if 'ROLE_CLUB' in user.roles %}
-                    <h2>Skills and possible projects</h2>
-                {% else %}
-                    <h2>Skills</h2>
-                {% endif %}
-                <ul>
-                    {% for skill in user.skills %}
-                        <li class="resume-category">
-                            {{ skill }}
-                        </li>
-                    {% endfor %}
-                </ul>
+        {#<div class="resume-info">#}
+            {#{% if 'ROLE_BUSINESS' not in user.roles %}#}
+                {#{% if 'ROLE_CLUB' in user.roles %}#}
+                    {#<h2>Skills and possible projects</h2>#}
+                {#{% else %}#}
+                    {#<h2>Skills</h2>#}
+                {#{% endif %}#}
+                {#<ul>#}
+                    {#{% for skill in user.skills %}#}
+                        {#<li class="resume-category">#}
+                            {#{{ skill }}#}
+                        {#</li>#}
+                    {#{% endfor %}#}
+                {#</ul>#}
 
-                {% if 'ROLE_CLUB' in user.roles %}
-                    <h2>Sectors</h2>
-                    <ul>
-                        {% for sector in user.sectors %}
-                            <li class="resume-category">
-                                {{ sector.name }}
-                            </li>
-                        {% endfor %}
-                    </ul>
+                {#{% if 'ROLE_CLUB' in user.roles %}#}
+                    {#<h2>Sectors</h2>#}
+                    {#<ul>#}
+                        {#{% for sector in user.sectors %}#}
+                            {#<li class="resume-category">#}
+                                {#{{ sector.name }}#}
+                            {#</li>#}
+                        {#{% endfor %}#}
+                    {#</ul>#}
 
-{#                    
-                    <h2>University</h2>
-                    <p>{{ user.university }}{% if user.degree %}, {{ user.degree }}{% endif %}</p>
-                    {% if 'ROLE_CLUB' in user.roles and user.universityEmail %}
-                        <h2>University email</h2>
-                        <p>{{ user.universityEmail }}</p>
-                    {% endif %}
+{#&#123;&#35;                    #}
+                    {#<h2>University</h2>#}
+                    {#<p>{{ user.university }}{% if user.degree %}, {{ user.degree }}{% endif %}</p>#}
+                    {#{% if 'ROLE_CLUB' in user.roles and user.universityEmail %}#}
+                        {#<h2>University email</h2>#}
+                        {#<p>{{ user.universityEmail }}</p>#}
+                    {#{% endif %}#}
 
-                    <h2>Organization's website</h2>
-                    <p><a href="{{ user.website }}">{{ user.website }}</a></p>
-#}
-                {% else %}
-                    <h2>Education</h2>
-                    <dl class="resume-manager-education">
-                        <dt>
-                            <h3>{{ user.university }}</h3>
-                        </dt>
+                    {#<h2>Organization's website</h2>#}
+                    {#<p><a href="{{ user.website }}">{{ user.website }}</a></p>#}
+{#&#35;&#125;#}
+                {#{% else %}#}
+                    {#<h2>Education</h2>#}
+                    {#<dl class="resume-manager-education">#}
+                        {#<dt>#}
+                            {#<h3>{{ user.university }}</h3>#}
+                        {#</dt>#}
 
-                        {% if user.degree %}
-                        <dd>
-                            <strong class="qualification">{{ user.degree }}</strong>
-                        </dd>
-                        {% endif %}
+                        {#{% if user.degree %}#}
+                        {#<dd>#}
+                            {#<strong class="qualification">{{ user.degree }}</strong>#}
+                        {#</dd>#}
+                        {#{% endif %}#}
 
-                    </dl>
-                {% endif %}
-                {#	<dd>
-                            <small class="date">Dec 2009 - Sep 2011</small>
-                            <strong class="qualification">Distinction, Russian and East European Studies</strong>
-                    </dd> #}
+                    {#</dl>#}
+                {#{% endif %}#}
+                {#&#123;&#35;	<dd>#}
+                            {#<small class="date">Dec 2009 - Sep 2011</small>#}
+                            {#<strong class="qualification">Distinction, Russian and East European Studies</strong>#}
+                    {#</dd> &#35;&#125;#}
 
-            {% endif %}
-        </div>
+            {#{% endif %}#}
+        {#</div>#}
 
-        <div class="resume-aside">
-            {% if 'ROLE_BUSINESS' not in user.roles %}
-                <img src="{{ userPhotoUrl(user) }}" width="171" alt="Photo">
-            {% endif %}
+        {#<div class="resume-aside">#}
+            {#{% if 'ROLE_BUSINESS' not in user.roles %}#}
+                {#<img src="{{ userPhotoUrl(user) }}" width="171" alt="Photo">#}
+            {#{% endif %}#}
 
-            <div class="resume_contact">
-                <input class="resume_contact_button" type="button" value="Contact">
+            {#<div class="resume_contact">#}
+                {#<input class="resume_contact_button" type="button" value="Contact">#}
 
-                <div class="resume_contact_details" style="display: none;">
-                    <h2 class="modal-title">Contact</h2>
+                {#<div class="resume_contact_details" style="display: none;">#}
+                    {#<h2 class="modal-title">Contact</h2>#}
 
-                    <div class="resume-contact-content">
-                        <div class="gf_browser_chrome gform_wrapper" id="gform_wrapper_3">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <ul class="resume-links">
-                {% if user.linkedin %}
-                    <li class="resume-link resume-link-linkedin">
-                        <a rel="nofollow" href="{{ user.linkedin }}">
-                        LinkedIn
-                        </a>
-                    </li>
-                {% endif %}
-                {% if user.website %}
-                    <li class="resume-link resume-link-linkedin"><a rel="nofollow" href="{{ user.website }}">Website</a></li>
-                {% endif %}
-                {% if user.phone %}
-                    <li class="resume-link resume-link-linkedin">Phone: {{ user.phone }}</li>
-                {% endif %}
-            </ul>
+                    {#<div class="resume-contact-content">#}
+                        {#<div class="gf_browser_chrome gform_wrapper" id="gform_wrapper_3">#}
+                        {#</div>#}
+                    {#</div>#}
+                {#</div>#}
+            {#</div>#}
+            {#<ul class="resume-links">#}
+                {#{% if user.linkedin %}#}
+                    {#<li class="resume-link resume-link-linkedin">#}
+                        {#<a rel="nofollow" href="{{ user.linkedin }}">#}
+                        {#LinkedIn#}
+                        {#</a>#}
+                    {#</li>#}
+                {#{% endif %}#}
+                {#{% if user.website %}#}
+                    {#<li class="resume-link resume-link-linkedin"><a rel="nofollow" href="{{ user.website }}">Website</a></li>#}
+                {#{% endif %}#}
+                {#{% if user.phone %}#}
+                    {#<li class="resume-link resume-link-linkedin">Phone: {{ user.phone }}</li>#}
+                {#{% endif %}#}
+            {#</ul>#}
 {#
             <ul class="meta">
 
@@ -158,6 +158,33 @@
 
             </ul>
 #}
+        {#</div>#}
+
+        <div>
+            My Applications
+            <div class="count">
+                Total projects:{{ pagination.getTotalItemCount }}
+            </div>
+
+            <table>
+                <tr>
+                    {# sorting of properties based on query components #}
+                    <th>{{ knp_pagination_sortable(pagination, 'Id', 'a.id') }}</th>
+                </tr>
+
+            {% for proposal in pagination %}
+                <tr>
+                    <td>{{ proposal.id }}</td>
+                    <td>{{ proposal.coverletter|striptags|slice(0, 150) }}</td>
+                    <td>{{ proposal.hourlyrate }}</td>
+                    <td>{{ proposal.status }}</td>
+                </tr>
+            {% endfor %}
+            </table>
+
+            <div class="navigation">
+                {{ knp_pagination_render(pagination) }}
+            </div>
         </div>
     </div>
 </div>

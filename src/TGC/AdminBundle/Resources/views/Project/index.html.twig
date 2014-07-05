@@ -16,7 +16,8 @@
                 <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 238px;" aria-label="Browser: activate to sort column ascending">Project Title</th>
                 <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 238px;" aria-label="Browser: activate to sort column ascending">Startdate</th>
                 <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 238px;" aria-label="Browser: activate to sort column ascending">Actions</th>
-
+                <th>Status</th>
+                <th>Deadline</th>
                 {# <th class="sorting" role="columnheader" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 238px;" aria-label="Browser: activate to sort column ascending">Status</th> #}
 
 
@@ -30,9 +31,24 @@
                 <td><a href="{{ path('project_edit', { 'id': entity.id }) }}">{{ entity.title }}</a></td>
                 <td>{% if entity.startdate %}{{ entity.startdate|date('Y-m-d') }}{% endif %}</td>
                 <td>
-                    <a href="{{ path('project_proposals', { 'projectid': entity.id }) }}">View Applicants</a> | 
+                    {% if entity.status == 1 %}
+                        <a href="{{ path('project_proposals', { 'projectid': entity.id }) }}">View Applicants</a>
+                    {% else %}
+                        Consultant is selected
+                    {% endif %}
+                    |
                     <a href="{{ path('project_edit', { 'id': entity.id }) }}">Edit Project</a>
                 </td>
+                <td>
+                    {% if entity.status == 1 %}
+                        Live
+                    {% elseif entity.status == 2 %}
+                        In Progress
+                    {% else %}
+                        Completed
+                    {% endif %}
+                </td>
+                <td>{{ entity.deadline|date('Y-m-d H:i:s') }}</td>
 
                 {# <td>{{ entity.status }}</td> #}
 

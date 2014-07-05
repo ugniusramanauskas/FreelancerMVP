@@ -44,8 +44,13 @@ class ContractController extends Controller
         $user = new User();
         $entity->setUserid($user);
 
-        $project = new Project();
+        $attributes = $request->request->all();
+        var_dump($attributes['tgc_adminbundle_contract']['projectid']);
+
+        $project = $this->getDoctrine()->getRepository('TGCAdminBundle:Project')->find($attributes['tgc_adminbundle_contract']['projectid']);
         $entity->setProjectid($project);
+
+        $project->setStatus(2);
 
         // Deafault values:
         $entity->setStatus(1);
@@ -58,7 +63,16 @@ class ContractController extends Controller
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
+            $em->persist($project);
             $em->flush();
+
+            $message = \Swift_Message::newInstance()
+                ->setSubject('Hello Email')
+                ->setFrom('agounaris@gmail.com')
+                ->setTo('agounaris@gmail.com')
+                ->setBody('just text')
+            ;
+            $this->get('mailer')->send($message);
 
             return $this->redirect($this->generateUrl('project', array('id' => $entity->getId())));
         }

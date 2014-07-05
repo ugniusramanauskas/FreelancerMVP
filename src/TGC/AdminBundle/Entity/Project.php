@@ -50,6 +50,11 @@ class Project
     private $status;
 
     /**
+     * @var integer
+     */
+    private $approved;
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      */
     private $proposals;
@@ -247,6 +252,29 @@ class Project
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     * @return Project
+     */
+    public function setApproved($approved)
+    {
+        $this->approved = $approved;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer
+     */
+    public function isApproved()
+    {
+        return $this->approved;
     }
 
     /**

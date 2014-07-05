@@ -19,14 +19,63 @@ class UserController extends Controller
      * Lists all User entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
+        $searchTerm = $request->query->get('q');
 
-        $entities = $em->getRepository('TGCAdminBundle:User')->findAll();
+        $em = $this->get('doctrine.orm.entity_manager');
+        $queryBuilder = $em->createQueryBuilder();
+        $queryBuilder
+            ->select('a')
+            ->from('TGCAdminBundle:User', 'a');
+
+        if (isset($searchTerm)) {
+            $orx = $queryBuilder->expr()->orX();
+
+            if (strpos($searchTerm, ":")!==false) {
+                $searchElements = explode(':',$searchTerm);
+
+                $field = $searchElements[0];
+                $search = $searchElements[1];
+
+                $words = explode(" ",$search);
+
+                if ($field === 'sector') {
+                    $queryBuilder
+                        ->join('a.sectors','s')
+                        ;
+
+                    foreach($words as $word) {
+                        $orx->add('s.name LIKE \'%'.htmlspecialchars($word).'%\'');
+                    }
+                }else{
+                    foreach($words as $word) {
+                        $orx->add('a.'.htmlspecialchars($field).' LIKE \'%'.htmlspecialchars($word).'%\'');
+                    }
+                }
+
+            }else{
+                $words = explode(" ",$searchTerm);
+                foreach($words as $word) {
+                    $orx->add('a.description LIKE \'%'.htmlspecialchars($word).'%\'');
+                }
+            }
+
+            $queryBuilder->where($orx);
+        }
+
+        $entities = $queryBuilder->getQuery()->getResult();
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $entities,
+            $this->get('request')->query->get('page', 1) /*page number*/,
+            10/*limit per page*/
+        );
 
         return $this->render('TGCAdminBundle:User:index.html.twig', array(
-            'entities' => $entities,
+            'pagination' => $pagination,
+            'searchTerm'=>$searchTerm,
         ));
     }
     /**

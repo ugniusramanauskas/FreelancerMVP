@@ -86,3 +86,8 @@ fos_user:
     profile:
         form:
             type: tgc_admin_profile
+
+swiftmailer:
+    transport: gmail
+    username:  agounaris
+    password:  fr3dd0espr

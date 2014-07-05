@@ -26,6 +26,10 @@ TGC\AdminBundle\Entity\Project:
             columnDefinition: TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         status:
             type: integer
+        approved:
+            type: integer
+            options:
+              default: 0
             # columnDefinition: DEFAULT '1'
     manyToOne:
         userid:

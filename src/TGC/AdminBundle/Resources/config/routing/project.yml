@@ -49,3 +49,10 @@ project_contract_new:
     pattern:  /{projectid}/consultant/{consultant_userid}/newcontract
     defaults: { _controller: "TGCAdminBundle:Contract:new" }
 
+project_list:
+    pattern:  /list
+    defaults: { _controller: "TGCAdminBundle:Project:list" }
+
+project_approve:
+    pattern:  /{id}/approve
+    defaults: { _controller: "TGCAdminBundle:Project:approve" }

@@ -1,0 +1,45 @@
+{% extends 'TGCAdminBundle::tablelayout.html.twig' %}
+
+{% block title -%}Project list{% endblock %}
+
+{% block content -%}
+{# total items count #}
+
+<a href="{{ path('project_list') }}">Projects List</a> | <a href="{{ path('user') }}">User List</a>
+    <br />
+    Show only |
+    {% for sector in sectors %}
+        <a href="{{ path('project_list', {sector:sector.id}) }}">{{ sector.name }}</a> |
+    {% endfor %}
+
+<div class="count">
+    Total projects:{{ pagination.getTotalItemCount }}
+</div>
+<table>
+    <tr>
+        {# sorting of properties based on query components #}
+        <th>{{ knp_pagination_sortable(pagination, 'Id', 'a.id') }}</th>
+        <th{% if pagination.isSorted('a.title') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Title', 'a.title') }}</th>
+    </tr>
+
+    {# table body #}
+    {% for project in pagination %}
+        <tr {% if loop.index is odd %}class="color"{% endif %}>
+            <td>{{ project.id }}</td>
+            <td>{{ project.title }}</td>
+            <td>
+                {% if project.approved %}
+                    Project is approved!
+                {% else %}
+                    <span><a href="/project/{{ project.id }}/approve" >Project awaiting approval</a></span>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+{# display navigation #}
+<div class="navigation">
+    {{ knp_pagination_render(pagination) }}
+</div>
+
+{% endblock %}

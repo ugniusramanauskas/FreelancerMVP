@@ -59,6 +59,11 @@
                     <li>Duration: {{ project.duration }}</li>
                     <li>description: {{ project.description }}</li>
                     <li>Assigned to: {{ project.userid.username }}</li>
+                    <li>Applicants:
+                    {% for proposal in project.proposals %}
+                        {{ proposal.userid.username }} |
+                    {% endfor %}
+                    </li>
                 </ul>
             </td>
         </tr>

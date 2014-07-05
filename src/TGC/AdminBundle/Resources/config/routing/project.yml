@@ -35,7 +35,7 @@ project_delete:
 
 project_search:
     pattern:  /search
-    defaults: { _controller: "TGCAdminBundle:Project:searchProjects" }
+    defaults: { _controller: "TGCAdminBundle:Project:search" }
 
 project_searchresults:
     pattern:  /searchresults

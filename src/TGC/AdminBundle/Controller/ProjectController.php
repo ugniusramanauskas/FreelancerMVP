@@ -52,22 +52,76 @@ class ProjectController extends Controller
     /**
      * Shows search form
      */
-    public function searchProjectsAction()
+    public function searchAction(Request $request)
     {
         $entity = new Project();
         $form = $this->createSearchForm($entity);
+
+        $em = $this->getDoctrine()->getManager();
+        $qb = $em->createQueryBuilder();
+
+        $elements = $request->request->all();
+
+        $sectors = $this->getDoctrine()->getRepository('TGCAdminBundle:Sector')->findAll();
+
+        if ($request->getMethod() === 'POST') {
+
+            $search_key = $elements['tgc_adminbundle_project']['searchfield'];
+
+            $qb
+                ->select('a')
+                ->from('TGCAdminBundle:Project', 'a')
+                ->where($qb->expr()->like('a.title', ':title'))
+                ->orderBy('a.registrationtimestamp', 'DESC')
+                ->setParameter('title', '%' . $search_key . '%')
+            ;
+
+            $query = $qb->getQuery();
+            $entities = $query->getResult();
+
+        }else{
+
+            $qb
+                ->select('a')
+                ->from('TGCAdminBundle:Project', 'a')
+                ->setMaxResults(20)
+                ->orderBy('a.registrationtimestamp', 'DESC')
+            ;
+
+        }
+
+        $sectorId = $request->query->get('sector_id');
+        if (isset($sectorId)) {
+            $qb
+                ->join('a.sector', 's')
+                ->andWhere('s.id = :sectorId')
+                ->setParameter('sectorId', $request->query->get('sector_id'))
+            ;
+        }
+
+        $query = $qb->getQuery();
+        $entities = $query->getResult();
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $entities,
+            $this->get('request')->query->get('page', 1) /*page number*/,
+            10/*limit per page*/
+        );
 
         return $this->render('TGCAdminBundle:Project:search.html.twig', array(
             'entity' => $entity,
             'form' => $form->createView(),
             'entities' => null,
+            'pagination' => $pagination,
+            'sectors' => $sectors,
         ));
     }
 
     private function createSearchForm(Project $entity)
     {
         $form = $this->createForm(new ProjectsearchType(), $entity, array(
-            'action' => $this->generateUrl('project_searchresults'),
+            'action' => $this->generateUrl('project_search'),
             'method' => 'POST',
             'em' => $this->getDoctrine()->getManager()
         ));
@@ -89,7 +143,6 @@ class ProjectController extends Controller
 
         $entity = new Project();
         $form = $this->createSearchForm($entity);
-        // 'entity' => $entity
 
         $search_key = '';
         $parameters = $request->request->all();
@@ -103,31 +156,11 @@ class ProjectController extends Controller
         $em = $this->getDoctrine()->getManager();
         $qb = $em->createQueryBuilder();
 
-        /**
-         * Query should be:
-         *
-         * SELECT * FROM project LEFT JOIN
-         *     (SELECT id as proposalid, project_id, consultant_user_id
-         *     FROM proposal
-         *     WHERE proposal.consultant_user_id = 9)
-         * as props
-         * ON project.id = props.project_id
-         * WHERE project.title LIKE '%p%'
-         */
-
-        /**
-         * Then in the view, sort the view by proposalid. When proposalid is not NULL,
-         * it means that the project has already been applied for.
-         */
-
         $qb
             ->select('prj')
             ->from('TGCAdminBundle:Project', 'prj')
-            // ->from('TGCAdminBundle:Proposal', 'prop')
             ->where($qb->expr()->like('prj.title', ':title'))
-            // ->where($qb->expr()->eq('prop.projectid', 'prj.id'))
-            // ->where($qb->expr()->eq('prop.userid', ':userid'))
-            ->setParameter('title', '%' . $search_key . '%')// ->setParameter('userid', $currentUserId)
+            ->setParameter('title', '%' . $search_key . '%')
         ;
 
         $query = $qb->getQuery();

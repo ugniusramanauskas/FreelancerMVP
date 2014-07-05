@@ -56,3 +56,7 @@ project_list:
 project_approve:
     pattern:  /{id}/approve
     defaults: { _controller: "TGCAdminBundle:Project:approve" }
+
+project_reject:
+    pattern:  /{id}/reject
+    defaults: { _controller: "TGCAdminBundle:Project:reject" }

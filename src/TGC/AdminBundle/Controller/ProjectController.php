@@ -372,9 +372,19 @@ class ProjectController extends Controller
 
     public function approveAction($id)
     {
-
         $project = $this->getDoctrine()->getRepository('TGCAdminBundle:Project')->find($id);
         $project->setApproved(1);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($project);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('project_list'));
+    }
+
+    public function rejectAction($id)
+    {
+        $project = $this->getDoctrine()->getRepository('TGCAdminBundle:Project')->find($id);
+        $project->setApproved(0);
         $em = $this->getDoctrine()->getManager();
         $em->persist($project);
         $em->flush();

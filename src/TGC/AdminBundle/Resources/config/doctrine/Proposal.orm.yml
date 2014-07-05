@@ -8,7 +8,7 @@ TGC\AdminBundle\Entity\Proposal:
     fields:
         coverletter:
             type: text
-        hourlyrate:
+        budget:
             type: integer
         duration:
             type: integer

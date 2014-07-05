@@ -12,7 +12,7 @@
 
                 <th>Consultant</th>
                 <th>Coverletter</th>
-                <th>Hourlyrate</th>
+                <th>Budget</th>
 
 {#                 <th>Duration</th>
                 <th>Registrationtimestamp</th>
@@ -40,7 +40,7 @@
                         {{ entity.coverletter }}
                     {% endif %}
                 </td>
-                <td>{{ entity.hourlyrate }}</td>
+                <td>{{ entity.budget }}</td>
 
 {#                 <td>{{ entity.duration }}</td>
                 <td>{% if entity.registrationtimestamp %}{{ entity.registrationtimestamp|date('Y-m-d H:i:s') }}{% endif %}</td>

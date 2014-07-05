@@ -22,7 +22,7 @@ class Proposal
     /**
      * @var integer
      */
-    private $hourlyrate;
+    private $budget;
 
     /**
      * @var integer
@@ -84,26 +84,26 @@ class Proposal
     }
 
     /**
-     * Set hourlyrate
+     * Set budget
      *
-     * @param integer $hourlyrate
+     * @param integer $budget
      * @return Proposal
      */
-    public function setHourlyrate($hourlyrate)
+    public function setBadget($budget)
     {
-        $this->hourlyrate = $hourlyrate;
+        $this->budget = $budget;
 
         return $this;
     }
 
     /**
-     * Get hourlyrate
+     * Get budget
      *
      * @return integer 
      */
-    public function getHourlyrate()
+    public function getBudget()
     {
-        return $this->hourlyrate;
+        return $this->budget;
     }
 
     /**

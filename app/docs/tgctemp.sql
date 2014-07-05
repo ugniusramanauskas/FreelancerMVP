@@ -190,7 +190,7 @@ CREATE TABLE `proposal` (
   `consultant_user_id` int(11) DEFAULT NULL,
   `project_id` int(11) DEFAULT NULL,
   `coverletter` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `hourlyrate` int(11) NOT NULL,
+  `budget` int(11) NOT NULL,
   `duration` int(11) NOT NULL,
   `registrationtimestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `status` int(11) NOT NULL,

@@ -20,8 +20,8 @@ class ProposalType extends AbstractType
         $ProjectTransformer = new ProjectToIntTransformer($options["em"]);
 
         $builder
-            ->add('coverletter')
-            ->add('hourlyrate')
+            ->add('coverletter', 'textarea', array('label'=>'Why are you suited for this project? Please outline any relevant skills and experience.'))
+            ->add('budget', 'text', array('label'=>'Proposed budget'))
             // ->add('duration')
             // ->add('registrationtimestamp')
             // ->add('status')

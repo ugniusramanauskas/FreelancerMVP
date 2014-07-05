@@ -78,9 +78,6 @@ class ProjectController extends Controller
                 ->setParameter('title', '%' . $search_key . '%')
             ;
 
-            $query = $qb->getQuery();
-            $entities = $query->getResult();
-
         }else{
 
             $qb
@@ -100,6 +97,9 @@ class ProjectController extends Controller
                 ->setParameter('sectorId', $request->query->get('sector_id'))
             ;
         }
+
+        $qb->andWhere('a.status = 1')
+            ->andWhere('a.approved = 1');
 
         $query = $qb->getQuery();
         $entities = $query->getResult();

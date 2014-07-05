@@ -45,7 +45,6 @@ class ContractController extends Controller
         $entity->setUserid($user);
 
         $attributes = $request->request->all();
-        var_dump($attributes['tgc_adminbundle_contract']['projectid']);
 
         $project = $this->getDoctrine()->getRepository('TGCAdminBundle:Project')->find($attributes['tgc_adminbundle_contract']['projectid']);
         $entity->setProjectid($project);
@@ -70,7 +69,7 @@ class ContractController extends Controller
                 ->setSubject('Hello Email')
                 ->setFrom('agounaris@gmail.com')
                 ->setTo('agounaris@gmail.com')
-                ->setBody('just text')
+                ->setBody('A bussiness has selected a consultant')
             ;
             $this->get('mailer')->send($message);
 

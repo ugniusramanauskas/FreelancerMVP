@@ -48,6 +48,7 @@
                     <span><a style="pointer-events: none;cursor: default;" href="/project/{{ project.id }}/approve" >Reject</a></span>
                     <a href="#" onclick="toggle_visibility('project_info_{{ project.id }}');">Show</a>
                 {% endif %}
+                <a href="{{ path('project_edit', {id: project.id}) }}" target="_blank">Edit</a>
             </td>
         </tr>
         <tr style="display:none;" id="project_info_{{ project.id }}">

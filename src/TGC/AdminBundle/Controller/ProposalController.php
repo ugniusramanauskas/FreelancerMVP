@@ -190,7 +190,7 @@ class ProposalController extends Controller
             throw $this->createNotFoundException('Unable to find Proposal entity.');
         }
 
-        $editForm = $this->createEditForm($entity);
+        $editForm = $this->createEditForm($entity, $entity->getCurrency());
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('TGCAdminBundle:Proposal:edit.html.twig', array(
@@ -207,11 +207,12 @@ class ProposalController extends Controller
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Proposal $entity)
+    private function createEditForm(Proposal $entity, $currency=null)
     {
-        $form = $this->createForm(new ProposalType(), $entity, array(
+        $form = $this->createForm(new ProposalType($currency), $entity, array(
             'action' => $this->generateUrl('proposal_update', array('id' => $entity->getId())),
             'method' => 'PUT',
+            'em' => $this->getDoctrine()->getManager(),
         ));
 
         $form->add('submit', 'submit', array('label' => 'Update'));

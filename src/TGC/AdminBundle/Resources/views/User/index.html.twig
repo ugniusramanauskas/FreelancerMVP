@@ -5,6 +5,13 @@
 {% block content -%}
 
     <div>
+        <a href="{{ path('user') }}">List Users</a> |
+        <a href="{{ path('project_list') }}">List projects</a> |
+        <a href="{{ path('proposal_list') }}">List proposals</a> |
+    </div>
+
+
+    <div>
         <form action="{{ path('user') }}">
             Search for users: <input type="text" placeholder="Search term..." name="q" value="{{ searchTerm ?: '' }}">
             <input type="submit" value="Search">
@@ -39,7 +46,8 @@
                             <span style="color: #aaa;">Approve</span> | 
                             <span style="color: #aaa;">Reject</span> | 
                     {% endif %}
-                    <a href="#" onclick="toggle_visibility('user_info_{{ entity.id }}');">Show</a>
+                    <a href="#" onclick="toggle_visibility('user_info_{{ entity.id }}');">Show</a> |
+                    <a href="{{ path('user_edit', {id: entity.id}) }}" target="_blank">Edit</a>
                 </td>
             </tr>
             <tr style="display:none;" id="user_info_{{ entity.id }}">

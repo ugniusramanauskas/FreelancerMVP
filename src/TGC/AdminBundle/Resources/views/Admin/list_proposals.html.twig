@@ -24,6 +24,7 @@
         <tr {% if loop.index is odd %}class="color"{% endif %}>
             <td>{{ proposal.id }}</td>
             <td>{{ proposal.coverletter }}</td>
+            <td>{{ proposal.status }}</td>
             <td>
                 {% if proposal.approved %}
                     <span><a style="pointer-events: none;cursor: default;" href="/proposal/{{ proposal.id }}/approve" >Approve</a></span>
@@ -34,6 +35,7 @@
                     <span><a style="pointer-events: none;cursor: default;" href="/proposal/{{ proposal.id }}/approve" >Reject</a></span>
                     <a href="#" onclick="toggle_visibility('proposal_info_{{ proposal.id }}');">Show</a>
                 {% endif %}
+                <a href="{{ path('proposal_edit', {id: proposal.id}) }}" target="_blank">Edit</a>
             </td>
         </tr>
     {% endfor %}

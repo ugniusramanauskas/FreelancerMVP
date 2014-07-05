@@ -28,3 +28,15 @@ proposal_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "TGCAdminBundle:Proposal:delete" }
     requirements: { _method: post|delete }
+
+proposal_list:
+    pattern:  /list
+    defaults: { _controller: "TGCAdminBundle:Proposal:list" }
+
+proposal_approve:
+    pattern:  /{id}/approve
+    defaults: { _controller: "TGCAdminBundle:Proposal:approve" }
+
+proposal_reject:
+    pattern:  /{id}/reject
+    defaults: { _controller: "TGCAdminBundle:Proposal:reject" }

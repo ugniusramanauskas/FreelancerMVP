@@ -1,0 +1,57 @@
+{% extends 'TGCAdminBundle::tablelayout.html.twig' %}
+
+{% block title -%}Project list{% endblock %}
+
+{% block content -%}
+{# total items count #}
+
+<a href="{{ path('project_list') }}">Projects List</a> | <a href="{{ path('user') }}">User List</a>
+
+<div class="count">
+    Total proposal:{{ pagination.getTotalItemCount }}
+</div>
+<table>
+    <tr>
+        {# sorting of properties based on query components #}
+        <th>{{ knp_pagination_sortable(pagination, 'Id', 'a.id') }}</th>
+        <th>Cover letter</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+
+    {# table body #}
+    {% for proposal in pagination %}
+        <tr {% if loop.index is odd %}class="color"{% endif %}>
+            <td>{{ proposal.id }}</td>
+            <td>{{ proposal.coverletter }}</td>
+            <td>
+                {% if proposal.approved %}
+                    <span><a style="pointer-events: none;cursor: default;" href="/proposal/{{ proposal.id }}/approve" >Approve</a></span>
+                    <span><a style="color:red;" href="/proposal/{{ proposal.id }}/reject" >Reject</a></span>
+                    <a href="#" onclick="toggle_visibility('proposal_info_{{ proposal.id }}');">Show</a>
+                {% else %}
+                    <span><a style="color:green;" href="/proposal/{{ proposal.id }}/approve" >Approve</a></span>
+                    <span><a style="pointer-events: none;cursor: default;" href="/proposal/{{ proposal.id }}/approve" >Reject</a></span>
+                    <a href="#" onclick="toggle_visibility('proposal_info_{{ proposal.id }}');">Show</a>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+{# display navigation #}
+<div class="navigation">
+    {{ knp_pagination_render(pagination) }}
+</div>
+
+    <script type="text/javascript">
+        <!--
+        function toggle_visibility(id) {
+            var e = document.getElementById(id);
+            if(e.style.display == 'table-row')
+                e.style.display = 'none';
+            else
+                e.style.display = 'table-row';
+        }
+        //-->
+    </script>
+{% endblock %}

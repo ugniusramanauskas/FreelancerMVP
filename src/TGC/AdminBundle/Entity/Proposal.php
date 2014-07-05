@@ -45,6 +45,11 @@ class Proposal
     private $status;
 
     /**
+     * @var integer
+     */
+    private $approved;
+
+    /**
      * @var \TGC\AdminBundle\Entity\User
      */
     private $userid;
@@ -201,6 +206,29 @@ class Proposal
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     * @return Project
+     */
+    public function setApproved($approved)
+    {
+        $this->approved = $approved;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer
+     */
+    public function isApproved()
+    {
+        return $this->approved;
     }
 
     /**

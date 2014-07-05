@@ -30,6 +30,7 @@ class ProposalController extends Controller
             ->select('prop')
             ->from('TGCAdminBundle:Proposal', 'prop')
             ->where($qb->expr()->eq('prop.projectid', ':projectid'))
+            ->andWhere('prop.approved = 1')
             ->setParameter('projectid', $projectid)
         ;
         $query = $qb->getQuery();
@@ -286,5 +287,50 @@ class ProposalController extends Controller
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
+    }
+
+    public function listAction(Request $request)
+    {
+
+        $em = $this->get('doctrine.orm.entity_manager');
+        $queryBuilder = $em->createQueryBuilder();
+        $queryBuilder
+            ->select('a')
+            ->from('TGCAdminBundle:Proposal', 'a');
+
+        $query = $queryBuilder->getQuery()->getResult();
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $this->get('request')->query->get('page', 1) /*page number*/,
+            10/*limit per page*/
+        );
+
+        return $this->render('TGCAdminBundle:Admin:list_proposals.html.twig',
+            array('pagination' => $pagination)
+        );
+    }
+
+    public function approveAction($id)
+    {
+        $project = $this->getDoctrine()->getRepository('TGCAdminBundle:Proposal')->find($id);
+        $project->setApproved(1);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($project);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('project_list'));
+    }
+
+    public function rejectAction($id)
+    {
+        $project = $this->getDoctrine()->getRepository('TGCAdminBundle:Proposal')->find($id);
+        $project->setApproved(0);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($project);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('project_list'));
     }
 }

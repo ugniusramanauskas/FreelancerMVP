@@ -10,6 +10,8 @@
     <meta name="Description" content= 'Work with experienced MBA and Masters students from leading universities across multiple sectors, on a flexible project-based approach.' />
 
     <link rel="shortcut icon" href="/bundles/tgcadmin/images/logo-transparent.ico">
+    <link href="/bundles/tgcadmin/images/logo.png" rel="image_src" />
+
     <meta name="keywords" content="freelance; consultancy; graduate;"/>
 
     {% stylesheets
@@ -61,7 +63,7 @@
                     <li><a href="{{ path('fos_user_security_logout') }}" class="login">LOGOUT</a></li>
                 {% else %}
                     <li><a href="{{ path('fos_user_registration_register') }}">SIGN UP </a></li>
-                    <li><a href="{{ path('tgc_admin_homepage') }}" class="login">LOGIN</a></li>
+                    {#<li><a href="{{ path('tgc_admin_homepage') }}" class="login">LOGIN</a></li>#}
                 {% endif %}
             </ul>
         </nav>
@@ -158,7 +160,7 @@
             </div>
             <div class="contact">
                 {#<span class="phone">+44 (0) 1234 567890</span><br />#}
-                <a href="mailto: info@gradconsultancy.com" class="mail">info@gradconsultancy.com</a>
+                <a href="mailto: enquires@gradconsultancy.com" class="mail">enquires@gradconsultancy.com</a>
             </div>
         </div>
     </div>

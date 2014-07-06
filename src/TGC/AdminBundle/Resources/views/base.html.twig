@@ -61,7 +61,7 @@
                     <li><a href="{{ path('fos_user_security_logout') }}" class="login">LOGOUT</a></li>
                 {% else %}
                     <li><a href="{{ path('fos_user_registration_register') }}">SIGN UP </a></li>
-                    {#<li><a href="{{ path('tgc_admin_homepage') }}" class="login">LOGIN</a></li>#}
+                    <li><a href="{{ path('tgc_admin_homepage') }}" class="login">LOGIN</a></li>
                 {% endif %}
             </ul>
         </nav>
@@ -141,7 +141,7 @@
             <ul>
                 <li><a href="{{ path('tgc_homepage_about') }}">ABOUT US</a></li>
                 <li><a href="{{ path('tgc_homepage_how') }}">HOW IT WORKS</a></li>
-                <li><a href="#">FAQ’S</a></li>
+                <li><a href="{{ path('tgc_homepage_how') }}">FAQ’S</a></li>
             </ul>
             <ul>
                 <li><a href="{{ path('fos_user_registration_register') }}">SIGN UP</a></li>

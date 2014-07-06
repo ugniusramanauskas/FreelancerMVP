@@ -61,7 +61,7 @@
                     <li><a href="{{ path('fos_user_security_logout') }}" class="login">LOGOUT</a></li>
                 {% else %}
                     <li><a href="{{ path('fos_user_registration_register') }}">SIGN UP </a></li>
-                    <li><a href="{{ path('tgc_admin_homepage') }}" class="login">LOGIN</a></li>
+                    {#<li><a href="{{ path('tgc_admin_homepage') }}" class="login">LOGIN</a></li>#}
                 {% endif %}
             </ul>
         </nav>
@@ -144,9 +144,9 @@
                 <li><a href="#">FAQ’S</a></li>
             </ul>
             <ul>
-                <li><a href="#">SIGN UP</a></li>
+                <li><a href="{{ path('fos_user_registration_register') }}">SIGN UP</a></li>
                 <li><a href="https://angel.co/the-graduate-consultancy/jobs">CAREERS</a></li>
-                <li><a href="terms.html">TERMS OF USE</a></li>
+                <li><a href="#">TERMS OF USE</a></li>
             </ul>
         </div>
 
@@ -157,7 +157,7 @@
                 <a href="https://twitter.com/gradconsultancy" class="twitter"></a>
             </div>
             <div class="contact">
-                <span class="phone">+44 (0) 1234 567890</span><br />
+                {#<span class="phone">+44 (0) 1234 567890</span><br />#}
                 <a href="mailto: info@gradconsultancy.com" class="mail">info@gradconsultancy.com</a>
             </div>
         </div>

@@ -1038,6 +1038,68 @@ ul.list {
     cursor:pointer;
 }
 
+/* Argi's css */
+
+.tgc-form {
+    width:550px;
+    float:left;
+    margin-left:200px;
+}
+
+.tgc-form input {
+    width:100%;
+    border:solid 1px #ebebeb;
+    margin-bottom:21px;
+    text-indent:12px;
+    line-height:18px;
+    padding:10px 0;
+}
+
+.tgc-form textarea {
+    width:100%;
+    height:201px;
+    border:solid 1px #ebebeb;
+    margin-bottom:21px;
+    line-height:18px;
+    padding:10px 12px;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    font-family: 'Open Sans', sans-serif;
+    font-size:13px;
+}
+
+.tgc-form select {
+    border:solid 1px #ebebeb;
+    margin-bottom:21px;
+    line-height:18px;
+    padding:10px 12px;
+    font-family: 'Open Sans', sans-serif;
+    font-size:13px;
+}
+
+.tgc-form .btn {
+    float:right;
+    cursor:pointer;
+}
+
+button {
+    display:inline-block;
+    border-radius:6px;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    font-size:16px;
+    font-weight:bold;
+    line-height:35px;
+    text-align:center;
+    padding:0 13px;
+    color:#FFF;
+    background:#ffd200;
+    transition:all ease .5s;
+    -moz-transition:all ease .5s;
+    -webkit-transition:all ease .5s;
+}
+
 /*lisett css*/
 
 #terms .center {

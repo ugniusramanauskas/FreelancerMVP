@@ -1,6 +1,11 @@
 TGC\AdminBundle\Entity\User:
     type:  entity
     table: fos_user
+    lifecycleCallbacks:
+        prePersist: [ preUpload ]
+        preUpdate: [ preUpload ]
+        postPersist: [ upload ]
+        postUpdate: [upload ]
     id:
         id:
             type: integer

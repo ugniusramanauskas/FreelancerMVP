@@ -1,13 +1,13 @@
 set :application, "freelancerMVP"
-set :domain,      "www.danieledangeli.com"
+set :domain,      "yourdomain.com"
 set :deploy_to,   "/var/www/freelancerMVP"
 set :app_path,    "app"
 set :web_path, 	  "web"
 set :maintenance_basename, 	"maintenance"
 
 # SCM info
-set :repository,  "git@github.com:danieledangeli/FreelancerMVP.git"
-set :branch, "test_dd_01/07/14"
+set :repository,  "githubUrl/FreelancerMVP.git"
+set :branch, "master"
 set :scm,         :git
 set :deploy_via,  :remote_cache
 

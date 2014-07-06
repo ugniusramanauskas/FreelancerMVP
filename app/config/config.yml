@@ -89,5 +89,5 @@ fos_user:
 
 swiftmailer:
     transport: gmail
-    username:  agounaris
-    password:  fr3dd0espr
+    username:  test
+    password:  test

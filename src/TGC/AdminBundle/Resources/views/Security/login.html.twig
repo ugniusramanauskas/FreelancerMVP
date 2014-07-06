@@ -1,29 +1,43 @@
-{% extends "TGCAdminBundle::fos_user_layout.html.twig" %}
+{% extends "TGCAdminBundle::base.html.twig" %}
 
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block title %}Login{% endblock title %}
 
+{% block body %}
+    <section id="contact" class="section">
+        <div class="wrapper clearfix">
+            <h1>LOGIN</h1>
+            {% if error %}
+                <div>{{ error|trans }}</div>
+            {% endif %}
 
-{% block fos_user_content %}
-    {% if error %}
-        <div>{{ error|trans }}</div>
-    {% endif %}
+            <div class="tgc-form">
+                <form action="{{ path("fos_user_security_check") }}" method="post">
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+                    <label for="username">{{ 'security.login.username'|trans }}</label>
+                    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required"/>
 
-    <form action="{{ path("fos_user_security_check") }}" method="post">
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                    <label for="password">{{ 'security.login.password'|trans }}</label>
+                    <input type="password" id="password" name="_password" required="required"/>
 
-        <label for="username">{{ 'security.login.username'|trans }}</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+                    <div style="display:inline-block;" >
 
-        <label for="password">{{ 'security.login.password'|trans }}</label>
-        <input type="password" id="password" name="_password" required="required" />
+                        <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+                    </div>
+                    <div style="display:inline-block;" >
 
-        <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-        <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+                        <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
+                    </div>
 
-        <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
-    </form>
-    
-    <p>Don't have an account yet? Click <a href="{{ path('fos_user_registration_register') }}">here</a> to register.</p>
-{% endblock fos_user_content %}
+                    <input class="btn btn-default" type="submit" id="_submit" name="_submit"
+                           value="{{ 'security.login.submit'|trans }}"/>
+                </form>
+                <p>Don't have an account yet? Click <a href="{{ path('fos_user_registration_register') }}">here</a> to
+                    register.
+                </p>
+            </div>
+
+        </div>
+    </section>
+{% endblock %}

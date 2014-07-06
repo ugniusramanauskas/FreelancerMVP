@@ -1,0 +1,12 @@
+tgc_homepage:
+    pattern: /
+    defaults: { _controller: "TGCAdminBundle:Home:index" }
+
+tgc_homepage_about:
+    pattern: /about
+    defaults: { _controller: "TGCAdminBundle:Home:about" }
+
+tgc_homepage_contact:
+    pattern: /contact
+    defaults: { _controller: "TGCAdminBundle:Home:contact" }
+

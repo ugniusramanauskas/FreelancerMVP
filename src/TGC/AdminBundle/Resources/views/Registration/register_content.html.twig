@@ -84,11 +84,11 @@
             {{ form_label(form.sectors) }}
             {{ form_errors(form.sectors) }}
             {% for sectorField in form.sectors %}
-                <div>
-                    {{ form_widget(sectorField) }}
-                    {{ form_label(sectorField) }}
+                <br>
+                {{ form_label(sectorField) }}
+                {{ form_widget(sectorField) }}
                     {{ form_errors(sectorField) }}
-                </div>
+
             {% endfor %}
         </div>
         <div>
@@ -138,9 +138,9 @@
             {{ form_widget(form.linkedin) }}
         </div>
         <div>
+            {{ form_label(form.terms, 'Accept Website Terms & Conditions') }}
             {{ form_errors(form.terms) }}
             {{ form_widget(form.terms) }}
-            {{ form_label(form.terms, 'Accept Website Terms & Conditions') }}
         </div>
         {{ form_row(form.submit) }}
     </div>

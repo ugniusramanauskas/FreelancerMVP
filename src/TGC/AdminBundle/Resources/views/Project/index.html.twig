@@ -2,8 +2,10 @@
 
 {% block title -%}My Projects{% endblock %}
 
-{% block content -%}
-    {# <h1>Project list</h1> #}
+{% block body %}
+<section id="services" class="section pattern" style="margin:50px;">
+
+{# <h1>Project list</h1> #}
     <a class="load_more_jobs" href=
                 "{{ path('project_new') }}"><strong>Add A New Project</strong>
                 </a>
@@ -79,4 +81,5 @@
             </a>
         </li>
     </ul> #}
+    </section>
     {% endblock %}

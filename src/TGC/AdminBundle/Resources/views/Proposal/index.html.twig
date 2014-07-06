@@ -2,8 +2,9 @@
 
 {% block title -%}Proposals (applications){% endblock %}
 
-{% block content -%}
+{% block body -%}
 
+<section id="contact" class="section">
 
 {% if entities is not empty %}
     <table class="records_list">
@@ -58,7 +59,7 @@
 {% else %}
 
 <h3>There are no applications for this project yet.</h3>
-<h3>Click <a href="#">HERE</a> to search for consultants (by skill) and invite them to bid on your project.</h3>
+{#<h3>Click <a href="#">HERE</a> to search for consultants (by skill) and invite them to bid on your project.</h3>#}
 
 {% endif %}
 <ul class="record_actions">
@@ -69,4 +70,5 @@
     </li>
 {#     <li>{{ form(delete_form) }}</li> #}
 </ul>
+    </section>
 {% endblock %}

@@ -2,9 +2,12 @@
 
 {% block title -%}Project list{% endblock %}
 
-{% block content -%}
+{% block body -%}
 {# total items count #}
-
+<section id="contact" class="section">
+    <div class="wrapper clearfix">
+        <h1>PROPOSALS LIST</h1>
+    </div>
 <a href="{{ path('project_list') }}">Projects List</a> | <a href="{{ path('user') }}">User List</a>
 
 <div class="count">
@@ -44,7 +47,7 @@
 <div class="navigation">
     {{ knp_pagination_render(pagination) }}
 </div>
-
+</section>
     <script type="text/javascript">
         <!--
         function toggle_visibility(id) {

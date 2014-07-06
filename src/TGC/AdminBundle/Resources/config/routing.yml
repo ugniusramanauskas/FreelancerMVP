@@ -1,10 +1,15 @@
 # Default route:
 
 tgc_admin_homepage:
-    pattern:  /
+    pattern:  /login
     defaults: { _controller: FOSUserBundle:Security:login }
+
     
 # Doctrine auto-generated routes:
+
+TGCAdminBundle_home:
+    resource: "@TGCAdminBundle/Resources/config/routing/home.yml"
+    prefix:   /
 
 TGCAdminBundle_user:
     resource: "@TGCAdminBundle/Resources/config/routing/user.yml"

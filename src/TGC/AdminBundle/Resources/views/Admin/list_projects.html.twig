@@ -2,10 +2,14 @@
 
 {% block title -%}Project list{% endblock %}
 
-{% block content -%}
+{% block body -%}
 {# total items count #}
+<section id="contact" class="section">
+    <div class="wrapper clearfix">
+        <h1>PROJECTS LIST</h1>
+    </div>
 
-<a href="{{ path('project_list') }}">Projects List</a> | <a href="{{ path('user') }}">User List</a>
+<a href="{{ path('proposal_list') }}">Proposals List</a> | <a href="{{ path('user') }}">User List</a>
     <br />
     Show only |
     {% for sector in sectors %}
@@ -86,4 +90,5 @@
         }
         //-->
     </script>
+    </section>
 {% endblock %}

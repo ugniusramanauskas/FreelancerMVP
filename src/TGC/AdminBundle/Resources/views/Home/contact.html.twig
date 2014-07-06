@@ -1,0 +1,39 @@
+{% extends "TGCAdminBundle::base.html.twig" %}
+
+{% block body %}
+
+    <!--Banner-->
+    <section id="contact-banner"></section>
+    <!--/Banner Banner-->
+
+    <!--Content -->
+    <section id="contact" class="section">
+        <div class="wrapper clearfix">
+            <h1>CONTACT</h1>
+            <div class="contact-form">
+                <form method="post" action="{{ path('tgc_homepage_contact') }}">
+                    <h3 class="subtitle">DROP US A LINE</h3>
+                    <input name="name" type="text" placeholder="NAME" />
+                    <input name="email" type="text" placeholder="EMAIL*" />
+                    <textarea name="message" placeholder="MESSAGE"></textarea>
+                    <button type="submit" class="btn">SUBMIT</button>
+                </form>
+            </div>
+
+            <div class="address">
+                <h3 class="subtitle">OUR CONTACT DETAILS</h3>
+                <p>Address Line 1<br />
+                    Address Line 2<br />
+                    Address Line 3<br />
+                    Address Line 4<br />
+                    LONDON</p>
+                <p>
+                    T: +44 (0) 1234 567890<br />
+                    E: info@gradconsultancy.com
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}

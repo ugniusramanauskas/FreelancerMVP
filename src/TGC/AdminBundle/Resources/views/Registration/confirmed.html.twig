@@ -4,8 +4,22 @@
 
 {% block title %}Registration complete{% endblock title %}
 
-{% block fos_user_content %}
-    <p>&nbsp;</p>
-    <p>Thank you for registering. We will review your application, and will get back to you within 24 hours.</p>
-    <p> -- The Graduate Consultancy Team</p>
-{% endblock fos_user_content %}
+{% block body %}
+
+    <section id="contact" class="section">
+        <div class="wrapper clearfix">
+            <h1>Thank you for registering. We will be in touch with you in the next 24 hours. In the meantime, feel free to
+                <a href="{{ path('tgc_homepage_contact') }}">drop us a line</a> if you have any questions.
+                <br><br>- The TGC Team</h1>
+        </div>
+    </section>
+
+    <script>
+        $(document).ready(function () {
+            // Handler for .ready() called.
+            window.setTimeout(function () {
+                location.href = "{{ url('tgc_homepage') }}";
+            }, 12000)
+        });
+    </script>
+{% endblock %}

@@ -6,36 +6,36 @@
 
 {% block title 'Demo Bundle' %} #}
 
-{% block body %}
-    {# {% block fos_user_bundle %}{% endblock %}} #}
+{#{% block body %}#}
+    {#&#123;&#35; {% block fos_user_bundle %}{% endblock %}} &#35;&#125;#}
 
-    <div class="page-header">
-        <h1 class="page-title">{% block title %}{% endblock %}</h1>
-    </div>
+    {#<div class="page-header">#}
+        {#<h1 class="page-title">{% block title %}{% endblock %}</h1>#}
+    {#</div>#}
 
-    {% if notification is defined and notification != '' %}
-        <div id="notification" style="position:relative; width:50%; margin: 0 auto;color:#555;
-    border-radius:10px;
-    font-family:Tahoma,Geneva,Arial,sans-serif;font-size:20px;
-    padding:10px 10px 10px 36px;
-    background:#e9ffd9;
-    border:1px solid #a6ca8a;
-    ">{{ notification }}</div>
-    {% endif %}
+    {#{% if notification is defined and notification != '' %}#}
+        {#<div id="notification" style="position:relative; width:50%; margin: 0 auto;color:#555;#}
+    {#border-radius:10px;#}
+    {#font-family:Tahoma,Geneva,Arial,sans-serif;font-size:20px;#}
+    {#padding:10px 10px 10px 36px;#}
+    {#background:#e9ffd9;#}
+    {#border:1px solid #a6ca8a;#}
+    {#">{{ notification }}</div>#}
+    {#{% endif %}#}
 
-    <div id="content" class="site-content full" role="main">
-        {% block content %}{% endblock %}
+    {#<div id="content" class="site-content full" role="main">#}
+        {#{% block content %}{% endblock %}#}
 
-        <div class="col-md-6">
-            {% block content_half %}{% endblock %}
-        </div>
-    </div>
+        {#<div class="col-md-6">#}
+            {#{% block content_half %}{% endblock %}#}
+        {#</div>#}
+    {#</div>#}
 
-    <script>
-        $(window).load(function () {
-            setTimeout(function () {
-                $('#notification').fadeOut()
-            }, 5000);
-        });
-    </script>
-{% endblock %}
+    {#<script>#}
+        {#$(window).load(function () {#}
+            {#setTimeout(function () {#}
+                {#$('#notification').fadeOut()#}
+            {#}, 5000);#}
+        {#});#}
+    {#</script>#}
+{#{% endblock %}#}

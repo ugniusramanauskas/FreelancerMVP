@@ -10,3 +10,11 @@ tgc_homepage_contact:
     pattern: /contact
     defaults: { _controller: "TGCAdminBundle:Home:contact" }
 
+tgc_homepage_terms:
+    pattern: /terms
+    defaults: { _controller: "TGCAdminBundle:Home:terms" }
+
+tgc_homepage_how:
+    pattern: /how
+    defaults: { _controller: "TGCAdminBundle:Home:how" }
+

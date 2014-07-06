@@ -42,4 +42,14 @@ class HomeController extends Controller {
         return $this->render('TGCAdminBundle:Home:about.html.twig');
     }
 
+    public function termsAction()
+    {
+        return $this->render('TGCAdminBundle:Home:terms.html.twig');
+    }
+
+    public function howAction()
+    {
+        return $this->render('TGCAdminBundle:Home:how.html.twig');
+    }
+
 } 

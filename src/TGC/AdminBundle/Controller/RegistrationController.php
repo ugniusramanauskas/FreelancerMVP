@@ -178,6 +178,14 @@ class RegistrationController extends BaseController
     {
         $user = $this->container->get('security.context')->getToken()->getUser();
 
+        $message = \Swift_Message::newInstance()
+            ->setSubject('New registration')
+            ->setFrom('lisettluik@gmail.com')
+            ->setTo('lisettluik@gmail.com')
+            ->setBody('A new user has registered')
+        ;
+        $this->container->get('mailer')->send($message);
+
         return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:confirmed.html.'.$this->getEngine(), array(
             'user' => $user,
         ));

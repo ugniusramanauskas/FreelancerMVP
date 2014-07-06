@@ -1037,3 +1037,54 @@ ul.list {
     float:right;
     cursor:pointer;
 }
+
+/*lisett css*/
+
+#terms .center {
+    float:center;
+    width:1000px;
+}
+#terms .right {
+    float:right;
+    width:850px;
+    margin-left: 28px;
+    margin-right: 28px;
+}
+
+#terms h3 {
+    font-size:18px;
+    margin-bottom:22px;
+}
+
+#terms p {
+    font-size:14px;
+    line-height:24px;
+    margin-bottom:24px;
+}
+
+#terms ol {
+    font-size:14px;
+    line-height:24px;
+    margin-bottom:24px;
+    list-style-type: decimal
+}
+
+#terms h4.quote {
+    font-weight:normal;
+    font-style:italic;
+    color:#adadad;
+    font-size:25px;
+    line-height:33px;
+}
+#terms ol {
+    list-style: none;
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px
+}
+#terms ul {
+    list-style: none;
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px
+}

@@ -43,10 +43,6 @@ class ProfileController extends Controller {
 
         $proposals = $queryBuilder->getQuery()->getResult();
 
-        if (!$proposals) {
-            throw $this->createNotFoundException('Unable to find Proposal entity.');
-        }
-
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $proposals,

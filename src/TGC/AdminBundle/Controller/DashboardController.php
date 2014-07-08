@@ -46,13 +46,9 @@ class DashboardController extends Controller
                 ->getRepository('TGCAdminBundle:Proposal')
                 ->findByUserid($user);
 
-            if (!$proposals) {
-                throw $this->createNotFoundException('Unable to find Proposal entity.');
-            }
-
             // show stuff for consultant
             return $this->redirect($this->generateUrl('fos_user_profile_show',
-                array('proposals'=>2)
+                array('proposals'=>$proposals)
                 )
             );
 

@@ -25,8 +25,8 @@ class HomeController extends Controller {
 
             $message = \Swift_Message::newInstance()
                 ->setSubject('Web site contact from '.$request->request->get('name'))
-                ->setFrom('lisettluik@gmail.com')
-                ->setTo('lisettluik@gmail.com')
+                ->setFrom('info.tgc.london@gmail.com')
+                ->setTo('info.tgc.london@gmail.com')
                 ->setBody($request->request->get('email').' says: '.$request->request->get('message'))
             ;
             $this->get('mailer')->send($message);

@@ -180,8 +180,8 @@ class RegistrationController extends BaseController
 
         $message = \Swift_Message::newInstance()
             ->setSubject('New registration')
-            ->setFrom('lisettluik@gmail.com')
-            ->setTo('lisettluik@gmail.com')
+            ->setFrom('info.tgc.london@gmail.com')
+            ->setTo('info.tgc.london@gmail.com')
             ->setBody('A new user has registered')
         ;
         $this->container->get('mailer')->send($message);

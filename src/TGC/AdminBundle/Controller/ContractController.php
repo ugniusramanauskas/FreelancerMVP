@@ -67,8 +67,8 @@ class ContractController extends Controller
 
             $message = \Swift_Message::newInstance()
                 ->setSubject('Hello Email')
-                ->setFrom('lisettluik@gmail.com')
-                ->setTo('lisettluik@gmail.com')
+                ->setFrom('info.tgc.london@gmail.com')
+                ->setTo('info.tgc.london@gmail.com')
                 ->setBody('A bussiness has selected a consultant')
             ;
             $this->get('mailer')->send($message);

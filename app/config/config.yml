@@ -89,5 +89,5 @@ fos_user:
 
 swiftmailer:
     transport: gmail
-    username:  lisettluik
-    password:  palunlylita
+    username:  info.tgc.london
+    password:  changeme

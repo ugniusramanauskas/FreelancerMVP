@@ -1,0 +1,47 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Contract list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Startdate</th>
+                <th>Contracttext</th>
+                <th>Registrationtimestamp</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('contract_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{% if entity.startdate %}{{ entity.startdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.contracttext }}</td>
+                <td>{% if entity.registrationtimestamp %}{{ entity.registrationtimestamp|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.status }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('contract_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('contract_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('contract_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

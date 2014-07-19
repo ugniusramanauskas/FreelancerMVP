@@ -1,0 +1,91 @@
+{% block form_row %}
+{% spaceless %}
+{# <div class="form-group"> #}
+           {{ form_label(form) }}
+    <div class="col-lg-10">
+        {{ form_errors(form) }}
+		{{ form_widget(form, { 'attr': {'class': 'form-control'} }) }}
+    </div>
+{# </div> #}
+{% endspaceless %}
+{% endblock form_row %}
+
+{% block form_label %}
+{% spaceless %}
+    {% if label is not sameas(false) %}
+    	{% set label_attr = label_attr|merge({'for': id, 'class': 'col-lg-2 control-label'}) %}
+        {% if not compound %}
+            {% set label_attr = label_attr|merge({'for': id, 'class': 'col-lg-2 control-label'}) %}
+        {% endif %}
+        {% if required %}
+            {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
+        {% endif %}
+        {% if label is empty %}
+            {% set label = name|humanize %}
+        {% endif %}
+        <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>{{ label|trans({}, translation_domain) }}</label>
+    {% endif %}
+{% endspaceless %}
+{% endblock form_label %}
+
+
+{% block choice_widget %}
+{% spaceless %}
+    {% if expanded %}
+    <ul {{ block('widget_container_attributes') }}>
+            {% for child in form %}
+                <li>
+                    {{ form_widget(child) }}
+                    {{ form_label(child) }}
+                </li>
+            {% endfor %}
+    </ul>
+    {% endif %}
+{% endspaceless %}
+{% endblock %}
+
+
+{% block radio_widget %}
+    {% spaceless %}
+        <input type="radio" style="color: #fff;" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
+    {% endspaceless %}
+{% endblock radio_widget %}
+
+
+{% block submit_widget %}
+{% spaceless %}
+    {% set type = type|default('submit') %}
+    {{ block('button_widget') }}
+{% endspaceless %}
+{% endblock submit_widget %}
+
+{% block textarea_widget %}
+<textarea rows="5" {{ block('widget_attributes') }}>{% if value is not empty %}{{ value }}{% endif %}</textarea>
+{% endblock textarea_widget %}
+
+
+{% block button_widget %}
+{% spaceless %}
+    {% if label is empty %}
+        {% set label = name|humanize %}
+    {% endif %}
+    <button type="{{ type|default('button') }}" {{ block('button_attributes') }}>{{ label|trans({}, translation_domain) }}</button>
+{% endspaceless %}
+{% endblock button_widget %}
+
+{% block button_attributes %}
+{% spaceless %}
+	class="btn btn-primary"
+    id="{{ id }}" name="{{ full_name }}"{% if disabled %} disabled="disabled"{% endif -%}
+    {%- for attrname, attrvalue in attr -%}
+        {{- " " -}}
+        {%- if attrname in ['placeholder', 'title'] -%}
+            {{- attrname }}="{{ attrvalue|trans({}, translation_domain) }}"
+        {%- elseif attrvalue is sameas(true) -%}
+            {{- attrname }}="{{ attrname }}"
+        {%- elseif attrvalue is not sameas(false) -%}
+            {{- attrname }}="{{ attrvalue }}"
+        {%- endif -%}
+    {%- endfor -%}
+{% endspaceless %}
+{% endblock button_attributes %}

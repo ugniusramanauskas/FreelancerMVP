@@ -36,6 +36,8 @@ $(document).ready(function() {
 	    return false;
 	});
 	
+	$('select').select2();
+	
 });
 
 document.createElement("article");

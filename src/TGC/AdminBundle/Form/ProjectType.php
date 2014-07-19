@@ -27,6 +27,10 @@ class ProjectType extends AbstractType
             ->add('title', 'text', array(
                 'label' => 'Title (Pick a name for your project):',
                 ))
+			->add('sector', null, array(
+                'empty_value' => 'Please select sector',
+                'required'    => true
+            ))
             ->add('description', 'textarea', array(
                 'label' => 'Description:',
                 ))
@@ -41,10 +45,7 @@ class ProjectType extends AbstractType
             ))
             ->add('budget')
             ->add('duration')
-            ->add('sector', null, array(
-                'empty_value' => 'Please select sector',
-                'required'    => true
-            ))
+            
             ->add('startdate', 'date', array(
                 'input'  => 'datetime',
                 'widget' => 'single_text',

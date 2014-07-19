@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;"/>
+
+    <title>TGC</title>
+
+    <meta name="Description" content= 'Work with experienced MBA and Masters students from leading universities across multiple sectors, on a flexible project-based approach.' />
+
+    <link rel="shortcut icon" href="/bundles/tgcadmin/images/logo-transparent.ico">
+    <link href="/bundles/tgcadmin/images/logo.png" rel="image_src" />
+
+    <meta name="keywords" content="freelance; consultancy; graduate;"/>
+
+    {% stylesheets
+    'bundles/tgcadmin/css/main.css'
+    'bundles/tgcadmin/css/responsive.css'
+    filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" screen="media"/>
+    {% endstylesheets %}
+
+    {% javascripts
+    '@TGCAdminBundle/Resources/public/js/jquery-1.10.1.min.js'
+    '@TGCAdminBundle/Resources/public/js/jquery.bxslider.min.js'
+    '@TGCAdminBundle/Resources/public/js/scripts.js'
+    '@TGCAdminBundle/Resources/public/js/html5shiv.js'
+    '@TGCAdminBundle/Resources/public/js/registration.js'
+    '@TGCAdminBundle/Resources/public/js/proposal.js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+</head>
+<body class="fixed-header">
+
+<!--Header-->
+<header id="header">
+    <div class="wrapper clearfix">
+        <a href="{{ url('tgc_homepage') }}" id="logo">TGC</a>
+        <!--Main Nav-->
+        <nav id="main-nav">
+			<span class="toggle-nav">
+				<em></em>
+				<em></em>
+				<em></em>
+			</span>
+            <ul>
+                <li><a href="{{ path('tgc_homepage_about') }}">ABOUT US</a></li>
+                <li class="separator"><span>|</span></li>
+                <li><a href="{{ path('tgc_homepage_contact') }}">CONTACT</a></li>
+                <li class="separator"><span>|</span></li>
+
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <li><a href="{{ path('project_search') }}">SEARCH PROJECTS</a></li>
+                    <li class="separator"><span>|</span></li>
+                    <li><a href="{{ path('fos_user_profile_edit') }} ">MY PROFILE</a></li>
+                    <li class="separator"><span>|</span></li>
+                    {#<li><a href="{{ path('fos_user_profile_show') }} ">DASHBOARD</a></li>#}
+                    {#<li class="separator"><span>|</span></li>#}
+                    {#<li><a href="">HELLO {{ app.user.username|upper }}</a></li>#}
+                    {#<li class="separator"><span>|</span></li>#}
+                    <li><a href="{{ path('fos_user_security_logout') }}" class="login">LOGOUT</a></li>
+                {% else %}
+                    <li><a href="{{ path('fos_user_registration_register') }}">SIGN UP </a></li>
+                    {#<li><a href="{{ path('tgc_admin_homepage') }}" class="login">LOGIN</a></li>#}
+                {% endif %}
+            </ul>
+        </nav>
+        <!--/Main Nav-->
+    </div>
+</header>
+<!--/Header-->
+
+{#<div id="page" class="hfeed site">#}
+
+
+    {#<header id="masthead" class="site-header" role="banner">#}
+        {#<div class="container">#}
+
+            {#<nav id="site-navigation" class="site-primary-navigation slide-left">#}
+                {#<div class="menu-main-menu-container">#}
+                    {#<ul id="menu-main-menu" class="nav-menu-primary">#}
+
+                        {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
+
+                            {#&#123;&#35;                                 <li id="menu-item-30" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-14 current_page_item menu-item-30"><a href="{{ path('project') }}">My Projects</a>#}
+                                                            {#</li>#}
+                                                            {#<li id="menu-item-29" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-14 current_page_item menu-item-29"><a href="{{ path('project_new') }}">Post a Project</a></li> &#35;&#125;#}
+                            {#<li id="menu-item-3021"#}
+                                {#class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3021"><a#}
+                                        {#href="{{ path('project_search') }}">Search Projects</a></li>#}
+                        {#{% endif %}#}
+                        {#<li id="menu-item-3021"#}
+                            {#class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3021">#}
+                            {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
+                            {#<span style="padding: 8px 14px; vertical-align: middle;">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</span><span>|</span>#}
+                        {#<li id="menu-item-3021"#}
+                            {#class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3021 has-children">#}
+                            {#<a href="{{ path('fos_user_profile_show') }} ">My Profile</a>#}
+                            {#<ul class="sub-menu">#}
+                                {#<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3021"><a#}
+                                            {#href="{{ path('fos_user_profile_edit') }} ">Edit My Profile</a></li>#}
+                                {#<li id="menu-item-3173"#}
+                                    {#class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3173">#}
+                                    {#<a href="{{ path('fos_user_security_logout') }}">#}
+                                        {#{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}#}
+                                    {#</a>#}
+                                {#</li>#}
+                            {#</ul>#}
+                        {#</li>#}
+                    {#{% else %}#}
+                        {#<a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>#}
+                        {#{% endif %}#}
+
+                        {#&#123;&#35; {% block loginarea %}{% endblock %} &#35;&#125;#}
+
+                        {#</li>#}
+                    {#</ul>#}
+                {#</div>#}
+            {#</nav>#}
+
+            {#<a href="jobify/resume/justin-zupnick/#" class="primary-menu-toggle in-header"><i class="icon-menu"></i></a>#}
+
+            {#<a href="{{ path('project_search') }}" title="Jobify" rel="home" class="site-branding">#}
+                {#<h1 class="site-title">#}
+                    {#<img src="{{ asset('bundles/tgcadmin/img/logo.png') }}" width="" height="" alt="">#}
+
+                    {#<span></span>#}
+                {#</h1>#}
+
+                {#<h2 class="site-description">Job Searching Just Got Easy</h2>#}
+            {#</a>#}
+        {#</div>#}
+    {#</header>#}
+    <!-- #masthead -->
+{% block body %}{% endblock %}
+
+<!--Footer-->
+<footer id="footer">
+    <div class="wrapper clearfix">
+        <div class="left">
+            <ul>
+                <li><a href="{{ path('tgc_homepage_about') }}">ABOUT US</a></li>
+                <li><a href="{{ path('tgc_homepage_how') }}">HOW IT WORKS</a></li>
+                <li><a href="{{ path('tgc_homepage_how') }}">FAQ’S</a></li>
+            </ul>
+            <ul>
+                <li><a href="{{ path('fos_user_registration_register') }}">SIGN UP</a></li>
+                <li><a href="https://angel.co/the-graduate-consultancy/jobs">CAREERS</a></li>
+                <li><a href="{{ path('tgc_homepage_terms') }}">TERMS OF USE</a></li>
+            </ul>
+        </div>
+
+        <div class="right">
+            <div class="social">
+                <a href="https://www.facebook.com/gradconsultancy" class="facebook"></a>
+                <a href="https://www.linkedin.com/company/the-graduate-consultancy" class="linkedin"></a>
+                <a href="https://twitter.com/gradconsultancy" class="twitter"></a>
+            </div>
+            <div class="contact">
+                {#<span class="phone">+44 (0) 1234 567890</span><br />#}
+                <a href="mailto: enquires@gradconsultancy.com" class="mail">enquires@gradconsultancy.com</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="copy">
+        © 2013-2014 The Graduate Consultancy Ltd | Designed by Make Agency
+    </div>
+</footer>
+<!--/Section7-->
+
+</body>
+</html>
+
+
+
+

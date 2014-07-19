@@ -1,0 +1,54 @@
+{% extends 'TGCAdminBundle::tablelayout.html.twig' %}
+
+{% block content -%}
+    <h1>Proposal</h1>
+{# <p>{{ dump(entity) }}</p> #}
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Coverletter</th>
+                <td>{{ entity.coverletter }}</td>
+            </tr>
+            <tr>
+                <th>Budget</th>
+                <td>{{ entity.budget }}</td>
+            </tr>
+            <tr>
+                <th>Duration</th>
+                <td>{{ entity.duration }}</td>
+            </tr>
+            <tr>
+                <th>Registrationtimestamp</th>
+                <td>{{ entity.registrationtimestamp|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ entity.status }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul class="record_actions">
+    <li>
+        <a href="{{ path('contract_new', { 'projectId': entity.projectId, 'consultantId': entity.consultantId }) }}">
+            Select this proposal ->
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('proposal') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('proposal_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

@@ -2,16 +2,25 @@
 
 {% block title -%}Post a job (a project){% endblock %}
 {% block body -%}
-<section id="services" class="section pattern" style="margin:50px;">
+<section class="section pattern">
+	<div class="wrapper clearfix">
+		<div class="project-form">
+			<h2>Get your Job Done!</h2>
+			<h3>Post a Job for Free - Start receiving proposals within minutes</h3>
+			{{ form(form) }}
 
-{{ form(form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('project') }}">
-            Cancel
-        </a>
-    </li>
-</ul>
-    </section>
+	        <a href="{{ path('project') }}" class="btn gray-btn floatRight">Cancel</a>
+		</div>
+		
+		<div class="tips">
+			<h2>Buyer Tips</h2>
+			<ul>
+				<li>Tip one</li>
+				<li>Tip two</li>
+				<li>Tip three</li>
+			</ul>
+		</div>
+	</div>
+	
+</section>
 {% endblock %}

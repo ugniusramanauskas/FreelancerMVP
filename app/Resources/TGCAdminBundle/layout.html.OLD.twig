@@ -1,0 +1,26 @@
+{% extends "TGCAdminBundle::base.html.twig" %}
+
+{# {% block loginarea %}
+
+{% endblock %}
+ #}
+{% block body %}
+        <div class="page-header">
+            <h1 class="page-title">{% block title %}{% endblock %}</h1>
+        </div>
+        <div id="content" class="site-content full" role="main">
+	        <div id="loginform">
+
+		        {% for type, messages in app.session.flashbag.all() %}
+		            {% for message in messages %}
+		                <div class="flash-{{ type }}">
+		                    {{ message }}
+		                </div>
+		            {% endfor %}
+		        {% endfor %}
+		        <div>
+		            {% block fos_user_content %}
+		            {% endblock fos_user_content %}
+		        </div>
+	        </div>
+{% endblock %}

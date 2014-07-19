@@ -1,40 +1,80 @@
 {% extends "TGCAdminBundle::base.html.twig" %}
 
 {% block body %}
-    <section id="contact" class="section">
-
-        <div class="wrapper clearfix">
-            <h1>
-                {% if 'ROLE_CLUB' in user.roles %}
-                    {{ user.clubName }}
-                {% elseif 'ROLE_BUSINESS' in user.roles %}
-                    {{ user.businessName }}
-                {% else %}
-                    {{ user.firstName }} {{ user.lastName }}
-                {% endif %}
-            </h1>
-
-            <h1>
-                <ul>
-                    <li class="job-title">{{ user.degree }}</li>
-                    {% if 'ROLE_CLUB' not in user.roles %}
-                        <li class="location"><i class="icon-location"></i> <span
-                                    class="candidate-location">{{ user.location }}</span></li>
-                    {% endif %}
-
-                    {% if 'ROLE_CLUB' in user.roles %}
-                        <li class="location"><i class="icon-location"></i> <span
-                                    class="candidate-location">{{ user.university }}</span></li>
-                        <li class="location"><i class="icon-location"></i> <span
-                                    class="candidate-location">{{ user.locations[0] }}</span></li>
-                    {% endif %}
-
-                    <li class="date-posted" itemprop="datePosted"><i class="icon-calendar"></i>
-                        <date>Updated on {{ user.updated|date('Y-m-d') }}</date>
-                    </li>
-                </ul>
-            </h1>
-        </div>
+<section class="user-profile">
+    <header class="section pattern">     
+			<div class="wrapper"> 	
+			<h1>
+	            {% if 'ROLE_CLUB' in user.roles %}
+	                {{ user.clubName }}
+	            {% elseif 'ROLE_BUSINESS' in user.roles %}
+	                {{ user.businessName }}
+	            {% else %}
+	                {{ user.firstName }} {{ user.lastName }}
+	            {% endif %}
+	        </h1>
+	        <h2>PHD candidate and researche</h2>
+	    	<em>|</em>
+	    	<h2>{{ user.degree }}</h2>
+	    	<em>|</em>
+	    	<h2 class="candidate-location">{{ user.location }}</h2>
+    	</div>
+	</header>
+	
+	<div class="wrapper clearfix">
+		<div class="profile-col3">
+			<div class="user-tn">
+				<span class="user-img"></span>
+				<a href="#" class="btn">Contact</a>
+			</div>
+			<ul class="domains">
+				<li>Finance & Accounting</li>
+				<li>Strategy</li>
+				<li>Marketing</li>
+				<li>Public affairs & Policy analysise</li>
+			</ul>
+		</div>
+	
+		<div class="profile-col1">
+			<h2 class="profile-subtitle">Summary</h2>
+			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
+			<ul class="list">
+				<li>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, </li>
+				<li>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, </li>
+				<li>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, </li>
+			</ul>
+			<h2 class="profile-subtitle">Skills and possible projects</h2>
+				<ul class="list">
+				<li>Contrary to popular belief, Lorem Ipsum is not , </li>
+				<li>Contrary to popular belief, Lorem Ipsum is not , </li>
+				<li>Contrary to popular belief, Lorem Ipsum is not , </li>
+			</ul>
+		</div>
+		
+		<div class="profile-col2">
+			<h2 class="profile-subtitle">Summary</h2>
+			<ul class="education">
+				<li>
+					<h3>University of Oxford MPhil</h3>
+					<p>
+						<span>DEC 2009 - SEP 2011</span>
+						<strong>Distinction, Russian and EAst European Studies</strong>
+					<p>
+				</li>
+				<li>
+					<h3>University of Oxford MPhil</h3>
+					<p>
+						<span>DEC 2009 - SEP 2011</span>
+						<strong>Distinction, Russian and EAst European Studies</strong>
+					<p>
+				</li>
+			</ul>
+			<h2 class="profile-subtitle">Past Experience</h2>
+		</div>
+		
+		
+	</div>
+</section>
 
         {% for type, messages in app.session.flashbag.all() %}
             {% for message in messages %}
@@ -48,6 +88,5 @@
             {% block content %}{% endblock %}
         </div>
 
-    </section>
 {% endblock %}
 

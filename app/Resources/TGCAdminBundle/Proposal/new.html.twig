@@ -1,0 +1,18 @@
+{% extends 'TGCAdminBundle::formlayout.html.twig' %}
+
+{% block title -%}Submit a proposal for this project{% endblock %}
+
+{% block content -%}
+
+    {{ form(form) }}
+
+    The current budget of the project is {{ project.budget }} {{ project.currency }} and the duration is {{ project.duration }}.
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('proposal') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

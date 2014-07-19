@@ -1,0 +1,44 @@
+{% extends 'TGCAdminBundle::tablelayout.html.twig' %}
+
+{% block content -%}
+    <h1>Contract</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Startdate</th>
+                <td>{{ entity.startdate|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Contracttext</th>
+                <td>{{ entity.contracttext }}</td>
+            </tr>
+            <tr>
+                <th>Registrationtimestamp</th>
+                <td>{{ entity.registrationtimestamp|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ entity.status }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('contract') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('contract_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

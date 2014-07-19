@@ -146,7 +146,7 @@ The file has been converted to a YAML file which reads as follows:
         database_driver:   pdo_mysql
         database_host:     localhost
         database_port:     ~
-        database_name:     symfony
+        database_name:     tgctemp
         database_user:     root
         database_password: ~
 

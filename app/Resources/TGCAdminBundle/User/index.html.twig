@@ -1,0 +1,99 @@
+{% extends 'TGCAdminBundle::tablelayout.html.twig' %}
+
+{% block title -%}User list{% endblock %}
+
+{% block body -%}
+<section id="services" class="section pattern">
+
+    <div>
+        <a href="{{ path('user') }}">List Users</a> |
+        <a href="{{ path('project_list') }}">List projects</a> |
+        <a href="{{ path('proposal_list') }}">List proposals</a> |
+    </div>
+
+
+    <div>
+        <form action="{{ path('user') }}">
+            Search for users: <input type="text" placeholder="Search term..." name="q" value="{{ searchTerm ?: '' }}">
+            <input type="submit" value="Search">
+        </form>
+    </div>
+
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>{{ knp_pagination_sortable(pagination, 'Id', 'a.id') }}</th>
+                <th{% if pagination.isSorted('a.usename') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Username', 'a.username') }}</th>
+                <th>Email</th>
+                <th>UserType</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in pagination %}
+            <tr>
+                <td><a href="{{ path('user_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td><a href="{{ url('fos_user_profile_info', {username: entity.username}) }}" target="_blank">{{ entity.username }}</a></td>
+                <td>{{ entity.email }}</td>
+                <td>{{ entity.roles[0] }}</td>
+                <td>{{ entity.status }}</td>
+                <td>
+                    {% if entity.status == 'pending' %}
+                            <a style="color: green;" href="{{ path('user_set_status', { 'id': entity.id, 'status': 'approved' }) }}">Approve</a> | 
+                            <a style="color: red;" href="{{ path('user_set_status', { 'id': entity.id, 'status': 'rejected' }) }}">Reject</a> | 
+                    {% else %}
+                            <span style="color: #aaa;">Approve</span> | 
+                            <span style="color: #aaa;">Reject</span> | 
+                    {% endif %}
+                    <a href="#" onclick="toggle_visibility('user_info_{{ entity.id }}');">Show</a> |
+                    <a href="{{ path('user_edit', {id: entity.id}) }}" target="_blank">Edit</a>
+                </td>
+            </tr>
+            <tr style="display:none;" id="user_info_{{ entity.id }}">
+                <td colspan="6">
+                    <ul style="list-style-type: none;">
+                    <li>Username: {{ (entity.username is defined)? entity.username:'no info' }}</li>
+                    <li>Email: {{ (entity.email is defined)? entity.email:'no info' }}</li>
+                    <li>Location: {{ (entity.location is defined)? entity.location:'no info' }}</li>
+                    <li>First name: {{ (entity.firstName is defined)? entity.firstName:'no info' }}</li>
+                    <li>Last name: {{ (entity.lastName is defined)? entity.lastName:'no info' }}</li>
+                    <li>Business name: {{ (entity.businessName is defined)? entity.businessName:'no info' }}</li>
+                    <li>Description: {{ (entity.description is defined)? entity.description:'no info' }}</li>
+                    <li>Clun name: {{ (entity.clubName is defined)? entity.clubName:'no info' }}</li>
+                    <li>University: <a href="mailto:{{ entity.email }}?Subject=Dear {{ entity.firstName }}" target="_top">
+                                {{ entity.university }}</a></li>
+                    <li>Created at: {{ (entity.created is defined)? entity.created|date('Y-m-d H:i:s'):'no info' }}</li>
+                    {% for sector in entity.sectors %}
+                        <li>Sector: {{ sector.name }}</li>
+                    {% endfor %}
+
+                    {% for skill in entity.skills %}
+                        <li>Skill: {{ skill }}</li>
+                    {% endfor %}
+
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+
+    <script type="text/javascript">
+        <!--
+        function toggle_visibility(id) {
+            var e = document.getElementById(id);
+            if(e.style.display == 'table-row')
+                e.style.display = 'none';
+            else
+                e.style.display = 'table-row';
+        }
+        //-->
+    </script>
+    </section>
+{% endblock %}
+

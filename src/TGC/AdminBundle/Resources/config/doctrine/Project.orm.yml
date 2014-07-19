@@ -11,6 +11,12 @@ TGC\AdminBundle\Entity\Project:
             length: 100
         startdate:
             type: date
+        deadline:
+            type: date
+        currency:
+            type: string
+            length: 3
+            nullable: TRUE
         budget:
             type: integer
             nullable: TRUE
@@ -24,6 +30,10 @@ TGC\AdminBundle\Entity\Project:
             columnDefinition: TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         status:
             type: integer
+        approved:
+            type: integer
+            options:
+              default: 0
             # columnDefinition: DEFAULT '1'
     manyToOne:
         userid:
@@ -31,6 +41,12 @@ TGC\AdminBundle\Entity\Project:
             inversedBy: projects
             joinColumn:
                 name: business_user_id
+                referencedColumnName: id
+        sector:
+            targetEntity: Sector
+            inversedBy: projects
+            joinColumn:
+                name: sector_id
                 referencedColumnName: id
     oneToMany:
         proposals:

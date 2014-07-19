@@ -1,0 +1,45 @@
+TGC\AdminBundle\Entity\User:
+    properties:
+        location:
+            - NotBlank: { groups: [business, consultant] }
+            - Length:
+                min: 3
+                groups: [business, consultant]
+        firstName:
+            - NotBlank: { groups: [business, consultant] }
+        lastName:
+            - NotBlank: { groups: [business, consultant] }
+        phone:
+            - NotBlank: { groups: [business] }
+            - Length:
+                min: 5
+        businessName:
+            - NotBlank: { groups: [business] }
+        university:
+            - NotBlank: { groups: [consultant, club] }
+        universityEmail:
+            - NotBlank: { groups: [consultant, club] }
+            - Email: { groups: [consultant, club] }
+        degree:
+            - NotBlank: { groups: [consultant] }
+        sectors:
+            - NotBlank: { groups: [consultant, club] }
+        bio:
+            - NotBlank: { groups: [consultant] }
+        skills:
+            - NotBlank: { groups: [consultant, club] }
+        cv:
+            - NotBlank: { groups: [consultant] }
+        clubName:
+            - NotBlank: { groups: [club] }
+        locations:
+            - NotBlank: { groups: [club] }
+        invitation:
+            - NotNull: 
+                groups: [club]
+                message: Your invitation is wrong
+        roles:
+            - Choice:
+                choices:  [ROLE_CONSULTANT, ROLE_BUSINESS, ROLE_CLUB, ROLE_SUPER_ADMIN]
+                multiple: true
+                multipleMessage:  Choose a valid role

@@ -28,12 +28,41 @@
 {% endspaceless %}
 {% endblock form_label %}
 
+
+{% block choice_widget %}
+{% spaceless %}
+    {% if expanded %}
+    <ul {{ block('widget_container_attributes') }}>
+            {% for child in form %}
+                <li>
+                    {{ form_widget(child) }}
+                    {{ form_label(child) }}
+                </li>
+            {% endfor %}
+    </ul>
+    {% endif %}
+{% endspaceless %}
+{% endblock %}
+
+
+{% block radio_widget %}
+    {% spaceless %}
+        <input type="radio" style="color: #fff;" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
+    {% endspaceless %}
+{% endblock radio_widget %}
+
+
 {% block submit_widget %}
 {% spaceless %}
     {% set type = type|default('submit') %}
     {{ block('button_widget') }}
 {% endspaceless %}
 {% endblock submit_widget %}
+
+{% block textarea_widget %}
+<textarea rows="5" {{ block('widget_attributes') }}>{% if value is not empty %}{{ value }}{% endif %}</textarea>
+{% endblock textarea_widget %}
+
 
 {% block button_widget %}
 {% spaceless %}

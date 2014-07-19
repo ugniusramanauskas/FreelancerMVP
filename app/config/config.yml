@@ -52,6 +52,8 @@ doctrine:
         user:     "%database_user%"
         password: "%database_password%"
         charset:  UTF8
+        mapping_types:
+            enum: string
         # if using pdo_sqlite as your database driver, add the path in parameters.yml
         # e.g. database_path: "%kernel.root_dir%/data/data.db3"
         # path:     "%database_path%"
@@ -59,6 +61,11 @@ doctrine:
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
+
+stof_doctrine_extensions:
+    orm:
+        default:
+            timestampable: true
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -72,3 +79,15 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: TGC\AdminBundle\Entity\User
+    registration:
+        form:
+            type: tgc_admin_registration
+            validation_groups: ~
+    profile:
+        form:
+            type: tgc_admin_profile
+
+swiftmailer:
+    transport: gmail
+    username:  info.tgc.london
+    password:  changeme

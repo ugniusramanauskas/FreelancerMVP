@@ -2,6 +2,18 @@
 
 {% block title %}Register{% endblock title %}
 
-{% block fos_user_content %}
-{% include "FOSUserBundle:Registration:register_content.html.twig" %}
-{% endblock fos_user_content %}
+{% block body %}
+
+    <section id="contact" class="section">
+        <div class="wrapper clearfix">
+            <h1>REGISTER</h1>
+
+            <div class="tgc-form">
+                {% include "FOSUserBundle:Registration:register_content.html.twig" %}
+            </div>
+
+        </div>
+
+
+    </section>
+{% endblock %}

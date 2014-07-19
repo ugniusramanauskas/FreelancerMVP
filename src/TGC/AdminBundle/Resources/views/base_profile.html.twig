@@ -1,22 +1,53 @@
 {% extends "TGCAdminBundle::base.html.twig" %}
 
 {% block body %}
-        <div class="page-header">
-        	<h1 class="page-title name">Jessie Hronesova</h1>
-        	<h2 class="page-subtitle">
-        		<ul>
+    <section id="contact" class="section">
 
-        			<li class="job-title">PhD candidate and researcher</li>
-        			<li class="location"><i class="icon-location"></i> <span class="candidate-location">Oxford, United Kingdom</span></li>
-        			<li class="date-posted" itemprop="datePosted"><i class="icon-calendar"></i> <date>Updated 1 month ago</date></li>
+        <div class="wrapper clearfix">
+            <h1>
+                {% if 'ROLE_CLUB' in user.roles %}
+                    {{ user.clubName }}
+                {% elseif 'ROLE_BUSINESS' in user.roles %}
+                    {{ user.businessName }}
+                {% else %}
+                    {{ user.firstName }} {{ user.lastName }}
+                {% endif %}
+            </h1>
 
-        		</ul>
-        	</h2>
+            <h1>
+                <ul>
+                    <li class="job-title">{{ user.degree }}</li>
+                    {% if 'ROLE_CLUB' not in user.roles %}
+                        <li class="location"><i class="icon-location"></i> <span
+                                    class="candidate-location">{{ user.location }}</span></li>
+                    {% endif %}
+
+                    {% if 'ROLE_CLUB' in user.roles %}
+                        <li class="location"><i class="icon-location"></i> <span
+                                    class="candidate-location">{{ user.university }}</span></li>
+                        <li class="location"><i class="icon-location"></i> <span
+                                    class="candidate-location">{{ user.locations[0] }}</span></li>
+                    {% endif %}
+
+                    <li class="date-posted" itemprop="datePosted"><i class="icon-calendar"></i>
+                        <date>Updated on {{ user.updated|date('Y-m-d') }}</date>
+                    </li>
+                </ul>
+            </h1>
         </div>
 
-        <div id="content" class="site-content full" role="main">
-                    
-        {% block content %}{% endblock %}
+        {% for type, messages in app.session.flashbag.all() %}
+            {% for message in messages %}
+                <div class="flash-{{ type }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
 
+        <div id="content" class="site-content full" role="main">
+            {% block content %}{% endblock %}
+        </div>
+
+    </section>
 {% endblock %}
 

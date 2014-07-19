@@ -5,6 +5,8 @@ namespace TGC\AdminBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use TGC\AdminBundle\Form\DataTransformer\UserToIntTransformer;
+use TGC\AdminBundle\Form\DataTransformer\ProjectToIntTransformer;
 
 class ContractType extends AbstractType
 {
@@ -14,13 +16,19 @@ class ContractType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $UserTransformer = new UserToIntTransformer($options["em"]);
+        $ProjectTransformer = new ProjectToIntTransformer($options["em"]);
+        
         $builder
-            ->add('startdate')
-            ->add('contracttext')
-            ->add('registrationtimestamp')
-            ->add('status')
-            ->add('userid')
-            ->add('projectid')
+            // ->add('startdate', 'date', array(
+            //     'input'  => 'datetime',
+            //     'widget' => 'single_text',
+            //     'label' => 'Contract starting date:'
+            //     ))
+
+            //->add('contracttext', 'textarea')
+            ->add($builder->create('userid', 'hidden')->addModelTransformer($UserTransformer))
+            ->add($builder->create('projectid', 'hidden')->addModelTransformer($ProjectTransformer))
         ;
     }
     
@@ -31,6 +39,12 @@ class ContractType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'TGC\AdminBundle\Entity\Contract'
+        ));
+        $resolver->setRequired(array(
+            'em',
+        ));
+        $resolver->setAllowedTypes(array(
+            'em' => 'Doctrine\Common\Persistence\ObjectManager',
         ));
     }
 

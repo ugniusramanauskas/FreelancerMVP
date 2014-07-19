@@ -1,49 +1,74 @@
-{% extends '::base.html.twig' %}
+{% extends 'TGCAdminBundle::tablelayout.html.twig' %}
+
+{% block title -%}Proposals (applications){% endblock %}
 
 {% block body -%}
-    <h1>Proposal list</h1>
 
+<section id="contact" class="section">
+
+{% if entities is not empty %}
     <table class="records_list">
         <thead>
             <tr>
-                <th>Id</th>
+
+                <th>Consultant</th>
                 <th>Coverletter</th>
-                <th>Hourlyrate</th>
-                <th>Duration</th>
+                <th>Budget</th>
+
+{#                 <th>Duration</th>
                 <th>Registrationtimestamp</th>
                 <th>Status</th>
+ #}
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('proposal_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.coverletter }}</td>
-                <td>{{ entity.hourlyrate }}</td>
-                <td>{{ entity.duration }}</td>
-                <td>{% if entity.registrationtimestamp %}{{ entity.registrationtimestamp|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ entity.status }}</td>
+{#                 <td><a href="{{ path('proposal_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+ #}
+                <td>{{ entity.userid }}</td>
                 <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('proposal_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('proposal_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
+                    {% if entity.coverletter|length > 150 %}
+                        <span class="cover-letter-excerpt">
+                            {{ entity.coverletter|slice(0, 150) }}...
+                            <a href="#" class="show-full-letter">More info</a>
+                        </span>
+                        <span class="cover-letter-full">
+                            {{ entity.coverletter }}
+                        </span>
+                    {% else %}
+                        {{ entity.coverletter }}
+                    {% endif %}
+                </td>
+                <td>{{ entity.budget }} {{ entity.currency }}</td>
+
+{#                 <td>{{ entity.duration }}</td>
+                <td>{% if entity.registrationtimestamp %}{{ entity.registrationtimestamp|date('Y-m-d H:i:s') }}{% endif %}</td>
+
+                <td>{{ entity.status }}</td>
+ #}
+                <td>
+                    <a href="{{ path('project_contract_new', { 'projectid': entity.projectid.id, 'consultant_userid': entity.userid.id }) }}">CHOOSE THIS PROPOSAL FOR HIRING</a> |
+                    <a href="{{ path('proposal_show', { 'id': entity.id }) }}">More details...</a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+{% else %}
 
-        <ul>
-        <li>
-            <a href="{{ path('proposal_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
-    {% endblock %}
+<h3>There are no applications for this project yet.</h3>
+{#<h3>Click <a href="#">HERE</a> to search for consultants (by skill) and invite them to bid on your project.</h3>#}
+
+{% endif %}
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('project') }}">
+            <- Go back to the list of my projects
+        </a>
+    </li>
+{#     <li>{{ form(delete_form) }}</li> #}
+</ul>
+    </section>
+{% endblock %}

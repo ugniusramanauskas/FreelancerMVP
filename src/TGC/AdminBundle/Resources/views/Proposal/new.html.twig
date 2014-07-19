@@ -1,9 +1,12 @@
-{% extends '::base.html.twig' %}
+{% extends 'TGCAdminBundle::formlayout.html.twig' %}
 
-{% block body -%}
-    <h1>Proposal creation</h1>
+{% block title -%}Submit a proposal for this project{% endblock %}
+
+{% block content -%}
 
     {{ form(form) }}
+
+    The current budget of the project is {{ project.budget }} {{ project.currency }} and the duration is {{ project.duration }}.
 
         <ul class="record_actions">
     <li>

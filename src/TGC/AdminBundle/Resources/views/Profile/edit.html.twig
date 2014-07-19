@@ -1,5 +1,15 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+{% extends "TGCAdminBundle::fos_user_layout.html.twig" %}
 
-{% block fos_user_content %}
-{% include "FOSUserBundle:Profile:edit_content.html.twig" %}
-{% endblock fos_user_content %}
+{% block title %}Edit profile{% endblock title %}
+
+{% block body %}
+    <section id="contact" class="section">
+        <div class="wrapper clearfix">
+            <h1>MY PROFILE</h1>
+
+            <div class="tgc-form">
+                {% include "FOSUserBundle:Profile:edit_content.html.twig" %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

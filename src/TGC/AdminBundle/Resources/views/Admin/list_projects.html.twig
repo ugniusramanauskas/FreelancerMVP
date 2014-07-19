@@ -1,0 +1,94 @@
+{% extends 'TGCAdminBundle::tablelayout.html.twig' %}
+
+{% block title -%}Project list{% endblock %}
+
+{% block body -%}
+{# total items count #}
+<section id="contact" class="section">
+    <div class="wrapper clearfix">
+        <h1>PROJECTS LIST</h1>
+    </div>
+
+<a href="{{ path('proposal_list') }}">Proposals List</a> | <a href="{{ path('user') }}">User List</a>
+    <br />
+    Show only |
+    {% for sector in sectors %}
+        <a href="{{ path('project_list', {sector:sector.id}) }}">{{ sector.name }}</a> |
+    {% endfor %}
+
+<div class="count">
+    Total projects:{{ pagination.getTotalItemCount }}
+</div>
+<table>
+    <tr>
+        {# sorting of properties based on query components #}
+        <th>{{ knp_pagination_sortable(pagination, 'Id', 'a.id') }}</th>
+        <th{% if pagination.isSorted('a.title') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Title', 'a.title') }}</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+
+    {# table body #}
+    {% for project in pagination %}
+        <tr {% if loop.index is odd %}class="color"{% endif %}>
+            <td>{{ project.id }}</td>
+            <td>{{ project.title }}</td>
+            <td>
+                {% if project.status == 1 %}
+                    Live
+                {% elseif project.status == 2 %}
+                    In Progress
+                {% else %}
+                    Completed
+                {% endif %}
+            </td>
+            <td>
+                {% if project.approved %}
+                    <span><a style="pointer-events: none;cursor: default;" href="/project/{{ project.id }}/approve" >Approve</a></span>
+                    <span><a style="color:red;" href="/project/{{ project.id }}/reject" >Reject</a></span>
+                    <a href="#" onclick="toggle_visibility('project_info_{{ project.id }}');">Show</a>
+                {% else %}
+                    <span><a style="color:green;" href="/project/{{ project.id }}/approve" >Approve</a></span>
+                    <span><a style="pointer-events: none;cursor: default;" href="/project/{{ project.id }}/approve" >Reject</a></span>
+                    <a href="#" onclick="toggle_visibility('project_info_{{ project.id }}');">Show</a>
+                {% endif %}
+                <a href="{{ path('project_edit', {id: project.id}) }}" target="_blank">Edit</a>
+            </td>
+        </tr>
+        <tr style="display:none;" id="project_info_{{ project.id }}">
+            <td colspan="4">
+                <ul style="list-style-type: none;">
+                    <li>Title: {{ project.title }}</li>
+                    <li>Startdate: {{ project.startdate|date('Y-m-d H:i:s') }}</li>
+                    <li>Budget: {{ project.budget }}</li>
+                    <li>Duration: {{ project.duration }}</li>
+                    <li>description: {{ project.description }}</li>
+                    <li>Assigned to: {{ project.userid.username }}</li>
+                    <li>Applicants:
+                    {% for proposal in project.proposals %}
+                        {{ proposal.userid.username }} |
+                    {% endfor %}
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+{# display navigation #}
+<div class="navigation">
+    {{ knp_pagination_render(pagination) }}
+</div>
+
+    <script type="text/javascript">
+        <!--
+        function toggle_visibility(id) {
+            var e = document.getElementById(id);
+            if(e.style.display == 'table-row')
+                e.style.display = 'none';
+            else
+                e.style.display = 'table-row';
+        }
+        //-->
+    </script>
+    </section>
+{% endblock %}

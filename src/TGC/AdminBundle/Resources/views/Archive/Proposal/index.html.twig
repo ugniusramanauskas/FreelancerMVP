@@ -20,7 +20,7 @@
             <tr>
                 <td><a href="{{ path('proposal_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.coverletter }}</td>
-                <td>{{ entity.hourlyrate }}</td>
+                <td>{{ entity.budget }}</td>
                 <td>{{ entity.duration }}</td>
                 <td>{% if entity.registrationtimestamp %}{{ entity.registrationtimestamp|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ entity.status }}</td>

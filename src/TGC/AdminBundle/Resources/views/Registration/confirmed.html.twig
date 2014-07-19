@@ -1,11 +1,25 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+{% extends "TGCAdminBundle::fos_user_layout.html.twig" %}
 
 {% trans_default_domain 'FOSUserBundle' %}
 
-{% block fos_user_content %}
-    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
-    {% if app.session is not empty %}
-        {% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}
-        {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>{% endif %}
-    {% endif %}
-{% endblock fos_user_content %}
+{% block title %}Registration complete{% endblock title %}
+
+{% block body %}
+
+    <section id="contact" class="section">
+        <div class="wrapper clearfix">
+            <h1>Thank you for registering. We will be in touch with you in the next 24 hours. In the meantime, feel free to
+                <a style="font-weight: bold;color:#4a96e8;" href="{{ path('tgc_homepage_contact') }}">drop us a line</a> if you have any questions.
+                <br><br>- The TGC Team</h1>
+        </div>
+    </section>
+
+    <script>
+        $(document).ready(function () {
+            // Handler for .ready() called.
+            window.setTimeout(function () {
+                location.href = "{{ url('tgc_homepage') }}";
+            }, 12000)
+        });
+    </script>
+{% endblock %}

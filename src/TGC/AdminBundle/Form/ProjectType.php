@@ -20,8 +20,6 @@ class ProjectType extends AbstractType
         $builder
             // ->add('title')
             // ->add('startdate')
-            // ->add('budget')
-            // ->add('duration')
             // ->add('description')
             // ->add('registrationtimestamp')
             // ->add('status')
@@ -29,13 +27,34 @@ class ProjectType extends AbstractType
             ->add('title', 'text', array(
                 'label' => 'Title (Pick a name for your project):',
                 ))
+			->add('sector', null, array(
+                'empty_value' => 'Please select sector',
+                'required'    => true
+            ))
             ->add('description', 'textarea', array(
                 'label' => 'Description:',
                 ))
+            ->add('currency', 'choice', array(
+                'choices'   => array(
+                    'GBP'=>'GBP',
+                    'USD'=>'USD',
+                    'EUR'=>'EUR'
+                ),
+                'required'    => true,
+                'empty_data'  => null,
+            ))
+            ->add('budget')
+            ->add('duration')
+            
             ->add('startdate', 'date', array(
                 'input'  => 'datetime',
                 'widget' => 'single_text',
                 'label' => 'Project starting date:'
+                )
+            )
+            ->add('deadline', 'date', array(
+                'input'  => 'datetime',
+                'widget' => 'single_text'
                 )
             )
             ->add($builder->create('userid', 'hidden')->addModelTransformer($UserTransformer))

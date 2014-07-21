@@ -25,6 +25,11 @@ class Project
     private $startdate;
 
     /**
+     * @var string
+     */
+    private $currency;
+
+    /**
      * @var integer
      */
     private $budget;
@@ -50,6 +55,11 @@ class Project
     private $status;
 
     /**
+     * @var integer
+     */
+    private $approved;
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      */
     private $proposals;
@@ -63,6 +73,11 @@ class Project
      * @var \TGC\AdminBundle\Entity\User
      */
     private $userid;
+    
+    /**
+     * @var \TGC\AdminBundle\Entity\Sector
+     */
+    private $sector;
 
     /**
      * Constructor
@@ -127,6 +142,29 @@ class Project
     public function getStartdate()
     {
         return $this->startdate;
+    }
+
+    /**
+     * Set currency
+     *
+     * @param string $currency
+     * @return Proposal
+     */
+    public function setCurrency($currency)
+    {
+        $this->currency = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Get currency
+     *
+     * @return string
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
     }
 
     /**
@@ -245,6 +283,29 @@ class Project
     }
 
     /**
+     * Set status
+     *
+     * @param integer $status
+     * @return Project
+     */
+    public function setApproved($approved)
+    {
+        $this->approved = $approved;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer
+     */
+    public function isApproved()
+    {
+        return $this->approved;
+    }
+
+    /**
      * Add proposals
      *
      * @param \TGC\AdminBundle\Entity\Proposal $proposals
@@ -316,7 +377,7 @@ class Project
      * @param \TGC\AdminBundle\Entity\User $userid
      * @return Project
      */
-    public function setUserid(\TGC\AdminBundle\Entity\User $userid = null)
+    public function setUserid(\TGC\AdminBundle\Entity\User $userid)
     {
         $this->userid = $userid;
 
@@ -336,5 +397,56 @@ class Project
     public function __toString()
     {
         return $this->title;
+    }
+
+    /**
+     * Set sector
+     *
+     * @param \TGC\AdminBundle\Entity\Sector $sector
+     * @return Project
+     */
+    public function setSector(\TGC\AdminBundle\Entity\Sector $sector = null)
+    {
+        $this->sector = $sector;
+
+        return $this;
+    }
+
+    /**
+     * Get sector
+     *
+     * @return \TGC\AdminBundle\Entity\Sector 
+     */
+    public function getSector()
+    {
+        return $this->sector;
+    }
+    /**
+     * @var \DateTime
+     */
+    private $deadline;
+
+
+    /**
+     * Set deadline
+     *
+     * @param \DateTime $deadline
+     * @return Project
+     */
+    public function setDeadline($deadline)
+    {
+        $this->deadline = $deadline;
+
+        return $this;
+    }
+
+    /**
+     * Get deadline
+     *
+     * @return \DateTime 
+     */
+    public function getDeadline()
+    {
+        return $this->deadline;
     }
 }

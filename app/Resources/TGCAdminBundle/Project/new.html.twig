@@ -1,0 +1,17 @@
+{% extends 'TGCAdminBundle::tablelayout.html.twig' %}
+
+{% block title -%}Post a job (a project){% endblock %}
+{% block body -%}
+<section id="services" class="section pattern" style="margin:50px;">
+
+{{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('project') }}">
+            Cancel
+        </a>
+    </li>
+</ul>
+    </section>
+{% endblock %}

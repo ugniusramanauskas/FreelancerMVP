@@ -4,7 +4,7 @@ namespace TGC\AdminBundle\Form\DataTransformer;
 
 use Doctrine\Common\Persistence\ObjectManager;
 
-class BusinessToIntTransformer extends EntityToIntTransformer
+class UserToIntTransformer extends EntityToIntTransformer
 {
     /**
      * @param ObjectManager $om

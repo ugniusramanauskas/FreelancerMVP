@@ -1,0 +1,16 @@
+{% extends 'TGCAdminBundle::formlayout.html.twig' %}
+
+{% block title -%}Add A New Project{% endblock %}
+
+{% block content -%}
+
+    <a class="load_more_jobs grey" href=
+    			"{{ path('project') }}">
+            <strong>Back to my project list</strong>
+        </a>
+
+
+    {{ form(form) }}
+
+
+{% endblock %}

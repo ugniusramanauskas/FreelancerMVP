@@ -1,4 +1,6 @@
+
 tgc_admin:
     resource: "@TGCAdminBundle/Resources/config/routing.yml"
     prefix:   /
 
+    

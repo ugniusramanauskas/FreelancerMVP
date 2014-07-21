@@ -2,7 +2,7 @@ parameters:
     database_driver:   pdo_mysql
     database_host:     127.0.0.1
     database_port:     ~
-    database_name:     symfony
+    database_name:     tgctemp
     database_user:     root
     database_password: ~
 
@@ -13,3 +13,14 @@ parameters:
 
     locale:            en
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    cv_url: upload/cv
+    photo_url: upload/photo
+
+    # directory to store uploaded CV's
+    cv_upload_dir: %kernel.root_dir%/../web/%cv_url%
+
+    # directory to store uploaded user photos
+    photo_upload_dir: %kernel.root_dir%/../web/%photo_url%
+    oauth_token: "77r2rsay1jaw7e"
+    oauth_secret: "dt3lnsiCfXXHdQA0"

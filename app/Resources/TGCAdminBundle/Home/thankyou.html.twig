@@ -1,0 +1,19 @@
+{% extends "TGCAdminBundle::base.html.twig" %}
+
+{% block body %}
+
+    <section class="section form-section">
+        <div class="wrapper clearfix">
+            <h1>Thank you for contacting us!<br>We'll get back to you shortly.</h1>
+        </div>
+    </section>
+
+    <script>
+        $(document).ready(function () {
+            // Handler for .ready() called.
+            window.setTimeout(function () {
+                location.href = "{{ url('tgc_homepage') }}";
+            }, 5000)
+        });
+    </script>
+{% endblock %}

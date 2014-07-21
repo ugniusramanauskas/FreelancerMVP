@@ -5,3 +5,55 @@ services:
 #    tgc_admin.example:
 #        class: %tgc_admin.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
+
+    fos_user.registration.form.factory:
+        class: TGC\AdminBundle\Form\Factory\FOSRegistrationFormFactory
+        arguments: [@form.factory, %fos_user.registration.form.name%, %fos_user.registration.form.type%, %fos_user.registration.form.validation_groups%]
+
+    tgc_admin.registration.form.type:   
+        class: TGC\AdminBundle\Form\Type\RegistrationFormType     
+        arguments: [%fos_user.model.user.class%, %security.role_hierarchy.roles%]
+        tags:       
+            - { name: form.type, alias: tgc_admin_registration }
+            
+    tgc_admin.profile.form.type:   
+        class: TGC\AdminBundle\Form\Type\ProfileFormType     
+        arguments: [%fos_user.model.user.class%, %security.role_hierarchy.roles%]
+        tags:       
+            - { name: form.type, alias: tgc_admin_profile }
+
+    tgc_admin.registration.upload.cv:
+        class: TGC\AdminBundle\EventListener\Registration\CVUploadHandler
+        arguments: [%cv_upload_dir%]
+        tags:
+            - { name: kernel.event_subscriber }
+            
+    tgc_admin.registration.upload.photo:
+        class: TGC\AdminBundle\EventListener\Registration\PhotoUploadHandler
+        arguments: [%photo_upload_dir%]
+        tags:
+            - { name: kernel.event_subscriber }
+            
+    tgc_admin.twig.user_photo_extension:
+        class: TGC\AdminBundle\Twig\UserPhotoExtension
+        arguments: [%photo_url%]
+        tags:
+            - { name: twig.extension }
+
+    tgc_admin.invitation.form.type:
+        class: TGC\AdminBundle\Form\Type\InvitationFormType
+        arguments: [@tgc_admin.invitation.form.data_transformer]
+        tags: [{ name: "form.type", alias: "tgc_invitation_type" }]
+
+    tgc_admin.invitation.form.data_transformer:
+        class: TGC\AdminBundle\Form\DataTransformer\InvitationToCodeTransformer
+        arguments: [@doctrine.orm.entity_manager]
+
+    tgc_admin.user_manager:
+        class: TGC\AdminBundle\User\Manager\UserManager
+        arguments: 
+            - @security.encoder_factory
+            - @fos_user.util.username_canonicalizer
+            - @fos_user.util.email_canonicalizer
+            - @fos_user.entity_manager
+            - %fos_user.model.user.class%

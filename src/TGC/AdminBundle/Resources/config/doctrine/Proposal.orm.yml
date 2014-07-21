@@ -8,7 +8,9 @@ TGC\AdminBundle\Entity\Proposal:
     fields:
         coverletter:
             type: text
-        hourlyrate:
+        currency:
+            type: text
+        budget:
             type: integer
         duration:
             type: integer
@@ -17,6 +19,10 @@ TGC\AdminBundle\Entity\Proposal:
             columnDefinition: TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         status:
             type: integer
+        approved:
+            type: integer
+            options:
+              default: 0
     manyToOne:
         userid:
             targetEntity: User

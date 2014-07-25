@@ -52,8 +52,10 @@
 	                Completed
 	            {% endif %}
 			 	</span>
-			 	
-			 	<a class="edit-project" href="{{ path('project_edit', { 'id': entity.id }) }}">Edit Project</a>
+			    
+                            {% if entity.status != 2 %}
+                                <a class="edit-project" href="{{ path('project_edit', { 'id': entity.id }) }}">Edit Project</a>
+                            {% endif %}
 			 </div>
 		 
 		</div>

@@ -1,6 +1,6 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-{#<p>Already have an account? Click <a href="{{ path('fos_user_security_login') }}">here</a> to Log in.</p>#}
+<p>Already have an account? Click <a href="{{ path('fos_user_security_login') }}">here</a> to Log in.</p>
 
 <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} 
       id="registration-form"
@@ -138,7 +138,9 @@
             {{ form_widget(form.linkedin) }}
         </div>
         <div>
-            {{ form_label(form.terms, 'Accept Website Terms & Conditions') }}
+            <label for="fos_user_registration_form_terms" class="required">
+                Accept Website <a href="{{ path('tgc_homepage_terms') }}" target="_blank">Terms &amp; Conditions</a>
+            </label>
             {{ form_errors(form.terms) }}
             {{ form_widget(form.terms) }}
         </div>

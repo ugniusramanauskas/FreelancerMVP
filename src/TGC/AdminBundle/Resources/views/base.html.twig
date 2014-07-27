@@ -49,7 +49,13 @@
 <!--Header-->
 <header id="header">
     <div class="wrapper clearfix">
-        <a href="{{ url('tgc_homepage') }}" id="logo">TGC</a>
+        <a href="{% spaceless %}
+            {% if is_granted('ROLE_BUSINESS') %}
+                {{ url('project') }}
+            {% else %}
+                {{ url('fos_user_profile_show') }}
+            {% endif %}
+            {% endspaceless %}" id="logo">TGC</a>
         <!--Main Nav-->
         <nav id="main-nav">
 			<span class="toggle-nav">
@@ -58,16 +64,23 @@
 				<em></em>
 			</span>
             <ul>
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    {% if is_granted('ROLE_BUSINESS') %}
+                        <li><a href="{{ path('project_new') }}">POST A PROJECT</a></li>
+                    {% else %}
+                        <li><a href="{{ path('project_search') }}">SEARCH FOR PROJECTS</a></li>
+                    {% endif %}
+                    <li class="separator"><span>|</span></li>
+                    <li><a href="{{ path('fos_user_profile_edit') }} ">MY PROFILE</a></li>
+                    <li class="separator"><span>|</span></li>
+                {% endif %}
+                
                 <li><a href="{{ path('tgc_homepage_about') }}">ABOUT US</a></li>
                 <li class="separator"><span>|</span></li>
                 <li><a href="{{ path('tgc_homepage_contact') }}">CONTACT</a></li>
                 <li class="separator"><span>|</span></li>
 
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                    <li><a href="{{ path('project_search') }}">SEARCH PROJECTS</a></li>
-                    <li class="separator"><span>|</span></li>
-                    <li><a href="{{ path('fos_user_profile_edit') }} ">MY PROFILE</a></li>
-                    <li class="separator"><span>|</span></li>
                     {#<li><a href="{{ path('fos_user_profile_show') }} ">DASHBOARD</a></li>#}
                     {#<li class="separator"><span>|</span></li>#}
                     {#<li><a href="">HELLO {{ app.user.username|upper }}</a></li>#}

@@ -25,14 +25,14 @@ class ProjectType extends AbstractType
             // ->add('status')
             // ->add('userid')
             ->add('title', 'text', array(
-                'label' => 'Title (Pick a name for your project):',
+                'label' => 'Project title:',
                 ))
-			->add('sector', null, array(
+            ->add('sector', null, array(
                 'empty_value' => 'Please select sector',
                 'required'    => true
             ))
             ->add('description', 'textarea', array(
-                'label' => 'Description:',
+                'label' => 'Description & Requirements:',
                 ))
             ->add('currency', 'choice', array(
                 'choices'   => array(
@@ -43,18 +43,23 @@ class ProjectType extends AbstractType
                 'required'    => true,
                 'empty_data'  => null,
             ))
-            ->add('budget')
-            ->add('duration')
+            ->add('budget', null, array(
+                'label' => 'Indicative budget',
+                ))
+            ->add('duration', null, array(
+                'label' => 'Duration (in days, 8hrs/day)',
+                ))
             
             ->add('startdate', 'date', array(
                 'input'  => 'datetime',
                 'widget' => 'single_text',
-                'label' => 'Project starting date:'
+                'label' => 'Consultant to start work on:'
                 )
             )
             ->add('deadline', 'date', array(
                 'input'  => 'datetime',
-                'widget' => 'single_text'
+                'widget' => 'single_text',
+                'label'  => 'Project to be completed by:'
                 )
             )
             ->add($builder->create('userid', 'hidden')->addModelTransformer($UserTransformer))

@@ -1261,6 +1261,10 @@ button {
 	float:right
 }
 
+.tips-inline {
+    margin-bottom: 10px;
+}
+
 .project-form h2{
 	font-size: 18px;
     font-weight: bold;
@@ -1475,19 +1479,19 @@ button {
 }
 
 
-.tips h2{
+.tips h2, .tips-inline h2 {
 	font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px;
 }
 
-.tips ul {
+.tips ul, .tips-inline ul {
 	list-style:disc;
 	list-style-position:outside;
 	margin-left:20px;
 }
 
-.tips li{
+.tips li, .tips-inline li {
 	font-size:14px;
 	line-height:22px;
 }

@@ -7,17 +7,38 @@
 		<div class="project-form">
 			{#<h2>Post a new project</h2>#}
 			<h3>Post a new project</h3>
-			{{ form(form) }}
+                        <form action="{{ path('project_create') }}" {{ form_enctype(form) }} method="POST">
+                            {{ form_row(form.title) }}
+                            {{ form_row(form.sector) }}
+                            {{ form_row(form.description) }}
+                            <div class="tips-inline">
+                                    <h2>Please outline: </h2>
+                                    <ul>
+                                        <li>Project specifications and details</li>
+                                        <li>Required education qualifications (BA or BSc/ MA or MSc/MBA/PhD) and professional experiences (2 months – 5 years)</li>
+                                        <li>Whether you require one or more consultants (if so, how many)</li>
+                                        <li>Whether you wish the consultant(s) to work remotely (generally preferred), in-person or a mixture (please specify if it's the later)</li>
+                                    </ul>
+                            </div>
+                            {{ form_row(form.currency) }}
+                            {{ form_row(form.budget) }}
+                            {{ form_row(form.duration) }}
+                            {{ form_row(form.startdate) }}
+                            {{ form_row(form.deadline) }}
+                            {{ form_row(form.userid) }}
+                            {{ form_row(form._token) }}
+                            {{ form_row(form.submit) }}
+                        </form>
 
 	        <a href="{{ path('project') }}" class="btn gray-btn floatRight">Cancel</a>
 		</div>
 		
 		<div class="tips">
-			<h2>Tips for posting a project</h2>
+			<h2>Project posting guidelines</h2>
 			<ul>
-				<li>Pick a clear and concise title.</li>
-				<li>Highlight the main skills and experience required.</li>
-				<li>Wait for applications!</li>
+                            <li>Posting a project is free and we do not charge businesses a service fee at any point</li>
+                            <li>Place a realistic budget reflecting the desired candidate's experience and project complexity</li>
+                            <li>Get in touch with <a href="mailto:lisett@gradconsultancy.com">lisett@gradconsultancy.com</a> if you have any queries or requests</li>
 			</ul>
 		</div>
 	</div>

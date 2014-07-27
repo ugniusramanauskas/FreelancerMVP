@@ -27,7 +27,7 @@ class ProposalType extends AbstractType
 
         $builder
             ->add('coverletter', 'textarea', array(
-                'label'=>'Why are you suited for this project? Please outline any relevant skills and experience.',
+                'label'=>'Outline why the business should select you, specifying relevant skills, experience and interest. (250 words)',
                 'required' => true,
             ))
             ->add('currency','text',array('read_only' => true, 'attr'=>array('value'=>$this->currency)))

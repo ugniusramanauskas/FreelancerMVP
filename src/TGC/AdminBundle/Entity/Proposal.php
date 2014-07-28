@@ -47,7 +47,7 @@ class Proposal
     /**
      * @var integer
      */
-    private $approved;
+    private $approved = 0;
 
     /**
      * @var \TGC\AdminBundle\Entity\User

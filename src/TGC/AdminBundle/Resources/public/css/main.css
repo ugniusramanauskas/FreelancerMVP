@@ -1065,6 +1065,10 @@ ul.list {
     font-size:13px;
 }
 
+textarea.registration-description  {
+    height:120px!important;
+}
+
 .register-form .btn {
     float:right;
     cursor:pointer;

@@ -24,10 +24,12 @@ TGC\AdminBundle\Entity\User:
             - NotBlank: { groups: [consultant] }
         sectors:
             - NotBlank: { groups: [consultant, club] }
-        bio:
-            - NotBlank: { groups: [consultant] }
+#        bio:
+#            - NotBlank: { groups: [consultant] }
+#        skills:
+#            - NotBlank: { groups: [consultant, club] }
         skills:
-            - NotBlank: { groups: [consultant, club] }
+            - NotBlank: { groups: [club] }
         cv:
             - NotBlank: { groups: [consultant] }
         clubName:

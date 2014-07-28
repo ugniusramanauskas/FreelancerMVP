@@ -68,19 +68,22 @@ class RegistrationFormType extends RegistrationFormTypeBase
                 'expanded'  => true,
                 'multiple'  => true
             ))
-            ->add('bio', 'collection', array(
-                'type'      => 'textarea',
-                'allow_add' => true,
-                'allow_delete' => true,
-                'error_bubbling' => true
-            ))
+//            ->add('bio', 'collection', array(
+//                'type'      => 'textarea',
+//                'allow_add' => true,
+//                'allow_delete' => true,
+//                'error_bubbling' => true
+//            ))
             ->add('skills', 'collection', array(
                 'type'      => 'text',
                 'allow_add' => true,
                 'allow_delete' => true,
-                'error_bubbling' => true
+                'error_bubbling' => true,
+                'required'  => false
             ))
-            ->add('photo', 'file')
+            ->add('photo', 'file', array(
+                'required'  => false
+            ))
             ->add('cv', 'file')
             ->add('linkedin', null, array(
                 'required'  => false

@@ -11,7 +11,7 @@
         {{ form_row(form.username) }}
         {{ form_row(form.plainPassword) }}
         {{ form_row(form.roles) }}
-        <button id="goto-step2">Go to step 2</button>
+        <button id="goto-step2">Next</button>
 {# =======
 <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
     {{ form_widget(form) }}
@@ -66,7 +66,7 @@
             {{ form_widget(form.website) }}
         </div>
         <div class="consultant-field">
-            {{ form_label(form.universityEmail) }}
+            {{ form_label(form.universityEmail, 'University or alumni email (for verification purposes)') }}
             {{ form_errors(form.universityEmail) }}
             {{ form_widget(form.universityEmail) }}
         </div>
@@ -91,11 +91,12 @@
 
             {% endfor %}
         </div>
-        <div>
-            {{ form_label(form.description) }}
+        <div class="business-field">
+            {{ form_label(form.description, 'Brief description') }}
             {{ form_errors(form.description) }}
-            {{ form_widget(form.description) }}
+            {{ form_widget(form.description, {'attr': {'class': 'registration-description' }}) }}
         </div>
+        {#
         <div class="consultant-field">
             {{ form_label(form.bio) }}
             <ul id="bio-fields-list" data-prototype="{{ form_widget(form.bio.vars.prototype)|e }}" data-count="{{ form.bio|length }}">
@@ -109,6 +110,7 @@
             </ul>
             <a href="#" id="add-another-bio">Add</a>
         </div>
+        #}
         <div class="consultant-field">
             {{ form_label(form.skills, 'List your skills and possible projects you can do for businesses.') }}
             <ul id="skills-fields-list" data-prototype="{{ form_widget(form.skills.vars.prototype)|e }}" data-count="{{ form.skills|length }}">

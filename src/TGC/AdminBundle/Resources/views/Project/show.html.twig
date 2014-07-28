@@ -11,7 +11,7 @@
 		</div>
 		<ul class="project-info">
 			<li><strong>Posted on</strong> {{ entity.startdate|date('Y-m-d') }}</li>
-			<li><strong>Nudget</strong> ${{ entity.budget }}</li>
+			<li><strong>Budget</strong> ${{ entity.budget }}</li>
 			<li><strong>Deadline</strong> {{ entity.deadline|date('Y-m-d') }}</li>
 		</ul>
 		<a class="btn apply-project" href="{{ path('project_proposal_new', { 'projectid': entity.id }) }}">

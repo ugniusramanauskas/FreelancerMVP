@@ -52,8 +52,10 @@
         <a href="{% spaceless %}
             {% if is_granted('ROLE_BUSINESS') %}
                 {{ url('project') }}
-            {% else %}
+            {% elseif is_granted('ROLE_USER') %}
                 {{ url('fos_user_profile_show') }}
+            {% else %}
+                {{ url('tgc_homepage') }}
             {% endif %}
             {% endspaceless %}" id="logo">TGC</a>
         <!--Main Nav-->

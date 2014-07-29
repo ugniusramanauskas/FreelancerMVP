@@ -24,10 +24,9 @@ class UserPhotoExtension extends Twig_Extension
 
     public function getPhotoUrl($user)
     {
+        $path = '';
         if ($user->getPhoto()) {
             $path = '/'.$this->photosUrl .'/'.$user->getPhoto();
-        } else {
-            $path = '/bundles/tgcadmin/img/jessie.jpg';
         }
 
         return $path;

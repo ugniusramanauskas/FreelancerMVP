@@ -48,8 +48,6 @@
             <ul>
                 <li><a href="{{ path('tgc_homepage_about') }}">ABOUT US</a></li>
                 <li class="separator"><span>|</span></li>
-                <li><a href="{{ path('tgc_homepage_contact') }}">CONTACT</a></li>
-                <li class="separator"><span>|</span></li>
 
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                     <li><a href="{{ path('project_search') }}">SEARCH PROJECTS</a></li>
@@ -62,6 +60,8 @@
                     {#<li class="separator"><span>|</span></li>#}
                     <li><a href="{{ path('fos_user_security_logout') }}" class="login">LOGOUT</a></li>
                 {% else %}
+                    <li><a href="{{ path('tgc_homepage_contact') }}">CONTACT</a></li>
+                    <li class="separator"><span>|</span></li>
                     <li><a href="{{ path('fos_user_registration_register') }}">SIGN UP </a></li>
                     {#<li><a href="{{ path('tgc_admin_homepage') }}" class="login">LOGIN</a></li>#}
                 {% endif %}

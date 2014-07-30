@@ -99,6 +99,16 @@
         <!--/Main Nav-->
     </div>
 </header>
+{% if notification is defined and notification != '' %}
+    <div id="notification" style="position:relative; width:50%; margin: 0 auto;color:#555;
+    border-radius:10px;
+    font-family:Tahoma,Geneva,Arial,sans-serif;font-size:15px;
+    padding:10px 10px 10px 36px;
+    background:#e9ffd9;
+    border:1px solid #a6ca8a;
+    text-align: center;
+    ">{{ notification }}</div>
+{% endif %}
 <!--/Header-->
 
 {#<div id="page" class="hfeed site">#}
@@ -198,6 +208,13 @@
         © 2013-2014 The Graduate Consultancy Ltd | Designed by Make Agency
     </div>
     <script type='text/javascript'>(function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://widget.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({ c: 'cb067d60-6080-4923-aabd-dbc910a4c23b', f: true }); done = true; } }; })();</script>
+    <script>
+        $(window).load(function () {
+            setTimeout(function () {
+                $('#notification').fadeOut()
+            }, 5000);
+        });
+    </script>
 </footer>
 <!--/Section7-->
 

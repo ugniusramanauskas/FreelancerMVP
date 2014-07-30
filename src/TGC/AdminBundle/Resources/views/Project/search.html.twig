@@ -34,7 +34,7 @@
 	                    	<div class="project-item">
 			            		<header>
 			            			<h2>{{ entity.title }}</h2>
-			            			<h3>{{ entity.budget }}</h3>
+			            			<h3>{{ entity.budget }} {{ entity.currency }}</h3>
 			            		</header>
 			            		<p>Apply until {% if entity.startdate %}{{ entity.startdate|date('Y-m-d') }}{% endif %}</p>
 			            		<em>Category</em> 

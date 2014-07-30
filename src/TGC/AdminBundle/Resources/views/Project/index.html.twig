@@ -37,7 +37,7 @@
 		 	<div>
 		 		<span class="date">{% if entity.startdate %}{{ entity.startdate|date('Y-m-d') }}{% endif %}</span>
 		 		<em class="separator">|</em>
-		 		<a href="#" class="selected-consultant">Consultant Name</a>
+		 		<a href="#" class="selected-consultant">{{ entity.status == 2? entity.userid.username:'' }}</a>
 		 	</div>
 		 	<div>
 		 		<strong>Status:</strong>

@@ -15,7 +15,7 @@
 			<div class="projects-list">
 				{% for proposal in pagination %}
 					<div class="project-item">
-						<h2>{{ proposal.id }} - Project Name Here</h2>
+						<h2>{{ proposal.id }} - {{ proposal.projectid.title }}</h2>
 						
 						 {% if proposal.coverletter|length > 150 %}
 	                        <p class="cover-letter-excerpt">
@@ -30,9 +30,9 @@
 	                    {% endif %}
 						
 					 	<div>
-					 		<span class="date">{{ proposal.budget }}</span>
+					 		<span class="date">{{ proposal.budget }} {{ proposal.currency }}</span>
 					 		<em class="separator">|</em>
-					 		<a href="#" class="selected-consultant">Client Name</a>
+					 		<a href="#" class="selected-consultant">{{ proposal.projectid.userid.businessName }}</a>
 					 	</div>
 					 	<div>
 					 		<strong>Status:</strong>

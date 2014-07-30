@@ -1,0 +1,12 @@
+{% extends 'TGCAdminBundle::tablelayout.html.twig' %}
+
+{% block title -%}Success{% endblock %}
+
+{% block content -%}
+
+<h3>Thank you! Your proposal has been successfully submitted.</h3>
+
+        <a href="{{ path('proposal') }}">
+            Back to the list
+        </a>
+{% endblock %}

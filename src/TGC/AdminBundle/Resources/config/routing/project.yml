@@ -2,6 +2,10 @@ project:
     pattern:  /
     defaults: { _controller: "TGCAdminBundle:Project:index" }
 
+project_proposals:
+    pattern:  /{projectid}/proposals
+    defaults: { _controller: "TGCAdminBundle:Proposal:index" }
+
 project_show:
     pattern:  /{id}/show
     defaults: { _controller: "TGCAdminBundle:Project:show" }
@@ -31,8 +35,28 @@ project_delete:
 
 project_search:
     pattern:  /search
-    defaults: { _controller: "TGCAdminBundle:Project:searchProjects" }
+    defaults: { _controller: "TGCAdminBundle:Project:search" }
 
 project_searchresults:
     pattern:  /searchresults
     defaults: { _controller: "TGCAdminBundle:Project:showSearchResults" }
+
+project_proposal_new:
+    pattern:  /{projectid}/newproposal
+    defaults: { _controller: "TGCAdminBundle:Proposal:new" }
+
+project_contract_new:
+    pattern:  /{projectid}/consultant/{consultant_userid}/newcontract
+    defaults: { _controller: "TGCAdminBundle:Contract:new" }
+
+project_list:
+    pattern:  /list
+    defaults: { _controller: "TGCAdminBundle:Project:list" }
+
+project_approve:
+    pattern:  /{id}/approve
+    defaults: { _controller: "TGCAdminBundle:Project:approve" }
+
+project_reject:
+    pattern:  /{id}/reject
+    defaults: { _controller: "TGCAdminBundle:Project:reject" }

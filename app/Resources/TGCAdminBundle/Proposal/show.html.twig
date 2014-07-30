@@ -1,0 +1,32 @@
+{% extends 'TGCAdminBundle::tablelayout.html.twig' %}
+
+{% block title -%}Selected Proposal{% endblock %}
+
+{% block content -%}
+
+    <table class="record_properties">
+        <tbody>
+{#             <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr> #}
+            <tr>
+                <th>Coverletter</th>
+                <td>{{ entity.coverletter }}</td>
+            </tr>
+            <tr>
+                <th>Budget</th>
+                <td>{{ entity.budget }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('proposal') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

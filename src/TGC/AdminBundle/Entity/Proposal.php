@@ -20,9 +20,14 @@ class Proposal
     private $coverletter;
 
     /**
+     * @var string
+     */
+    private $currency;
+
+    /**
      * @var integer
      */
-    private $hourlyrate;
+    private $budget;
 
     /**
      * @var integer
@@ -38,6 +43,11 @@ class Proposal
      * @var integer
      */
     private $status;
+
+    /**
+     * @var integer
+     */
+    private $approved = 0;
 
     /**
      * @var \TGC\AdminBundle\Entity\User
@@ -84,26 +94,49 @@ class Proposal
     }
 
     /**
-     * Set hourlyrate
+     * Set currency
      *
-     * @param integer $hourlyrate
+     * @param string $currency
      * @return Proposal
      */
-    public function setHourlyrate($hourlyrate)
+    public function setCurrency($currency)
     {
-        $this->hourlyrate = $hourlyrate;
+        $this->currency = $currency;
 
         return $this;
     }
 
     /**
-     * Get hourlyrate
+     * Get currency
+     *
+     * @return string
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
+    }
+
+    /**
+     * Set budget
+     *
+     * @param integer $budget
+     * @return Proposal
+     */
+    public function setBudget($budget)
+    {
+        $this->budget = $budget;
+
+        return $this;
+    }
+
+    /**
+     * Get budget
      *
      * @return integer 
      */
-    public function getHourlyrate()
+    public function getBudget()
     {
-        return $this->hourlyrate;
+        return $this->budget;
     }
 
     /**
@@ -173,6 +206,29 @@ class Proposal
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     * @return Project
+     */
+    public function setApproved($approved)
+    {
+        $this->approved = $approved;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer
+     */
+    public function isApproved()
+    {
+        return $this->approved;
     }
 
     /**

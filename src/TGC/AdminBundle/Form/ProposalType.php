@@ -5,23 +5,43 @@ namespace TGC\AdminBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use TGC\AdminBundle\Form\DataTransformer\UserToIntTransformer;
+use TGC\AdminBundle\Form\DataTransformer\ProjectToIntTransformer;
 
 class ProposalType extends AbstractType
 {
-        /**
+    private $currency;
+
+    public function __construct($currency = false) {
+        $this->currency = $currency;
+    }
+
+     /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $UserTransformer = new UserToIntTransformer($options["em"]);
+        $ProjectTransformer = new ProjectToIntTransformer($options["em"]);
+
         $builder
-            ->add('coverletter')
-            ->add('hourlyrate')
-            ->add('duration')
-            ->add('registrationtimestamp')
-            ->add('status')
-            ->add('userid')
-            ->add('projectid')
+            ->add('coverletter', 'textarea', array(
+                'label'=>'Outline why the business should select you, specifying relevant skills, experience and interest. (250 words)',
+                'required' => true,
+            ))
+            ->add('currency','text',array('read_only' => true, 'attr'=>array('value'=>$this->currency)))
+            ->add('budget', 'text', array(
+                'label'=>'Proposed budget',
+                'required' => true
+            ))
+            // ->add('duration')
+            // ->add('registrationtimestamp')
+            // ->add('status')
+            ->add($builder->create('userid', 'hidden')->addModelTransformer($UserTransformer))
+            ->add($builder->create('projectid', 'hidden')->addModelTransformer($ProjectTransformer))
+            // ->add('userid')
+            // ->add('projectid')
         ;
     }
     
@@ -32,6 +52,12 @@ class ProposalType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'TGC\AdminBundle\Entity\Proposal'
+        ));
+        $resolver->setRequired(array(
+            'em',
+        ));
+        $resolver->setAllowedTypes(array(
+            'em' => 'Doctrine\Common\Persistence\ObjectManager',
         ));
     }
 

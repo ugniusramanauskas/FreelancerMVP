@@ -1,0 +1,197 @@
+{% extends "TGCAdminBundle::base.html.twig" %}
+
+{% block body %}
+
+<!--Home Banner-->
+<section id="home-banner">
+    <div class="wrapper">
+        <h1>Access global talent on demand</h1>
+        <p>Work with experienced MBA and Master students from leading universities across multiple sectors, on a flexible project-based approach.</p>
+        <a href="{{ path('fos_user_registration_register') }}" class="btn large-btn">SIGN UP</a>
+        <a href="{{ path('tgc_homepage_how') }}" class="btn large-btn white-btn">HOW IT WORKS</a>
+    </div>
+</section>
+<!--/Home Banner-->
+
+<!--Logos Slider-->
+<section id="logos" class="section">
+    <div class="wrapper">
+        <div class="slider">
+
+            <div class="slide">
+                <h3>UNIVERSITIES OUR CONSULTANTS STUDIED AT</h3>
+                <div class="logos">
+                    <img src="/bundles/tgcadmin/images/logos/lse.jpg" alt="logo" />
+                    <img src="/bundles/tgcadmin/images/logos/ucl.jpg" alt="logo" />
+                    <img src="/bundles/tgcadmin/images/logos/cambridge.jpg" alt="logo" />
+                    <img src="/bundles/tgcadmin/images/logos/oxford.jpg" alt="logo" />
+                    <img src="/bundles/tgcadmin/images/logos/lbs.jpg" alt="logo" />
+                </div>
+            </div>
+
+            <div class="slide">
+                <h3>COMPANIES OUR CONSULTANTS HAVE WORKED FOR</h3>
+                <div class="logos">
+                    <img src="/bundles/tgcadmin/images/logos/ey.jpg" alt="logo" />
+                    <img src="/bundles/tgcadmin/images/logos/goldman.jpg" alt="logo" />
+                    <img src="/bundles/tgcadmin/images/logos/mckinsey.jpg" alt="logo" />
+                    <img src="/bundles/tgcadmin/images/logos/eu.jpg" alt="logo" />
+                    <img src="/bundles/tgcadmin/images/logos/bbc.jpg" alt="logo" />
+                </div>
+            </div>
+
+            <div class="slide">
+                <h3>COMPANIES OUR CONSULTANTS HAVE DONE PROJECTS FOR</h3>
+                <div class="logos">
+                    <img src="/bundles/tgcadmin/images/logos/sap.jpg" alt="logo" />
+                    <img src="/bundles/tgcadmin/images/logos/db.jpg" alt="logo" />
+                    <img src="/bundles/tgcadmin/images/logos/reuters.jpg" alt="logo" />
+                    <img src="/bundles/tgcadmin/images/logos/siemens.jpg" alt="logo" />
+                    <img src="/bundles/tgcadmin/images/logos/bp.jpg" alt="logo" />
+                </div>  
+            </div>
+
+        </div>
+    </div>
+</section>
+<!--/Logos Slider-->
+
+<!--Features-->
+<section id="features" class="section pattern">
+    <div class="wrapper clearfix">
+        <div class="features-list">
+            <h3>BUSINESS</h3>
+            <ul>
+                <li>
+                    <h2>
+                        <i class="feature-icon talent"></i>
+                        <span>TALENT</span>
+                    </h2>
+                    <P>Access Master and MBAs students from leading universities,with impressive professional experience from big name firms across multiple sectors.</P>
+                </li>
+
+                <li>
+                    <h2>
+                        <i class="feature-icon flexible"></i>
+                        <span>FLEXIBLE</span>
+                    </h2>
+                    <P>Hire consultants through a flexible project based approach, depending on skills and duration required and budget available for each project.</P>
+                </li>
+
+                <li>
+                    <h2>
+                        <i class="feature-icon secure"></i>
+                        <span>SECURE</span>
+                    </h2>
+                    <p>Payment is deposited into our secure escrow system and only released to the consultant upon satisfactory delivery of project.</p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="features-list">
+            <h3>CONSULTANT</h3>
+            <ul>
+                <li>
+                    <h2>
+                        <i class="feature-icon rewarding"></i>
+                        <span>REWARDING</span>
+                    </h2>
+                    <p>Work on rewarding paid projects from across the world, depending on your expertise and interest.<br /><br /></p>
+                </li>
+
+                <li>
+                    <h2>
+                        <i class="feature-icon experience"></i>
+                        <span>EXPERIENCE</span>
+                    </h2>
+                    <p>Build up your CV and professional reputation through hands-on experience working with global clients.<br /><br /></p>
+                </li>
+
+                <li>
+                    <h2>
+                        <i class="feature-icon prospects"></i>
+                        <span>PROSPECTS</span>
+                    </h2>
+                    <p>Successful completion of client projects could lead on to long term work, an internship or a job with the firm.</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!--/Features-->
+
+<!--Reviews-->
+<section id="reviews" class="section">
+    <div class="wrapper">
+        <ul class="clearfix">
+            <li>
+                <img src="/bundles/tgcadmin/images/consultants/paul.jpg" alt="Paul Schmelzing" />
+                <h3>Paul Schmelzing</h3>
+                <h4>Finance</h4>
+                <p>Harvard PhD candidate. Previously worked in Greenhill & Co. and Goldman Sachs.</p>
+            </li>
+            <li>
+                <img src="/bundles/tgcadmin/images/consultants/Niharika.jpg" alt="Niharika Chalana" />
+                <h3>Niharika Chalana</h3>
+                <h4>Strategy</h4>
+                <p>MBA candidate at London Business School. 5 years experience in Bain & Company.</p>
+            </li>
+            <li>
+                <img src="/bundles/tgcadmin/images/consultants/Jessie.jpg" alt="Jessie Hronesova" />
+                <h3>Jessie Hronesova</h3>
+                <h4>Public Policy</h4>
+                <p>Doctorate candidate in Oxford University. Extensive experience as a published researcher.</p>
+            </li>
+        </ul>
+    </div>
+</section>
+<!--/Reviews-->
+
+<!--Reviews-->
+<section id="services" class="section pattern">
+    <div class="wrapper">
+        <h3>GET HELP WITH PROJECTS ACROSS MULTIPLE SECTORS FROM CONSULTANTS WORLDWIDE</h3>
+        <ul class="clearfix">
+            <li>
+                <i class="service-icon finance"></i>
+                <h2>FINANCE & ACCOUNTING</h2>
+                <p>
+                    Modelling & Valuations<br />
+                    Cash Flow Forecasting<br />
+                    Capital Budgeting<br />
+                    Equity & Credit Research<br />
+                    Risk Analysis
+                </p>
+            </li>
+            <li>
+                <i class="service-icon marketing"></i>
+                <h2>STRATEGY & MARKETING</h2>
+                <p>Business Plans & Presentations<br />
+                    Pitch Preparation & Materials<br />
+                    Due Diligence & Competitive Research<br />
+                    Market Research & Analysis<br />
+                    Market Entry Strategy</p>
+            </li>
+            <li>
+                <i class="service-icon policy"></i>
+                <h2>PUBLIC AFFAIRS & POLICY ANALYSIS</h2>
+                <p>Articles & Press releases<br />
+                    Content Management<br />
+                    News Monitoring<br />
+                    Reports and Papers<br />
+                    Energy & Healthcare</p>
+            </li>
+        </ul>
+    </div>
+</section>
+<!--/Reviews-->
+
+<!--Get Started-->
+<section id="start" class="sectio">
+    <h3>Get started</h3>
+    <a href="{{ path('fos_user_registration_register') }}" class="btn large-btn">SIGN UP NOW</a>
+    <a href="{{ path('tgc_homepage_contact') }}" class="btn large-btn">GET IN TOUCH</a>
+</section>
+<!--/Reviews-->
+
+{% endblock %}

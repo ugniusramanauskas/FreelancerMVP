@@ -1,15 +1,26 @@
-{% extends '::base.html.twig' %}
+{% extends 'TGCAdminBundle::tablelayout.html.twig' %}
 
+{% block title -%}Post a job (a project){% endblock %}
 {% block body -%}
-    <h1>Proposal creation</h1>
+<section class="section pattern">
+	<div class="wrapper clearfix">
+		<div class="project-form">
+                        {#<h2>Get this Job Done!</h2>#}
+			<h3>Submit an application for this project</h3>
+			{{ form(form) }}
 
-    {{ form(form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('proposal') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+	        <a href="{{ path('project') }}" class="btn gray-btn floatRight">Cancel</a>
+		</div>
+		
+		<div class="tips">
+			<h2>Project application guidelines</h2>
+			<ul>
+				<li>Make sure you can meet the project deadline before applying</li>
+				<li>Accept the indicative budget provided or submit a realistic counter-offer</li>
+                                <li>Get in touch with <a href="mailto:lisett@gradconsultancy.com">lisett@gradconsultancy.com</a> if you have any queries</li>
+			</ul>
+		</div>
+	</div>
+	
+</section>
 {% endblock %}

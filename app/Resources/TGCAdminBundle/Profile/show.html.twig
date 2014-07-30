@@ -1,0 +1,34 @@
+{% extends 'TGCAdminBundle::base_profile.html.twig' %}
+
+{% block content -%}
+
+    <section class="section form-section">
+            MY APPLICATIONS
+
+                <div class="count">
+                    Total projects:{{ pagination.getTotalItemCount }}
+                </div>
+
+                <table>
+                    <tr>
+                        {# sorting of properties based on query components #}
+                        <th>{{ knp_pagination_sortable(pagination, 'Id', 'a.id') }}</th>
+                    </tr>
+
+                    {% for proposal in pagination %}
+                        <tr>
+                            <td>{{ proposal.id }}</td>
+                            <td>{{ proposal.coverletter|striptags|slice(0, 150) }}</td>
+                            <td>{{ proposal.budget }}</td>
+                            <td>{{ proposal.status }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+
+                <div class="navigation">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+
+    </section>
+
+{% endblock %}

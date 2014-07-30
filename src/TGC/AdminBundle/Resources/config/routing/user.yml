@@ -28,3 +28,15 @@ user_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "TGCAdminBundle:User:delete" }
     requirements: { _method: post|delete }
+
+user_set_status:
+    pattern: /set_status/{id}/{status}
+    defaults: { _controller: "TGCAdminBundle:User:setStatus" }
+    
+user_validate_step1:
+    pattern: /set_status/{id}/{status}
+    defaults: { _controller: "TGCAdminBundle:User:setStatus" }
+
+user_info:
+    pattern: /info
+    defaults: { _controller: "TGCAdminBundle:User:info" }

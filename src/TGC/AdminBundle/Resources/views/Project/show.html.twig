@@ -1,61 +1,27 @@
 {% extends 'TGCAdminBundle::tablelayout.html.twig' %}
 
-{% block content -%}
-    <h1>Project</h1>
+{% block title -%} Project details {% endblock %}
 
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ entity.title }}</td>
-            </tr>
-            <tr>
-                <th>Startdate</th>
-                <td>{{ entity.startdate|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Budget</th>
-                <td>{{ entity.budget }}</td>
-            </tr>
-            <tr>
-                <th>Duration</th>
-                <td>{{ entity.duration }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ entity.description }}</td>
-            </tr>
-            <tr>
-                <th>Registrationtimestamp</th>
-                <td>{{ entity.registrationtimestamp|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Status</th>
-                <td>{{ entity.status }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('proposal_new', { 'projectid': entity.id }) }}">
-            Submit a Proposal ->
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('project') }}">
+{% block body -%}
+<section class="section">
+	<div class="wrapper clearfix">
+		<h1 class="project-title">{{ entity.title }}</h1>
+		<div class="project-desc">
+			<p>{{ entity.description }}</p>
+		</div>
+		<ul class="project-info">
+			<li><strong>Posted on</strong> {{ entity.startdate|date('Y-m-d') }}</li>
+			<li><strong>Budget</strong>{{ entity.budget }} {{ entity.currency }}</li>
+			<li><strong>Deadline</strong> {{ entity.deadline|date('Y-m-d') }}</li>
+		</ul>
+		<a class="btn apply-project" href="{{ path('project_proposal_new', { 'projectid': entity.id }) }}">
+	        Apply
+	    </a>
+	    
+	    <div class="clear"></div>
+	     <a href="{{ path('project') }}">
             Back to the list
         </a>
-    </li>
-    <li>
-        <a href="{{ path('project_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+	</div>
+</section>
 {% endblock %}

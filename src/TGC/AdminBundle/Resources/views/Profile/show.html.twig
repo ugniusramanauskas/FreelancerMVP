@@ -1,5 +1,63 @@
-{% extends "FOSUserBundle::fos_user_layout.html.twig" %}
+{% extends 'TGCAdminBundle::base_profile.html.twig' %}
 
-{% block fos_user_content %}
-{% include "FOSUserBundle:Profile:show_content.html.twig" %}
-{% endblock fos_user_content %}
+{% block content -%}
+
+    <section class="section">
+    	<div class="wrapper">
+    		<header class="content-theader">
+    			<h1 class="page-title">MY APPLICATIONS</h1>
+    			<div class="count floatRight">
+	                Total projects:{{ pagination.getTotalItemCount }}
+	            </div>
+    		</header>
+            
+			
+			<div class="projects-list">
+				{% for proposal in pagination %}
+					<div class="project-item">
+						<h2>{{ proposal.id }} - {{ proposal.projectid.title }}</h2>
+						
+						 {% if proposal.coverletter|length > 150 %}
+	                        <p class="cover-letter-excerpt">
+	                            {{ proposal.coverletter|slice(0, 150) }}...
+	                            <a href="#" class="show-full-letter">More info</a>
+	                        </p>
+	                        <p class="cover-letter-full">
+	                            {{ proposal.coverletter }}
+	                        </p>
+	                    {% else %}
+	                        <p>{{ proposal.coverletter }}</p>
+	                    {% endif %}
+						
+					 	<div>
+					 		<span class="date">{{ proposal.budget }} {{ proposal.currency }}</span>
+					 		<em class="separator">|</em>
+					 		<a href="#" class="selected-consultant">{{ proposal.projectid.userid.businessName }}</a>
+					 	</div>
+					 	<div>
+					 		<strong>Status:</strong>
+					 		
+					 		{% if proposal.status == 1 %}
+					 		<span class="status live">
+				                Live
+				            {% elseif proposal.status == 2 %}
+				            <span class="status in-progress">
+				                In Progress
+				            {% else %}
+				            <span class="status completed">
+				                Completed
+				            {% endif %}
+					 		
+						 	
+						 </div>
+					</div>
+				{% endfor %}
+			</div>
+               
+                <div class="navigation">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+		</div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,150 @@
+var TGCRegistration = function() {
+    var bioCount, skillCount, locationCount;
+
+    function init() {
+        initFormButtons();
+        initFormFields();
+    }
+    
+    function initFormButtons() {
+        $("#goto-step2").click(function(e) {
+            e.preventDefault();
+
+            var $button = $(this);
+            $button.attr('disabled', 'disabled');
+            $button.html('Please wait...');
+            
+            var success = function() { switchStep() };
+            var fail = function() {
+                $button.removeAttr('disabled');
+                $button.html('Go to step 2');
+            };
+            validateForm($("#registration-step1 input, #registration-step1 select"), 1, success, fail);
+        });
+        
+        $("#fos_user_registration_form_submit").click(function(e) {
+            e.preventDefault();
+
+            var $button = $(this);
+            $button.attr('disabled', 'disabled');
+            $button.html('Please wait...');
+
+            var success = function() { $("#registration-form").submit() };
+            var fail = function() {
+                $button.removeAttr('disabled');
+                $button.html('Submit');
+            };
+            validateForm($("#registration-form"), 2, success, fail);
+        });
+    }
+    
+    function initFormFields() {
+        bioCount = $("#bio-fields-list").attr('data-count');
+        skillCount = $("#skills-fields-list").attr('data-count');
+        locationCount = $("#location-fields-list").attr('data-count');
+    
+        $('#add-another-bio').click(function() {
+            var bioList = $('#bio-fields-list');
+
+            var newWidget = bioList.attr('data-prototype');
+            newWidget = newWidget.replace(/__name__/g, bioCount);
+            bioCount++;
+
+            var newLi = $('<li></li>').html(newWidget + '<a class="remove-field">[x]</a>');
+            newLi.appendTo(bioList);
+
+            return false;
+        });
+        if (bioCount == 0) {
+            $('#add-another-bio').click();
+        }
+
+        $('#add-another-skill').click(function() {
+            var skillList = $('#skills-fields-list');
+
+            var newWidget = skillList.attr('data-prototype');
+            newWidget = newWidget.replace(/__name__/g, skillCount);
+            skillCount++;
+
+            var newLi = $('<li></li>').html(newWidget + '<a class="remove-field">[x]</a>');
+            newLi.appendTo(skillList);
+
+            return false;
+        });
+        if (skillCount == 0) {
+            $('#add-another-skill').click();
+        }
+        
+        $('#add-another-location').click(function() {
+            var locationList = $('#location-fields-list');
+
+            var newWidget = locationList.attr('data-prototype');
+            newWidget = newWidget.replace(/__name__/g, locationCount);
+            locationCount++;
+
+            var newLi = $('<li></li>').html(newWidget + '<a class="remove-field">[x]</a>');
+            newLi.appendTo(locationList);
+
+            return false;
+        });
+        if (locationCount == 0) {
+            $('#add-another-location').click();
+        }
+        
+        $(document).on('click', ".remove-field", function() {
+            $(this).closest('li').remove();
+            return false;
+        });
+    }
+    
+    function validateForm(fields, step, successCallback, failCallback) {
+        $("ul.error").remove();
+        var formData = fields.serializeArray();
+        formData.push({'name': "fos_user_registration_form[step]", 'value': step});
+        // workaround for file field
+        fields.find("input[type=file]").each(function() {
+            var $this = $(this);
+            formData.push({'name': $this.attr('name'), 'value': $this.val()});
+        });
+        $.post($("#registration-form").attr("data-validate-url"), formData, function(data) {
+            if (data.errors) {
+                $.each(data.errors, function(key, val) {
+                    var message = '<ul class="error"><li>' + val + '</li></ul>';
+                    var $field = $("#fos_user_registration_form_" + key);
+                    if (!$field.size()) {
+                        $field = $("#fos_user_registration_form_" + key + "_first");
+                    }
+                    if ($field.size()) {
+                        $field.before(message);
+                    } else {
+                        $(".form_errors").append(message);
+                    }
+                });
+
+                $('html,body').animate({
+                    scrollTop: $("ul.error").first().offset().top},
+                    'slow');
+                    
+                failCallback();
+            } else {
+                successCallback();
+            }
+        });
+    }
+    function switchStep() {
+        $("#registration-step1").slideUp().find("input").removeAttr("required");
+        $("#registration-step2").slideDown();
+
+        if ($("#fos_user_registration_form_roles").val() == "ROLE_CONSULTANT") {
+            $(".business-field").hide().find("input, textarea").removeAttr("required");
+        } else {
+            $(".consultant-field").hide().find("input, textarea").removeAttr("required");
+        }
+    }
+    return {
+        init: init,
+        switchStep: switchStep
+    }
+}();
+
+$(document).ready(TGCRegistration.init);

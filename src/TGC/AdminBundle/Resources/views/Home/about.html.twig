@@ -1,0 +1,367 @@
+{% extends "TGCAdminBundle::base.html.twig" %}
+
+{% block body %}
+
+    <!--About-->
+
+    <section id="about" class="section">
+
+        <div class="wrapper clearfix">
+
+            <div class="left">
+
+                <h3>ABOUT US</h3>
+
+                <p>In a globalised economy characterised by constant change, a firm’s success is predicated on its
+                    ability to adapt and evolve on a dime. Yet, the way businesses staff and hire has remained largely
+                    unchanged over past decades. Exorbitant recruitment agency fees and prohibitive labour regulations
+                    continue to haunt businesses. Hiring decisions have remained restricted to CVs and interviews, which
+                    risks revealing more about a candidate’s tactical knowledge in navigating the application process
+                    than their actual ability to perform the job </p>
+
+                <p>TGC was founded by a team of young and driven recent graduates, determined to utilise our extensive
+                    network and job hunting experience to deliver a more efficient and flexible recruitment solution.
+                    Through the use of scalable technology, we aim to eliminate the inefficiencies of traditional
+                    recruitment through enabling businesses to work in a more flexible manner.</p>
+
+                <p>Our platform connects businesses with top graduate students for freelance work, allowing businesses
+                    to hire through a flexible project based approach, depending on the skills and duration required and
+                    budget available for each specific job. Firms may also use project based work as a means to trial
+                    candidates before committing to a permanent hire. On the other hand, top graduate students can
+                    discover and work on rewarding paid projects remotely on top of their studies, boosting their
+                    professional experience and career prospects.</p>
+
+
+                <a href="{{ path('fos_user_registration_register') }}" class="btn">SIGN UP</a>
+
+            </div>
+
+            <div class="right">
+
+                <h4 class="quote">We aim to eliminate the inefficiencies of traditional recruitment through enabling
+                    businesses to work more flexibly.</h4>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!--/About Banner-->
+
+
+
+    <!--Teamt Slider-->
+
+    <section id="team" class="section">
+
+    <div class="wrapper clearfix">
+
+    <div class="tabs">
+
+    <ul class="tabs-nav">
+
+        <li class="active"><a href="#management">MANAGEMENT</a></li>
+
+        <li><a href="#associates">ASSOCIATES</a></li>
+
+        <li><a href="#advisers">ADVISERS</a></li>
+
+    </ul>
+
+
+    <div class="tabs-content">
+
+    <div class="tab-content active" id="management">
+
+        <ul>
+
+            <li>
+                    <div class="tn flip-container">
+                            <div class="flipper">
+                                    <span class="front"><img src="/bundles/tgcadmin/images/team/jason.jpg" alt="tn" /></span>
+                                    <strong class="back">Worked in political consultancy, LSE graduate, founded The Graduate Consultancy.</strong>
+                            </div>
+                    </div>
+                    <h2>Jason Wong</h2>
+                    <h3>Founder</h3>
+                    <h4>(Director)</h4>
+                    <a href="https://www.linkedin.com/in/jasonwonglse" class="linkedin"></a>
+            </li>
+            <li>
+                    <div class="tn flip-container">
+                            <div class="flipper">
+                                    <span class="front"><img src="/bundles/tgcadmin/images/team/lisett.jpg" alt="tn" /></span>
+                                    <strong class="back">Worked at TransferWise and Return Path, LSE graduate, joined TGC in Oct 2013.</strong>
+                            </div>
+                    </div>
+                    <h2>Lisett Luik</h2>
+                    <h3>Partner</h3>
+                    <h4>(Global Operations)</h4>
+                    <a href="https://www.linkedin.com/in/lisettluik" class="linkedin"></a>
+            </li>
+            <!--<li>
+                    <div class="tn flip-container">
+                            <div class="flipper">
+                                    <span class="front"><img src="images/team/victoria.jpg" alt="tn" /></span>
+                                    <strong class="back">Worked at Rolls Royce and Integrate, St. Andrews graduate, joined TGC in Jan 2014.</strong>
+                            </div>
+                    </div>
+                    <h2>Victoria Albrecht</h2>
+                    <h3>Senior Associate</h3>
+                    <h4>(Business Development)</h4>
+                    <a href="https://www.linkedin.com/in/victoriaalbrecht" class="linkedin"></a>
+            </li>-->
+            <li>
+                    <div class="tn flip-container">
+                            <div class="flipper">
+                                    <span class="front"><img src="/bundles/tgcadmin/images/team/simon.jpg" alt="tn" /></span>
+                                    <strong class="back">Ex-Head of Finance for Oikos Consulting, St. Gallen graduate, joined TGC in March 2014.</strong>
+                            </div>
+                    </div>
+                    <h2>Simon Pfeiffer</h2>
+                    <h3>Country Manager</h3>
+                    <h4>(Germany)</h4>
+                    <a href="https://www.linkedin.com/in/simondpfeiffer/en" class="linkedin"></a>
+            </li>
+
+        </ul>
+    </div>
+
+    <div class="tab-content" id="associates">
+        <ul>
+            <li>
+                    <div class="tn flip-container">
+                            <div class="flipper">
+                                    <span class="front"><img src="/bundles/tgcadmin/images/team/jamila.jpeg" alt="tn" /></span>
+                                    <strong class="back">Ex-Analyst at ABNAmro, Utrecht University graduate, part of TGC’s co-founding team.</strong>
+                            </div>
+                    </div>
+                    <h2>Jamila Mammadova</h2>
+                    <h3>Associate</h3>
+                    <h4>(Global Operations)</h4>
+                    <a href="https://www.linkedin.com/in/jamilamammadova" class="linkedin"></a>
+            </li>
+            <li>
+                    <div class="tn flip-container">
+                            <div class="flipper">
+                                    <span class="front"><img src="/bundles/tgcadmin/images/team/zach.jpg" alt="tn" /></span>
+                                    <strong class="back">Interned at Merrill Lynch & UBS, BSBA student at Ohio State University, part of TGC’s co-founding team.</strong>
+                            </div>
+                    </div>
+                    <h2>Zach Riedy</h2>
+                    <h3>Associate</h3>
+                    <h4>(Finance)</h4>
+                    <a href="www.linkedin.com/pub/zach-riedy/36/8a2/363" class="linkedin"></a>
+            </li>
+            <li>
+                    <div class="tn flip-container">
+                            <div class="flipper">
+                                    <span class="front"><img src="/bundles/tgcadmin/images/team/rahul.jpg" alt="tn" /></span>
+                                    <strong class="back"> Worked as a System Engineer at IBM, Amrita School of Engineering graduate,   joined TGC in July 2014.</strong>
+                            </div>
+                    </div>
+                    <h2>Rahul Mohan</h2>
+                    <h3>Summer Associate</h3>
+                    <h4>(Business Intelligence)</h4>
+                    <a href="https://www.linkedin.com/profile/view?id=268458904&authType=NAME_SEARCH&authToken=AGgH&locale=en_US&trk=tyah2&trkInfo=tarId%3A1405713339451%2Ctas%3Arahul%20mohan%2Cidx%3A1-1-1" class="linkedin"></a>
+            </li>
+            <li>
+                    <div class="tn flip-container">
+                            <div class="flipper">
+                                    <span class="front"><img src="/bundles/tgcadmin/images/team/anna.jpg" alt="tn" /></span>
+                                    <strong class="back">Worked at ICAP and Teespring, business student at Mannheim University, joined TGC in July 2014.</strong>
+                            </div>
+                    </div>
+                    <h2>Anna Bolender</h2>
+                    <h3>Summer Associate</h3>
+                    <h4>(Business Intelligence)</h4>
+                    <a href="https://www.linkedin.com/pub/anna-bolender/77/5b3/14a" class="linkedin"></a>
+            </li>
+            <li>
+                    <div class="tn flip-container">
+                            <div class="flipper">
+                                    <span class="front"><img src="/bundles/tgcadmin/images/team/raffaella.jpg" alt="tn" /></span>
+                                    <strong class="back">Worked at Alchemian, student at Università Cattolica in Milan, joined TGC in July 2014.</strong>
+                            </div>
+                    </div>
+                    <h2>Raffaella Marasco</h2>
+                    <h3>Summer Associate</h3>
+                    <h4>(Marketing & PR)</h4>
+                    <a href="https://www.linkedin.com/pub/raffaella-marasco/28/8b0/198/en" class="linkedin"></a>
+            </li>
+            <li>
+                    <div class="tn flip-container">
+                            <div class="flipper">
+                                    <span class="front"><img src="/bundles/tgcadmin/images/team/ditte.jpg" alt="tn" /></span>
+                                    <strong class="back">Volunteered for the Red Cross, incoming student at Cambridge University, joined TGC in July 2014.</strong>
+                            </div>
+                    </div>
+                    <h2>Ditte Krogh Olesen</h2>
+                    <h3>Summer Associate</h3>
+                    <h4>(Business Intelligence)</h4>
+                    <a href="https://www.linkedin.com/pub/ditte-krogh-olesen/9b/828/63/en" class="linkedin"></a>
+            </li>
+            <li>
+                    <div class="tn flip-container">
+                            <div class="flipper">
+                                    <span class="front"><img src="/bundles/tgcadmin/images/team/chris.jpg" alt="tn" /></span>
+                                    <strong class="back">Worked at 7e Telecommunications, student at Durham University, joined TGC in July 2014.</strong>
+                            </div>
+                    </div>
+                    <h2>Chris Young</h2>
+                    <h3>Summer Associate</h3>
+                    <h4>(Business Intelligence)</h4>
+                    <a href="https://www.linkedin.com/pub/chris-young/9b/87/769" class="linkedin"></a>
+            </li>
+
+        </ul>
+
+    </div>
+
+
+    <div class="tab-content" id="advisers">
+
+        <ul>
+
+            <li>
+
+                <div class="tn flip-container">
+
+                    <div class="flipper">
+
+                        <span class="front"><img src="/bundles/tgcadmin/images/team/ivo.jpg" alt="tn"/></span>
+
+                        <strong class="back">CFO of Seabird Airlines, TRIUM
+                            Global Executive MBA, Senior Adviser from Sept 2013.</strong>
+
+                    </div>
+
+                </div>
+
+                <h2>Ivo Knottnerus</h2>
+
+                <h3>Senior Adviser</h3>
+
+                <h4>(Finance and Strategy)</h4>
+
+                <a href="https://www.linkedin.com/in/ivoknottnerus" class="linkedin"></a>
+
+            </li>
+
+            <li>
+
+                <div class="tn flip-container">
+
+                    <div class="flipper">
+
+                        <span class="front"><img src="/bundles/tgcadmin/images/team/ugnius.jpg" alt="tn"/></span>
+
+                        <strong class="back">Software Engineer at The Foundry,  MA from GWU,  Adviser from Jan
+                            2014.</strong>
+
+                    </div>
+
+                </div>
+
+                <h2>Ugnius Ramanauskas</h2>
+
+                <h3>Adviser</h3>
+
+                <h4>(Technology)</h4>
+
+                <a href="https://www.linkedin.com/in/ugniusramanauskas" class="linkedin"></a>
+
+            </li>
+
+            <li>
+
+                <div class="tn flip-container">
+
+                    <div class="flipper">
+
+                        <span class="front"><img src="/bundles/tgcadmin/images/team/nelson.jpg" alt="tn"/></span>
+
+                        <strong class="back">Works in a global digital agency,  LSE MSc Management graduate, 
+                            ex-Senior Associate at TGC.</strong>
+
+                    </div>
+
+                </div>
+
+                <h2>Nelson Adoglio</h2>
+
+                <h3>Graduate Adviser</h3>
+
+                <h4>(Strategy)</h4>
+
+                <a href="https://www.linkedin.com/in/nelsonadoglio/en" class="linkedin"></a>
+
+            </li>
+
+            <li>
+
+                <div class="tn flip-container">
+
+                    <div class="flipper">
+
+                        <span class="front"><img src="/bundles/tgcadmin/images/team/paul.jpg" alt="tn"/></span>
+
+                        <strong class="back">Sales & Trading Analyst at JP Morgan,  MPhil Finance from Cambridge, 
+                            Graduate Adviser from Nov 2013.</strong>
+
+                    </div>
+
+                </div>
+
+                <h2>Paul Secara</h2>
+
+                <h3>Graduate Adviser</h3>
+
+                <h4>(Finance)</h4>
+
+                <a href="https://www.linkedin.com/pub/paul-secara/60/995/457" class="linkedin"></a>
+
+            </li>
+
+            <li>
+
+                <div class="tn flip-container">
+
+                    <div class="flipper">
+
+                        <span class="front"><img src="/bundles/tgcadmin/images/team/george.jpg" alt="tn"/></span>
+
+                        <strong class="back">Incoming Hogan Lovells Solicitor,  MSc Law & Accounting from LSE, 
+                            Graduate Adviser from Feb 2014.</strong>
+
+                    </div>
+
+                </div>
+
+                <h2>George Kiladze</h2>
+
+                <h3>Graduate Adviser</h3>
+
+                <h4>(Legal)</h4>
+
+                <a href="https://www.linkedin.com/pub/george-kiladze/36/a04/978" class="linkedin"></a>
+
+            </li>
+
+        </ul>
+
+    </div>
+
+    </div>
+
+    </div>
+
+    </div>
+
+    </section>
+
+    <!--/Teamt Slider-->
+
+
+{% endblock %}

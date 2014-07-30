@@ -1,8 +1,151 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
+<p>Already have an account? Click <a href="{{ path('fos_user_security_login') }}">here</a> to Log in.</p>
+
+<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} 
+      id="registration-form"
+      method="POST" class="fos_user_registration_register"
+      data-validate-url="{{ path('registration_validate') }}">
+    <div id="registration-step1">
+        {{ form_row(form.email) }}
+        {{ form_row(form.username) }}
+        {{ form_row(form.plainPassword) }}
+        {{ form_row(form.roles) }}
+        <button id="goto-step2">Next</button>
+{# =======
 <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
     {{ form_widget(form) }}
+
+<tr>
+{% for child in form.roles %}
+    {% set index = child.vars.value %}
+        <td>{{ form_widget(child) }}</td> 
+{% endfor %}
+</tr>
+
     <div>
         <input type="submit" value="{{ 'registration.submit'|trans }}" />
+>>>>>>> develop #}
+    </div>
+    
+    <div id="registration-step2" style="display:none">
+        <h2 class="business-field">Business sign up</h2>
+        <h2 class="consultant-field">Consultant sign up</h2>
+        <div class="form_errors">
+            {{ form_errors(form) }}
+        </div>
+        <div class="business-field">
+            {{ form_label(form.businessName) }}
+            {{ form_errors(form.businessName) }}
+            {{ form_widget(form.businessName) }}
+        </div>
+        <div>
+            {{ form_label(form.firstName) }}
+            {{ form_errors(form.firstName) }}
+            {{ form_widget(form.firstName) }}
+        </div>
+        <div>
+            {{ form_label(form.lastName) }}
+            {{ form_errors(form.lastName) }}
+            {{ form_widget(form.lastName) }}
+        </div>
+        <div class="business-field">
+            {{ form_label(form.phone) }}
+            {{ form_errors(form.phone) }}
+            {{ form_widget(form.phone) }}
+        </div>
+        <div>
+            <span class="business-field">{{ form_label(form.location, 'Business location') }}</span>
+            <span class="consultant-field">{{ form_label(form.location, 'Current location') }}</span>
+            {{ form_errors(form.location) }}
+            {{ form_widget(form.location) }}
+        </div>
+        <div class="business-field">
+            {{ form_label(form.website) }}
+            {{ form_errors(form.website) }}
+            {{ form_widget(form.website) }}
+        </div>
+        <div class="consultant-field">
+            {{ form_label(form.universityEmail, 'University or alumni email (for verification purposes)') }}
+            {{ form_errors(form.universityEmail) }}
+            {{ form_widget(form.universityEmail) }}
+        </div>
+        <div class="consultant-field">
+            {{ form_label(form.university, 'Past/ Current University') }}
+            {{ form_errors(form.university) }}
+            {{ form_widget(form.university) }}
+        </div>
+        <div class="consultant-field">
+            {{ form_label(form.degree) }}
+            {{ form_errors(form.degree) }}
+            {{ form_widget(form.degree) }}
+        </div>
+        <div class="consultant-field">
+            {{ form_label(form.sectors) }}
+            {{ form_errors(form.sectors) }}
+            {% for sectorField in form.sectors %}
+                <br>
+                {{ form_label(sectorField) }}
+                {{ form_widget(sectorField) }}
+                    {{ form_errors(sectorField) }}
+
+            {% endfor %}
+        </div>
+        <div class="business-field">
+            {{ form_label(form.description, 'Brief description') }}
+            {{ form_errors(form.description) }}
+            {{ form_widget(form.description, {'attr': {'class': 'registration-description' }}) }}
+        </div>
+        {#
+        <div class="consultant-field">
+            {{ form_label(form.bio) }}
+            <ul id="bio-fields-list" data-prototype="{{ form_widget(form.bio.vars.prototype)|e }}" data-count="{{ form.bio|length }}">
+            {% for bioField in form.bio %}
+                <li>
+                    {{ form_errors(bioField) }}
+                    {{ form_widget(bioField) }}
+                    <a class="remove-field">[x]</a>
+                </li>
+            {% endfor %}
+            </ul>
+            <a href="#" id="add-another-bio">Add</a>
+        </div>
+        #}
+        <div class="consultant-field">
+            {{ form_label(form.skills, 'List your skills and possible projects you can do for businesses.') }}
+            <ul id="skills-fields-list" data-prototype="{{ form_widget(form.skills.vars.prototype)|e }}" data-count="{{ form.skills|length }}">
+            {% for skillField in form.skills %}
+                <li>
+                    {{ form_errors(skillField) }}
+                    {{ form_widget(skillField) }}
+                    <a class="remove-field">[x]</a>
+                </li>
+            {% endfor %}
+            </ul>
+            <a href="#" id="add-another-skill">Add</a>
+        </div>
+        <div class="consultant-field">
+            {{ form_label(form.photo, 'Upload your photo') }}
+            {{ form_errors(form.photo) }}
+            {{ form_widget(form.photo) }}
+        </div>
+        <div class="consultant-field">
+            {{ form_label(form.cv, 'Upload your CV') }}
+            {{ form_errors(form.cv) }}
+            {{ form_widget(form.cv) }}
+        </div>
+        <div class="consultant-field">
+            {{ form_label(form.linkedin, 'Your LinkedIn') }}
+            {{ form_errors(form.linkedin) }}
+            {{ form_widget(form.linkedin) }}
+        </div>
+        <div>
+            <label for="fos_user_registration_form_terms" class="required">
+                Accept Website <a href="{{ path('tgc_homepage_terms') }}" target="_blank">Terms &amp; Conditions</a>
+            </label>
+            {{ form_errors(form.terms) }}
+            {{ form_widget(form.terms) }}
+        </div>
+        {{ form_row(form.submit) }}
     </div>
 </form>

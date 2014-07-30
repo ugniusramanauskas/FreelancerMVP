@@ -1,0 +1,83 @@
+{% extends 'TGCAdminBundle::base_profile.html.twig' %}
+
+{% block content -%}
+    <section class="user-profile">
+        <header class="section pattern">
+            <div class="wrapper">
+                <h1>
+                    {% if 'ROLE_CLUB' in user.roles %}
+                        {{ user.clubName }}
+                    {% elseif 'ROLE_BUSINESS' in user.roles %}
+                        {{ user.businessName }}
+                    {% else %}
+                        {{ user.firstName }} {{ user.lastName }}
+                    {% endif %}
+                </h1>
+
+                <h2>{{ user.degree }}</h2>
+                <em>|</em>
+
+                <h2>{{ user.university }}</h2>
+                <em>|</em>
+
+                <h2 class="candidate-location">{{ user.location }}</h2>
+            </div>
+        </header>
+
+        <div class="wrapper clearfix">
+            <div class="profile-col3">
+                <div class="user-tn">
+                    <span class="user-img"><img src="{{ userPhotoUrl(user) }}" width="150"></span>
+                    <a class="btn" href="{{ path('tgc_homepage_contact') }}">Contact</a>
+                </div>
+                <ul class="domains">
+                    {% for sector in user.sectors %}
+                        <li>{{ sector.name }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="profile-col1">
+                <h2 class="profile-subtitle">Summary</h2>
+
+                <p>{{ user.description }}</p>
+
+                <ul class="list">
+                    {#{% for bio in user.bio %}#}
+                        {#<li>{{ bio }}</li>#}
+                    {#{% endfor %}#}
+                </ul>
+                <h2 class="profile-subtitle">Skills and possible projects</h2>
+                <ul class="list">
+                    {% for skill in user.skills %}
+                        <li>{{ skill }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="profile-col2">
+                <h2 class="profile-subtitle">Education</h2>
+                <ul class="education">
+                    <li>
+                    <h3>{{ user.university }}</h3>
+
+                    {% if user.degree %}
+                        <p>
+                            <span><!-- in here we should place the degree duration --></span>
+                            <strong>{{ user.degree }}</strong>
+                        </p>
+                    {% endif %}
+                    </li>
+                </ul>
+                <h2 class="profile-subtitle">Past Experience</h2>
+                <ul class="list">
+                    {% for bio in user.bio %}
+                    <li>{{ bio }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+
+        </div>
+    </section>
+{% endblock %}
